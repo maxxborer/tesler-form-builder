@@ -8,6 +8,10 @@ const rules = require("./rules");
 const { arrayFilterEmpty } = require("./utils/helpers");
 
 module.exports = {
+  stats: {
+    entrypoints: false,
+    children: false,
+  },
   entry: "./index.tsx",
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
@@ -33,6 +37,7 @@ module.exports = {
     plugins.forkTsCheckerWebpackPlugin,
     plugins.esLintPlugin,
     plugins.copyPlugin,
+    plugins.monacoPlugin,
   ]),
   resolve: {
     alias: aliasItems,

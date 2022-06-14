@@ -2,7 +2,7 @@ import * as React from "react";
 // import { createRoot } from "react-dom/client";
 import ReactDOM from "react-dom";
 
-import App from "./components/App";
+import App from "./App";
 
 const container = document.getElementById("root");
 

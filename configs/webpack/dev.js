@@ -16,5 +16,6 @@ module.exports = merge(commonConfig, {
   },
   devServer: devServerConfig,
   devtool: "cheap-module-source-map",
+  // devtool: "inline-source-map", // form-builder
   plugins: [new ReactRefreshPlugin()],
 });

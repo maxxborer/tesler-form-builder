@@ -26,7 +26,9 @@ module.exports = merge(commonConfig, {
   devtool: "source-map",
   externals: {
     react: "React",
-    // "react-dom": "ReactDOM",
+    // "react-dom": "ReactDOM", // form-builder
+    // moment: 'moment', // form-builder
+    // antd: 'antd', // form-builder
   },
   plugins: [plugins.miniCssExtractPlugin],
 });

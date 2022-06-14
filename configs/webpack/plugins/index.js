@@ -8,4 +8,5 @@ Object.assign(
   require("./pluginHtml"),
   require("./pluginMiniCssExtract"),
   require("./pluginProvide"),
+  require("./pluginMonaco"),
 );

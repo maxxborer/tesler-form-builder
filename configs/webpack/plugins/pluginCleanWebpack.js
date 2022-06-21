@@ -8,4 +8,4 @@ const config = {
   ],
 };
 
-module.cleanWebpackPlugin = new CleanWebpackPlugin(config);
+exports.cleanWebpackPlugin = new CleanWebpackPlugin(config);

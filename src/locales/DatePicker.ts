@@ -1,27 +1,34 @@
 import { createLocales } from "@designable/core";
 
 export const DatePicker = {
-  "zh-CN": {
-    title: "日期选择",
+  "ru-RU": {
+    title: "Выбор даты",
     settings: {
       "x-component-props": {
         disabledDate: {
-          title: "不可选日期",
-          tooltip: "格式 (currentDate: moment) => boolean",
+          title: "Заблокировать дату",
+          tooltip: "Формат (currentDate: moment) => boolean",
         },
         disabledTime: {
-          title: "不可选时间",
-          tooltip: "格式 (currentDate: moment) => boolean",
+          title: "Заблокировать время",
+          tooltip: "Формат (currentDate: moment) => boolean",
         },
-        inputReadOnly: "输入框只读",
-        format: "格式",
+        inputReadOnly: "Только для чтения",
+        format: "Формат",
         picker: {
-          title: "选择器类型",
-          dataSource: ["时间", "日期", "月份", "年", "季度", "财年"],
+          title: "Тип выбора",
+          dataSource: [
+            "время",
+            "дата",
+            "месяц",
+            "год",
+            "квартал",
+            "десятилетие",
+          ],
         },
-        showNow: "显示此刻",
-        showTime: "时间选择",
-        showToday: "显示今天",
+        showNow: "Показать сейчас",
+        showTime: "Показать время",
+        showToday: "Показать сегодня",
       },
     },
   },
@@ -49,40 +56,13 @@ export const DatePicker = {
       },
     },
   },
-  "ko-KR": {
-    title: "날짜 선택 상자",
-    settings: {
-      "x-component-props": {
-        disabledDate: {
-          title: "비활성화 된 날짜",
-          tooltip: "형식 (currentDate: moment) => boolean",
-        },
-        disabledTime: {
-          title: "비활성화 된 시간",
-          tooltip: "형식 (currentDate: moment) => boolean",
-        },
-        inputReadOnly: "ReadOnly",
-        format: "포맷",
-        picker: {
-          title: "타입",
-          dataSource: ["시간", "날짜", "월", "년", "분기", "십년 단위"],
-        },
-        showNow: "현재 시각 보기",
-        showTime: "시간 보기",
-        showToday: "오늘 보기",
-      },
-    },
-  },
 };
 
 export const DateRangePicker = createLocales(DatePicker, {
-  "zh-CN": {
-    title: "日期范围",
+  "ru-RU": {
+    title: "Диапазон дат",
   },
   "en-US": {
     title: "DateRange",
-  },
-  "ko-KR": {
-    title: "날짜범위 선택 상자",
   },
 });

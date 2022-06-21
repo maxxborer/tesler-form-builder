@@ -1,64 +1,73 @@
 export const TreeSelect = {
-  "zh-CN": {
-    title: "树选择",
+  "ru-RU": {
+    title: "Древовидный выбор",
     settings: {
       "x-component-props": {
         mode: {
-          title: "模式",
-          dataSource: ["多选", "标签", "单选"],
+          title: "Режим",
+          dataSource: ["Несколько значений", "Теги", "Одно значение"],
         },
         autoClearSearchValue: {
-          title: "选中自动清除",
-          tooltip: "仅在多选或者标签模式下支持",
+          title: "Автоматически очищать значение поиска",
+          tooltip: "Используется только для режима множественных и тегов",
         },
-        defaultActiveFirstOption: "默认高亮第一个选项",
-        defaultOpen: "默认展开",
-        filterOption: "选项筛选器",
-        filterSort: "选项排序器",
+        defaultActiveFirstOption: "По умолчанию активная первая опция",
+        defaultOpen: "По умолчанию открыто",
+        filterOption: "Фильтровать опции",
+        filterSort: "Сортировать",
         labelInValue: {
-          title: "标签值",
+          title: "Показывать метку в значении",
           tooltip:
-            "是否把每个选项的 label 包装到 value 中，会把 Select 的 value 类型从 string 变为 { value: string, label: ReactNode } 的格式",
+            "Следует ли обернуть метку каждой опции в значение, это изменит значение Тип выбора из строки на Формат {значение: строка, метка: ReactNode}",
         },
-        listHeight: "弹窗滚动高度",
+        listHeight: "Высота списка",
         maxTagCount: {
-          title: "最多标签数量",
-          tooltip: "最多显示多少个 tag，响应式模式会对性能产生损耗",
+          title: "Максимальное количество тегов",
+          tooltip:
+            "Если количество тегов больше этого значения, они будут отфильтрованы",
         },
         maxTagPlaceholder: {
-          title: "最多标签占位",
-          tooltip: "隐藏 tag 时显示的内容",
+          title: "Макс. тег плейсхолдер",
+          tooltip: "Содержимое отображается, когда тег скрыт",
         },
-        maxTagTextLength: "最多标签文本长度",
-        showArrow: "显示箭头",
-        virtual: "开启虚拟滚动",
+        maxTagTextLength: "Максимальная длина текста тега",
+        showArrow: "Показывать стрелку",
+        virtual: "Виртуальный",
         dropdownMatchSelectWidth: {
-          title: "下拉选择器同宽",
+          title: "Совпадение ширины списка",
           tooltip:
-            "默认将设置 min-width，当值小于选择框宽度时会被忽略。false 时会关闭虚拟滚动",
+            "По умолчанию будет установлена минимальная ширина, и она будет игнорироваться, если значение меньше ширины поля выбора. false отключит виртуальную прокрутку",
         },
         showCheckedStrategy: {
-          title: "复选回显策略",
+          title: "Стратегия показа отмеченных",
           tooltip:
-            "配置 treeCheckable 时，定义选中项回填的方式。TreeSelect.SHOW_ALL: 显示所有选中节点(包括父节点)。TreeSelect.SHOW_PARENT: 只显示父节点(当父节点下所有子节点都选中时)。 默认只显示子节点",
-          dataSource: ["显示所有", "显示父节点", "显示子节点"],
+            "При настройке treeCheckable определите, как заполнять выбранный элемент. TreeSelect.SHOW_ALL: Показать все выбранные узлы (включая родительские узлы). TreeSelect.SHOW_PARENT: отображать только родительский узел (когда выбраны все дочерние узлы под родительским узлом). Показывать только дочерние узлы по умолчанию",
+          dataSource: [
+            "Показать все",
+            "Показать родительский узел",
+            "Показать дочерние узлы",
+          ],
         },
-        treeCheckable: "开启复选",
-        treeDefaultExpandAll: "默认展开所有",
+        treeCheckable: "Можно ли выбирать узлы",
+        treeDefaultExpandAll: "По умолчанию все узлы раскрыты",
         treeDefaultExpandedKeys: {
-          title: "默认展开选项",
-          tooltip: "格式：Array<string | number>",
+          title: "Ключи по умолчанию раскрытых узлов",
+          tooltip: "Формат：Array<string | number>",
         },
         treeNodeFilterProp: {
-          title: "节点过滤属性",
-          tooltip: "输入项过滤对应的 treeNode 属性",
+          title: "Свойство узла для фильтрации",
+          tooltip:
+            "Атрибут treeNode, соответствующий входному фильтру элемента",
         },
         treeDataSimpleMode: {
-          title: "使用简单数据结构",
-          tooltip: `使用简单格式的 treeData，具体设置参考可设置的类型 (此时 treeData 应变为这样的数据结构: [{id:1, pId:0, value:'1', title:"test1",...},...]， pId 是父节点的 id)`,
+          title: "Простой режим",
+          tooltip: `Используйте treeData в простом формате. Для конкретных настроек обратитесь к устанавливаемому типу (treeData должен быть структурой данных, подобной этой: [{id:1, pId:0, value:'1', title:"test1",...},... ], pId — это идентификатор родительского узла)`,
         },
-        treeNodeLabelProp: { title: "标签显示名称", tooltip: "默认为title" },
-        filterTreeNode: "节点过滤器",
+        treeNodeLabelProp: {
+          title: "Свойство узла для отображения метки",
+          tooltip: "The default is title",
+        },
+        filterTreeNode: "Фильтровать узлы",
       },
     },
   },
@@ -120,66 +129,6 @@ export const TreeSelect = {
           tooltip: "The default is title",
         },
         filterTreeNode: "Filter Tree Node",
-      },
-    },
-  },
-  "ko-KR": {
-    title: "트리 셀렉터",
-    settings: {
-      "x-component-props": {
-        mode: {
-          title: "모드",
-          dataSource: ["다중", "태그", "단일"],
-        },
-        autoClearSearchValue: {
-          title: "검색값 자동 삭제",
-          tooltip: "다중 모드와 태그 모드에서만 사용 가능",
-        },
-        defaultActiveFirstOption: "기본 활성값으로 첫번째 옵션 사용",
-        defaultOpen: "기본 오픈",
-        filterOption: "옵션 필터",
-        filterSort: "정렬 필터",
-        labelInValue: "레이블 입력 값",
-        listHeight: "리스트 높이",
-        maxTagCount: "최대 태그 개수",
-        maxTagPlaceholder: {
-          title: "최대 태그 Placeholder",
-          tooltip: "태그가 숨김일때 보여줍니다.",
-        },
-        maxTagTextLength: "최대 태그 문자 길이",
-        notFoundContent: "내용 없음",
-        showArrow: "화살표 보기",
-        virtual: "수직 스크롤 사용",
-        dropdownMatchSelectWidth: {
-          title: "드롭다운 너비 맞추기",
-          tooltip:
-            "기본적으로 최소 너비가 설정되며 값이 선택 상자의 너비보다 작으면 무시됩니다.",
-        },
-        showCheckedStrategy: {
-          title: "선택한 전략 표시",
-          tooltip:
-            "treeCheckable을 구성할 때 선택한 항목을 다시 채우는 방법을 정의합니다. TreeSelect.SHOW_ALL: 선택한 모든 노드(상위 노드 포함)를 표시합니다. TreeSelect.SHOW_PARTE: 상위 노드 아래의 모든 하위 노드를 선택한 경우에만 상위 노드를 표시합니다. 기본적으로 하위 노드만 표시합니다",
-          dataSource: ["모두 보기", "부모 노드만 보기", "자식 노드만 보기"],
-        },
-        treeCheckable: "트리 체크 가능 여부",
-        treeDefaultExpandAll: "트리 기본 모두 확장",
-        treeDefaultExpandedKeys: {
-          title: "트리 기본 확장 키",
-          tooltip: "형식：Array<string | number>",
-        },
-        treeNodeFilterProp: {
-          title: "트리 노드 필터 속성",
-          tooltip: "입력 항목 필터에 해당하는 treeNode 속성",
-        },
-        treeDataSimpleMode: {
-          title: "트리 데이터 심플 모드",
-          tooltip: `treeData를 간단한 형식으로 사용합니다. 특정 설정은 설정가능한 유형을 참조하세요 (트리데이터는 다음과 같은 데이터 구조여야 합니다: [{id:1, pId:0, value:'1', title:"test1",...} ,...], pId는 id의 상위 노드입니다).`,
-        },
-        treeNodeLabelProp: {
-          title: "트리 노드 레이블 속성",
-          tooltip: "기본 값은 제목",
-        },
-        filterTreeNode: "트리 노드 필터",
       },
     },
   },

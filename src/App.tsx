@@ -64,16 +64,17 @@ import {
   FormLayout,
   FormGrid,
 } from "./components";
+import "./App.less";
 
 setNpmCDNRegistry("//unpkg.com");
 
 GlobalRegistry.registerDesignerLocales({
-  "zh-CN": {
+  "ru-RU": {
     sources: {
-      Inputs: "输入控件",
-      Layouts: "布局组件",
-      Arrays: "自增组件",
-      Displays: "展示组件",
+      Inputs: "Компоненты",
+      Layouts: "Верстка",
+      Arrays: "Массивы",
+      Displays: "Контент",
     },
   },
   "en-US": {
@@ -82,14 +83,6 @@ GlobalRegistry.registerDesignerLocales({
       Layouts: "Layouts",
       Arrays: "Arrays",
       Displays: "Displays",
-    },
-  },
-  "ko-KR": {
-    sources: {
-      Inputs: "입력",
-      Layouts: "레이아웃",
-      Arrays: "배열",
-      Displays: "디스플레이",
     },
   },
 });

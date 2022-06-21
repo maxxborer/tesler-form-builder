@@ -1,20 +1,22 @@
 export const Cascader = {
-  "zh-CN": {
-    title: "联级选择",
+  "ru-RU": {
+    title: "Каскад",
     settings: {
       "x-component-props": {
         changeOnSelect: {
-          title: "选择时触发",
-          tooltip: "点选每级菜单选项值都会发生变化",
+          title: "Изменить при выборе",
+          tooltip:
+            "Щелкните на каждом уровне меню и значение параметра изменится.",
         },
         displayRender: {
-          title: "渲染函数",
-          tooltip: '选择后展示的渲染函数，默认为label => label.join("/")	',
+          title: "Визуализация",
+          tooltip:
+            'Функция рендеринга, отображаемая после выбора, по умолчанию — label => label.join("/") ',
         },
         fieldNames: {
-          title: "自定义字段名",
+          title: "Имена полей",
           tooltip:
-            '默认值：{ label: "label", value: "value", children: "children" }',
+            'Значение по умолчанию：{ label: "label", value: "value", children: "children" }',
         },
       },
     },
@@ -36,27 +38,6 @@ export const Cascader = {
           title: "Field Names",
           tooltip:
             'Defaults：{ label: "label", value: "value", children: "children" }',
-        },
-      },
-    },
-  },
-  "ko-KR": {
-    title: "Cascader",
-    settings: {
-      "x-component-props": {
-        changeOnSelect: {
-          title: "선택 시 변경",
-          tooltip: "메뉴 옵션 값의 레벨을 클릭하면 변경됩니다.",
-        },
-        displayRender: {
-          title: "디스플레이 렌더링",
-          tooltip:
-            '선택 후 실행되는 렌더링 함수로 기본 값은 label => label.join("/")	',
-        },
-        fieldNames: {
-          title: "필드 이름",
-          tooltip:
-            '기본 값：{ label: "label", value: "value", children: "children" }',
         },
       },
     },

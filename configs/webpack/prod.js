@@ -1,12 +1,12 @@
 // production config
-const { merge } = require("webpack-merge");
-const { resolve } = require("path");
+const merge = require("webpack-merge").merge;
+const resolve = require("path").resolve;
 const TerserJSPlugin = require("terser-webpack-plugin");
 
 const plugins = require("./plugins");
 const commonConfig = require("./common");
 
-module.exports = merge(commonConfig, {
+const prodConfig = merge(commonConfig, {
   mode: "production",
   target: ["web", "es5"],
   output: {
@@ -32,3 +32,5 @@ module.exports = merge(commonConfig, {
   },
   plugins: [plugins.miniCssExtractPlugin],
 });
+
+module.exports = prodConfig;

@@ -1,12 +1,12 @@
 // development config
-const { merge } = require("webpack-merge");
-const { resolve } = require("path");
+const merge = require("webpack-merge").merge;
+const resolve = require("path").resolve;
 
-const commonConfig = require("./common");
-const { devServerConfig } = require("./config/devServer");
 const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const devServerConfig = require("./config/devServer").devServerConfig;
+const commonConfig = require("./common");
 
-module.exports = merge(commonConfig, {
+const devConfig = merge(commonConfig, {
   mode: "development",
   target: "web",
   output: {
@@ -15,7 +15,9 @@ module.exports = merge(commonConfig, {
     publicPath: undefined,
   },
   devServer: devServerConfig,
-  devtool: "cheap-module-source-map",
-  // devtool: "inline-source-map", // form-builder
+  // devtool: "cheap-module-source-map",
+  devtool: "inline-source-map", // form-builder
   plugins: [new ReactRefreshPlugin()],
 });
+
+module.exports = devConfig;

@@ -8,11 +8,13 @@ export const Container: React.FC = observer((props) => {
 });
 
 export const withContainer = (Target: React.JSXElementConstructor<any>) => {
-  return (props: any) => {
+  const Component = (props: any) => {
     return (
       <DroppableWidget>
         <Target {...props} />
       </DroppableWidget>
     );
   };
+
+  return (props: any) => <Component {...props} />;
 };

@@ -6,6 +6,9 @@ const { aliasItems } = require("./config");
 const plugins = require("./plugins");
 const rules = require("./rules");
 const { arrayFilterEmpty } = require("./utils/helpers");
+const { mode } = require("./utils/env");
+
+console.log("mode:", mode);
 
 module.exports = {
   stats: {

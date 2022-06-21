@@ -1,19 +1,20 @@
 export const Input = {
-  "zh-CN": {
-    title: "输入框",
+  "ru-RU": {
+    title: "Поле ввода",
     settings: {
       "x-component-props": {
-        addonAfter: "后缀标签",
-        addonBefore: "前缀标签",
-        maxLength: "最大长度",
-        prefix: "前缀",
-        suffix: "后缀",
+        addonAfter: "Добавление после",
+        addonBefore: "Добавление до",
+        maxLength: "Максимальная длина",
+        prefix: "Префикс",
+        suffix: "Суффикс",
         autoSize: {
-          title: "自适应高度",
-          tooltip: "可设置为 true | false 或对象：{ minRows: 2, maxRows: 6 }",
+          title: "Авто высота",
+          tooltip:
+            "Может быть установлено значение true | false или объект: {minRows: 2, maxRows: 6}",
         },
-        showCount: "是否展示字数",
-        checkStrength: "检测强度",
+        showCount: "Показать кол. символов",
+        checkStrength: "Проверить количество",
       },
     },
   },
@@ -29,21 +30,6 @@ export const Input = {
         autoSize: "Auto Size",
         showCount: "Show Count",
         checkStrength: "Check Strength",
-      },
-    },
-  },
-  "ko-KR": {
-    title: "입력",
-    settings: {
-      "x-component-props": {
-        addonAfter: "애드온 후",
-        addonBefore: "애드온 전",
-        maxLength: "최대 길이",
-        prefix: "접두사",
-        suffix: "접미사",
-        autoSize: "자동 크기 맞춤",
-        showCount: "개수 보여주기",
-        checkStrength: "강도 체크",
       },
     },
   },

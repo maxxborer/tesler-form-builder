@@ -1,25 +1,25 @@
 export const Slider = {
-  "zh-CN": {
-    title: "滑动条",
+  "ru-RU": {
+    title: "Слайдер",
     settings: {
       "x-component-props": {
-        dots: "刻度固定",
-        range: "双滑块",
-        reverse: "反向坐标系",
-        vertical: "垂直布局",
+        dots: "Фиксированная шкала",
+        range: "Двойной слайдер",
+        reverse: "Обратная система координат",
+        vertical: "Вертикальный",
         tooltipPlacement: {
-          title: "提示位置",
-          tooltip: "设置 提示 展示位置。参考 Tooltip",
+          title: "Размещение подсказки",
+          tooltip: "Настройка быстрого размещения. Справочная подсказка",
         },
         tooltipVisible: {
-          title: "提示显示",
+          title: "Подсказка видна",
           tooltip:
-            "开启时，提示 将会始终显示；否则始终不显示，哪怕在拖拽及移入时",
+            "При включении всегда будет отображаться подсказка; иначе он всегда не будет отображаться, даже при перетаскивании и перемещении",
         },
-        max: "最大值",
-        min: "最小值",
-        step: "步长",
-        marks: "刻度标签",
+        max: "Максимум",
+        min: "Минимум",
+        step: "Шаг",
+        marks: "Метки",
       },
     },
   },
@@ -44,30 +44,6 @@ export const Slider = {
         min: "Min",
         step: "Step",
         marks: "Marks",
-      },
-    },
-  },
-  "ko-KR": {
-    title: "슬라이더",
-    settings: {
-      "x-component-props": {
-        dots: "고정된 크기",
-        range: "더블 슬라이더",
-        reverse: "뒤집어진 좌표 시스템",
-        vertical: "수직",
-        tooltipPlacement: {
-          title: "툴팁 배치",
-          tooltip: "툴팁이 나오는 위치를 설정",
-        },
-        tooltipVisible: {
-          title: "툴팁 보기",
-          tooltip:
-            "이 옵션을 켜면 툴팁이 항상 표시됩니다. 그렇지 않으면 끌어서 이동할 때도 툴팁이 항상 표시되지 않습니다",
-        },
-        max: "최댓값",
-        min: "최솟값",
-        step: "스탭",
-        marks: "마크",
       },
     },
   },

@@ -15,16 +15,23 @@ export interface IDesignableTextProps {
   className?: string;
 }
 
-export const Text: DnFC<IDesignableTextProps> = (props) => {
-  const tagName = props.mode === "normal" || !props.mode ? "div" : props.mode;
+export const Text: DnFC<IDesignableTextProps> = ({
+  mode, // eslint-disable-line react/prop-types
+  className, // eslint-disable-line react/prop-types
+  content, // eslint-disable-line react/prop-types
+  ...props
+}) => {
+  const tagName = mode === "normal" || !mode ? "div" : mode;
   return React.createElement(
     tagName,
     {
+      mode,
+      content,
       ...props,
-      className: cls(props.className, "dn-text"),
+      className: cls(className, "dn-text"),
       "data-content-editable": "x-component-props.content",
     },
-    props.content,
+    content,
   );
 };
 

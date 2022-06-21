@@ -1,27 +1,29 @@
 import { createLocales } from "@designable/core";
 
 export const Upload = {
-  "zh-CN": {
-    title: "上传",
+  "ru-RU": {
+    title: "Загрузка",
     settings: {
       "x-component-props": {
-        accept: "可接受类型",
-        action: "上传地址",
-        data: "数据/参数",
-        directory: "支持上传目录",
-        headers: "请求头",
-        listType: { title: "列表类型", dataSource: ["文本", "图片", "卡片"] },
-        multiple: "多选模式",
-        name: "字段标识",
-        openFileDialogOnClick: {
-          title: "点击打开文件对话框",
-          tooltip: "点击打开文件对话框",
+        accept: "Принимаемые типы файлов",
+        action: "Действие",
+        data: "Данные",
+        directory: "Директория",
+        headers: "Заголовки",
+        listType: {
+          title: "Тип списка",
+          dataSource: ["Текст", "Изображение", "Карточка"],
         },
-        showUploadList: "是否展示文件列表",
-        withCredentials: "携带Cookie",
-        maxCount: "最大数量",
-        method: "方法",
-        textContent: "上传文案",
+        multiple: "Множественная загрузка",
+        name: "Имя",
+        openFileDialogOnClick: {
+          title: "Открыть диалоговое окно при клике",
+        },
+        showUploadList: "Показать список загрузки",
+        withCredentials: "Передавать cookies",
+        maxCount: "Максимальное количество файлов",
+        method: "Метод",
+        textContent: "Текстовое содержимое",
       },
     },
   },
@@ -46,47 +48,17 @@ export const Upload = {
       },
     },
   },
-  "ko-KR": {
-    title: "업로드",
-    settings: {
-      "x-component-props": {
-        accept: "승인",
-        action: "업로드 주소",
-        data: "데이터",
-        directory: "디렉터리 업로드 지원",
-        headers: "헤더",
-        listType: {
-          title: "리스트 타입",
-          dataSource: ["텍스트", "이미지", "카드"],
-        },
-        multiple: "여러개",
-        name: "이름",
-        openFileDialogOnClick: "눌러서 파일 다이얼로그 열기",
-        showUploadList: "업로드 목록 표시",
-        withCredentials: "자격 증명 포함",
-        maxCount: "최대 개수",
-        method: "메서드",
-        textContent: "텍스트 내용",
-      },
-    },
-  },
 };
 
 export const UploadDragger = createLocales(Upload, {
-  "zh-CN": {
-    title: "拖拽上传",
+  "ru-RU": {
+    title: "Загрузка DnD",
     settings: {
       "x-component-props": {},
     },
   },
   "en-US": {
     title: "UploadDragger",
-    settings: {
-      "x-component-props": {},
-    },
-  },
-  "ko-KR": {
-    title: "드래그로 업로드",
     settings: {
       "x-component-props": {},
     },

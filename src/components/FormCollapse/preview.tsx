@@ -121,8 +121,9 @@ export const FormCollapse: DnFC<CollapseProps> & {
   );
 });
 
-FormCollapse.CollapsePanel = (props) => {
-  return <Fragment>{props.children}</Fragment>;
+// eslint-disable-next-line react/prop-types
+FormCollapse.CollapsePanel = ({ children }) => {
+  return <Fragment>{children}</Fragment>;
 };
 
 FormCollapse.Behavior = createBehavior(

@@ -1,17 +1,17 @@
 export const FormTab = {
-  "zh-CN": {
-    title: "选项卡",
-    addTabPane: "添加选项卡",
+  "ru-RU": {
+    title: "Вкладки",
+    addTabPane: "Добавить панель",
     settings: {
       "x-component-props": {
-        animated: "启用动画过渡",
-        centered: "标签居中",
-        tab: "选项名称",
+        animated: "Включить анимацию",
+        centered: "Наименование по центру",
+        tab: "Заголовок вкладки",
         type: {
-          title: "类型",
+          title: "Тип",
           dataSource: [
-            { label: "线框", value: "line" },
-            { label: "卡片", value: "card" },
+            { label: "Линия", value: "line" },
+            { label: "Карточка", value: "card" },
           ],
         },
       },
@@ -35,32 +35,14 @@ export const FormTab = {
       },
     },
   },
-  "ko-KR": {
-    title: "탭",
-    addTabPane: "패널 추가",
-    settings: {
-      "x-component-props": {
-        animated: "애니메이션 활성화",
-        centered: "레이블을 가운데로",
-        tab: "텝 제목",
-        type: {
-          title: "타입",
-          dataSource: [
-            { label: "라인", value: "line" },
-            { label: "카드", value: "card" },
-          ],
-        },
-      },
-    },
-  },
 };
 
 export const FormTabPane = {
-  "zh-CN": {
-    title: "选项卡面板",
+  "ru-RU": {
+    title: "Панель вкладок",
     settings: {
       "x-component-props": {
-        tab: "面板标题",
+        tab: "Название панели",
       },
     },
   },
@@ -69,14 +51,6 @@ export const FormTabPane = {
     settings: {
       "x-component-props": {
         tab: "Panel Title",
-      },
-    },
-  },
-  "ko-KR": {
-    title: "탭 패널",
-    settings: {
-      "x-component-props": {
-        tab: "패널 제목",
       },
     },
   },

@@ -7,7 +7,6 @@ const {
   lessLoader,
   miniCssExtractLoader,
   postCssLoader,
-  resolveUrlLoader,
   sassLoaderItems,
 } = require("./useLoaderRuleItems");
 
@@ -24,7 +23,6 @@ const lessModulesRule = {
   use: arrayFilterEmpty([
     ...cssModulesSupportLoaderItems,
     postCssLoader,
-    resolveUrlLoader,
     lessLoader,
   ]),
 };
@@ -32,12 +30,7 @@ exports.lessModulesRule = lessModulesRule;
 const lessRule = {
   test: /\.less$/,
   exclude: /\.module.less$/,
-  use: arrayFilterEmpty([
-    ...cssLoaderItems,
-    postCssLoader,
-    resolveUrlLoader,
-    lessLoader,
-  ]),
+  use: arrayFilterEmpty([...cssLoaderItems, postCssLoader, lessLoader]),
 };
 exports.lessRule = lessRule;
 const lessRules = [lessModulesRule, lessRule];
@@ -49,7 +42,6 @@ const sassModulesRule = {
   use: arrayFilterEmpty([
     ...cssModulesSupportLoaderItems,
     postCssLoader,
-    resolveUrlLoader,
     ...sassLoaderItems,
   ]),
 };
@@ -57,12 +49,7 @@ exports.sassModulesRule = sassModulesRule;
 const sassRule = {
   test: /\.s([ca])ss$/,
   exclude: /\.module.scss$/,
-  use: arrayFilterEmpty([
-    ...cssLoaderItems,
-    postCssLoader,
-    resolveUrlLoader,
-    ...sassLoaderItems,
-  ]),
+  use: arrayFilterEmpty([...cssLoaderItems, postCssLoader, ...sassLoaderItems]),
 };
 exports.sassRule = sassRule;
 const sassRules = [sassModulesRule, sassRule];

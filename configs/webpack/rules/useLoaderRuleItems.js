@@ -6,8 +6,6 @@ const { sassResourceItems } = require("../config");
 
 const { isProd, rootDir, webpackDir } = require("../utils/env");
 
-console.log({ isProd });
-
 const cssLoader = {
   loader: "css-loader",
 };
@@ -25,14 +23,16 @@ const sassLoaderItems = [
       implementation: require("sass"),
     },
   },
-  !!sassResourceItems && !!sassResourceItems.length
-    ? {
-        loader: "sass-resources-loader",
-        options: {
-          resources: sassResourceItems,
-        },
-      }
-    : null,
+  ...[
+    !!sassResourceItems && !!sassResourceItems.length
+      ? {
+          loader: "sass-resources-loader",
+          options: {
+            resources: sassResourceItems,
+          },
+        }
+      : false,
+  ].filter(Boolean),
 ];
 exports.sassLoaderItems = sassLoaderItems;
 const postCssLoader = {
@@ -97,13 +97,13 @@ const typingsCssModulesLoader = {
  * @see https://webpack.js.org/loaders/sass-loader/#problems-with-url
  */
 exports.typingsCssModulesLoader = typingsCssModulesLoader;
-const resolveUrlLoader = {
-  loader: "resolve-url-loader",
-  options: {
-    sourceMap: true,
-  },
-};
-exports.resolveUrlLoader = resolveUrlLoader;
+// const resolveUrlLoader = {
+//   loader: "resolve-url-loader",
+// options: {
+//   sourceMap: true,
+// },
+// };
+// exports.resolveUrlLoader = resolveUrlLoader;
 const babelLoader = {
   loader: "babel-loader",
   options: {

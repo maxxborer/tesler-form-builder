@@ -130,8 +130,9 @@ export const FormTab: DnFC<TabsProps> & {
   );
 });
 
-FormTab.TabPane = (props) => {
-  return <Fragment>{props.children}</Fragment>;
+// eslint-disable-next-line react/prop-types
+FormTab.TabPane = ({ children }) => {
+  return <Fragment>{children}</Fragment>;
 };
 
 FormTab.Behavior = createBehavior(

@@ -1,14 +1,14 @@
 export const Card = {
-  "zh-CN": {
-    title: "卡片",
+  "ru-RU": {
+    title: "Карточка",
     settings: {
       "x-component-props": {
-        type: "类型",
-        title: "标题",
-        extra: "右侧扩展",
+        type: "Тип",
+        title: "Заголовок",
+        extra: "Дополнительно",
         cardTypes: [
-          { label: "内置", value: "inner" },
-          { label: "默认", value: "" },
+          { label: "Внутренний", value: "inner" },
+          { label: "По умолчанию", value: "" },
         ],
       },
     },
@@ -23,20 +23,6 @@ export const Card = {
         cardTypes: [
           { label: "Inner", value: "inner" },
           { label: "Default", value: "" },
-        ],
-      },
-    },
-  },
-  "ko-KR": {
-    title: "카드",
-    settings: {
-      "x-component-props": {
-        type: "타입",
-        title: "제목",
-        extra: "추가 항목",
-        cardTypes: [
-          { label: "안쪽", value: "inner" },
-          { label: "기본", value: "" },
         ],
       },
     },

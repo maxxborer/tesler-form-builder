@@ -1,11 +1,8 @@
 export const ObjectLocale = {
-  "zh-CN": {
-    title: "对象容器",
+  "ru-RU": {
+    title: "Объект",
   },
   "en-US": {
     title: "Object",
-  },
-  "ko-KR": {
-    title: "오브젝트",
   },
 };

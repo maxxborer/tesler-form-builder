@@ -8,16 +8,17 @@ import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
 
 export const Card: DnFC<React.ComponentProps<typeof AntdCard>> = (props) => {
+  // eslint-disable-next-line react/prop-types
+  const { title, children } = props;
+
   return (
     <AntdCard
       {...props}
       title={
-        <span data-content-editable="x-component-props.title">
-          {props.title}
-        </span>
+        <span data-content-editable="x-component-props.title">{title}</span>
       }
     >
-      {props.children}
+      {children}
     </AntdCard>
   );
 };

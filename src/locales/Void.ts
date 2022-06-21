@@ -1,11 +1,8 @@
 export const Void = {
-  "zh-CN": {
-    title: "虚拟容器",
+  "ru-RU": {
+    title: "Пустая область",
   },
   "en-US": {
     title: "Void",
-  },
-  "ko-KR": {
-    title: "비어있음",
   },
 };

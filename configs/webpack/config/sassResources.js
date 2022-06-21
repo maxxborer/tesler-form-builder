@@ -6,4 +6,4 @@
  *      path.resolve(__dirname, '../src/styles/variables.scss'),
  *  ]
  */
-module.sassResourceItems = [];
+exports.sassResourceItems = [];

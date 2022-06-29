@@ -10,9 +10,33 @@ const prodConfig = merge(commonConfig, {
   mode: "production",
   target: ["web", "es5"],
   output: {
-    filename: "js/bundle.[contenthash].min.js",
     path: resolve(__dirname, "../../dist"),
-    publicPath: "/",
+    filename: 'teslerFormBuilder.js',
+    library: 'TeslerFormBuilder',
+    libraryTarget: 'umd',
+    publicPath: '/dist/',
+    umdNamedDefine: true
+  },
+  resolve: {
+    alias: {
+      'react': resolve(__dirname, './node_modules/react'),
+      'react-dom': resolve(__dirname, './node_modules/react-dom'),
+    }
+  },
+  externals: {
+    // Don't bundle react or react-dom
+    react: {
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "React",
+      root: "React"
+    },
+    "react-dom": {
+      commonjs: "react-dom",
+      commonjs2: "react-dom",
+      amd: "ReactDOM",
+      root: "ReactDOM"
+    }
   },
   optimization: {
     minimize: true,
@@ -24,12 +48,6 @@ const prodConfig = merge(commonConfig, {
     maxAssetSize: 512000,
   },
   devtool: "source-map",
-  externals: {
-    react: "React",
-    // "react-dom": "ReactDOM", // form-builder
-    // moment: 'moment', // form-builder
-    // antd: 'antd', // form-builder
-  },
   plugins: [plugins.miniCssExtractPlugin],
 });
 

@@ -1,14 +1,9 @@
-// shared config (dev and prod)
-const { resolve } = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const resolve = require("path").resolve;
 
 const { aliasItems } = require("./config");
 const plugins = require("./plugins");
 const rules = require("./rules");
 const { arrayFilterEmpty } = require("./utils/helpers");
-const { mode } = require("./utils/env");
-
-console.log("mode:", mode);
 
 module.exports = {
   stats: {
@@ -34,17 +29,14 @@ module.exports = {
     ]),
   },
   plugins: arrayFilterEmpty([
-    plugins.htmlWebpackPlugin,
     plugins.providePlugin,
     plugins.definePlugin,
     plugins.forkTsCheckerWebpackPlugin,
     plugins.esLintPlugin,
-    plugins.copyPlugin,
     plugins.monacoPlugin,
   ]),
   resolve: {
     alias: aliasItems,
     extensions: [".tsx", ".ts", ".js", ".jsx", ".json"],
   },
-  plugins: [new HtmlWebpackPlugin({ template: "index.html.ejs" })],
 };

@@ -1,26 +1,51 @@
 {
-  "name": "react-webpack5-typescript-babel-starter",
-  "version": "0.1.0",
-  "description": "Starter kit for React, Webpack (with Hot Module Replacement), Typescript and Babel.",
+  "name": "tesler-form-builder",
+  "description": "Tesler form-builder based on formily (designable)",
+  "version": "0.1.2",
   "keywords": [
     "react",
     "webpack",
     "typescript",
-    "babel",
-    "sass",
-    "hmr",
-    "starter",
+    "tesler",
+    "form-builder",
     "boilerplate"
   ],
   "author": "Maxim Bureev",
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mvbureev/tesler-form-builder.git"
+  },
   "scripts": {
-    "build": "yarn run clean-dist && webpack --config=configs/webpack/prod.js",
+    "build": "yarn clean:dist && cross-env NODE_ENV=production webpack --config=configs/webpack/prod.js --mode=production",
     "clean:dist": "rimraf dist/*",
-    "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
-    "lint:fix": "eslint './src/**/*.{js,ts,tsx}' --quiet --fix",
+    "lint": "eslint './src/**/*.{js,ts,tsx}'",
+    "lint:fix": "yarn lint --fix",
     "start": "cross-env NODE_ENV=development webpack serve --config=configs/webpack/dev.js --stats-error-details",
-    "prod": "cross-env NODE_ENV=production yarn run build --mode=production && node express.js",
-    "test": "jest --coverage --watchAll --config=configs/jest.json"
+    "prod": "yarn build && node express.js",
+    "test": "echo \"Error: no test specified\"",
+    "release": "release-it"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@designable/core": "^1.0.0-beta.45",
+    "@designable/formily-setters": "^1.0.0-beta.45",
+    "@designable/formily-transformer": "^1.0.0-beta.45",
+    "@designable/react": "^1.0.0-beta.45",
+    "@formily/json-schema": "^2.1.5",
+    "@formily/path": "^2.1.5",
+    "@formily/reactive-react": "^2.1.5",
+    "ajv": "^8.11.0",
+    "ajv-keywords": "5.1.0",
+    "antd": "^4.0.0",
+    "moment": "^2.29.3",
+    "monaco-editor": "^0.33.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
@@ -68,8 +93,13 @@
     "postcss": "^8.4.14",
     "postcss-loader": "^7.0.0",
     "prettier": "^2.6.2",
+    "prop-types": "^15.8.1",
+    "react": ">=16.0.0 < 18.0.0",
+    "react-dom": ">=16.0.0 < 18.0.0",
+    "react-is": ">=16.0.0 < 18.0.0",
     "react-monaco-editor": "^0.48.0",
     "react-refresh": "^0.13.0",
+    "release-it": "^15.1.1",
     "resolve-url-loader": "^5.0.0",
     "rimraf": "^3.0.2",
     "sass": "^1.45.2",
@@ -84,37 +114,17 @@
     "webpack-dev-server": "^4.9.0",
     "webpack-merge": "^5.8.0"
   },
-  "dependencies": {
-    "@ant-design/icons": "^4.7.0",
-    "@designable/core": "^1.0.0-beta.45",
-    "@designable/formily-setters": "^1.0.0-beta.45",
-    "@designable/formily-transformer": "^1.0.0-beta.45",
-    "@designable/react": "^1.0.0-beta.45",
-    "@formily/json-schema": "^2.1.5",
-    "@formily/path": "^2.1.5",
-    "@formily/reactive-react": "^2.1.5",
-    "ajv": "^8.11.0",
-    "ajv-keywords": "5.1.0",
-    "antd": "^4.21.2",
-    "moment": "^2.29.3",
-    "monaco-editor": "^0.33.0",
-    "prop-types": "^15.8.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-is": "^18.2.0",
-    "react-sortable-hoc": "1.11.0"
-  },
   "peerDependencies": {
     "@formily/antd": "^2.0.2",
     "@formily/core": "^2.0.2",
     "@formily/react": "^2.0.2",
     "@formily/reactive": "^2.0.2",
     "@formily/shared": "^2.0.2",
-    "@types/react": ">=16.8.0 || >=17.0.0",
-    "@types/react-dom": ">=16.8.0 || >=17.0.0",
-    "antd": "^4.0.0",
-    "react": ">=16.8.0 || >=17.0.0",
-    "react-dom": ">=16.8.0",
-    "react-is": ">=16.8.0 || >=17.0.0"
+    "@types/react": ">=16.0.0 < 18.0.0",
+    "@types/react-dom": ">=16.0.0 < 18.0.0",
+    "prop-types": "^15.8.1",
+    "react": ">=16.0.0 < 18.0.0",
+    "react-dom": ">=16.0.0 < 18.0.0",
+    "react-is": ">=16.0.0 < 18.0.0"
   }
 }

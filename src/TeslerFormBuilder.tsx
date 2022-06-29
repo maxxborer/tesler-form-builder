@@ -64,7 +64,7 @@ import {
   FormLayout,
   FormGrid,
 } from "./components";
-import "./App.css";
+import "./TeslerFormBuilder.css";
 
 setNpmCDNRegistry("//unpkg.com");
 

@@ -11,7 +11,7 @@ const prodConfig = merge(commonConfig, {
   target: ["web", "es5"],
   output: {
     path: resolve(__dirname, "../../dist"),
-    filename: 'teslerFormBuilder.js',
+    filename: 'TeslerFormBuilder.js',
     library: 'TeslerFormBuilder',
     libraryTarget: 'umd',
     publicPath: '/dist/',

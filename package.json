@@ -12,8 +12,8 @@
   ],
   "author": "Maxim ***REMOVED***",
   "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/TeslerFormBuilder.js",
+  "module": "dist/TeslerFormBuilder.js",
   "files": [
     "dist",
     "README.md"

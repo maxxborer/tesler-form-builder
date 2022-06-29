@@ -45,7 +45,13 @@
     "ajv-keywords": "5.1.0",
     "antd": "^4.0.0",
     "moment": "^2.29.3",
-    "monaco-editor": "^0.33.0"
+    "monaco-editor": "^0.33.0",
+    "@formily/antd": "^2.0.2",
+    "@formily/core": "^2.0.2",
+    "@formily/react": "^2.0.2",
+    "@formily/reactive": "^2.0.2",
+    "@formily/shared": "^2.0.2",
+    "react-is": ">=16.0.0 < 18.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
@@ -53,11 +59,6 @@
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
     "@designable/react-settings-form": "^1.0.0-beta.45",
-    "@formily/antd": "^2.1.5",
-    "@formily/core": "^2.1.5",
-    "@formily/react": "^2.1.5",
-    "@formily/reactive": "^2.1.5",
-    "@formily/shared": "^2.1.5",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.6",
     "@svgr/webpack": "^6.2.1",
     "@testing-library/react": "^12.1.5",
@@ -96,7 +97,6 @@
     "prop-types": "^15.8.1",
     "react": ">=16.0.0 < 18.0.0",
     "react-dom": ">=16.0.0 < 18.0.0",
-    "react-is": ">=16.0.0 < 18.0.0",
     "react-monaco-editor": "^0.48.0",
     "react-refresh": "^0.13.0",
     "release-it": "^15.1.1",
@@ -115,16 +115,10 @@
     "webpack-merge": "^5.8.0"
   },
   "peerDependencies": {
-    "@formily/antd": "^2.0.2",
-    "@formily/core": "^2.0.2",
-    "@formily/react": "^2.0.2",
-    "@formily/reactive": "^2.0.2",
-    "@formily/shared": "^2.0.2",
     "@types/react": ">=16.0.0 < 18.0.0",
     "@types/react-dom": ">=16.0.0 < 18.0.0",
     "prop-types": "^15.8.1",
     "react": ">=16.0.0 < 18.0.0",
-    "react-dom": ">=16.0.0 < 18.0.0",
-    "react-is": ">=16.0.0 < 18.0.0"
+    "react-dom": ">=16.0.0 < 18.0.0"
   }
 }

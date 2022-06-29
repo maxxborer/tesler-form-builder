@@ -1,7 +1,7 @@
 {
   "name": "tesler-form-builder",
   "description": "Tesler form-builder based on formily (designable)",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "keywords": [
     "react",
     "webpack",

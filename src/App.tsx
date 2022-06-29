@@ -64,7 +64,7 @@ import {
   FormLayout,
   FormGrid,
 } from "./components";
-import "./App.less";
+import "./App.css";
 
 setNpmCDNRegistry("//unpkg.com");
 

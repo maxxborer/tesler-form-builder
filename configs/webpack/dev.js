@@ -1,10 +1,12 @@
 // development config
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const merge = require("webpack-merge").merge;
 const resolve = require("path").resolve;
 
 const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const devServerConfig = require("./config/devServer").devServerConfig;
 const commonConfig = require("./common");
+const plugins = require("./plugins");
 
 const devConfig = merge(commonConfig, {
   mode: "development",
@@ -17,7 +19,12 @@ const devConfig = merge(commonConfig, {
   devServer: devServerConfig,
   // devtool: "cheap-module-source-map",
   devtool: "inline-source-map", // form-builder
-  plugins: [new ReactRefreshPlugin()],
+  plugins: [
+    plugins.htmlWebpackPlugin,
+    plugins.copyPlugin,
+    new ReactRefreshPlugin(),
+    new HtmlWebpackPlugin({ template: "index.html.ejs" })
+  ],
 });
 
 module.exports = devConfig;

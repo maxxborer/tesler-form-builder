@@ -9,6 +9,7 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "declaration": true
   },
   "include": ["src", "src/custom.d.ts", "src/shared.ts"]
 }

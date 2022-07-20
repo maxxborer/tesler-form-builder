@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.40dfac66.chunk.css",
+    "main.js": "/static/js/main.8b2534fb.chunk.js",
+    "main.js.map": "/static/js/main.8b2534fb.chunk.js.map",
+    "runtime-main.js": "/TeslerFormBuilder.js",
+    "runtime-main.js.map": "/TeslerFormBuilder.js.map",
+    "static/css/2.d8b8d369.chunk.css": "/static/css/2.d8b8d369.chunk.css",
+    "static/js/2.9fd1f13c.chunk.js": "/static/js/2.9fd1f13c.chunk.js",
+    "static/js/2.9fd1f13c.chunk.js.map": "/static/js/2.9fd1f13c.chunk.js.map",
+    "editor.worker.js": "/editor.worker.js",
+    "editor.worker.js.LICENSE.txt": "/editor.worker.js.LICENSE.txt",
+    "editor.worker.js.map": "/editor.worker.js.map",
+    "index.html": "/index.html",
+    "json.worker.js": "/json.worker.js",
+    "json.worker.js.LICENSE.txt": "/json.worker.js.LICENSE.txt",
+    "json.worker.js.map": "/json.worker.js.map",
+    "static/css/2.d8b8d369.chunk.css.map": "/static/css/2.d8b8d369.chunk.css.map",
+    "static/css/main.40dfac66.chunk.css.map": "/static/css/main.40dfac66.chunk.css.map",
+    "static/js/2.9fd1f13c.chunk.js.LICENSE.txt": "/static/js/2.9fd1f13c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "TeslerFormBuilder.js",
+    "static/css/2.d8b8d369.chunk.css",
+    "static/js/2.9fd1f13c.chunk.js",
+    "static/css/main.40dfac66.chunk.css",
+    "static/js/main.8b2534fb.chunk.js"
+  ]
+}

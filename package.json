@@ -11,11 +11,11 @@
     "boilerplate"
   ],
   "author": "Maxim Bureev",
-  "main": "dist/TeslerFormBuilder.js",
-  "module": "dist/TeslerFormBuilder.js",
-  "types": "dist/custom.d.ts",
+  "main": "build/TeslerFormBuilder.js",
+  "module": "build/TeslerFormBuilder.js",
+  "types": "build/custom.d.ts",
   "files": [
-    "dist",
+    "build",
     "README.md"
   ],
   "repository": {

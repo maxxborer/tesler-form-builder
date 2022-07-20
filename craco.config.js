@@ -21,7 +21,7 @@ module.exports = {
       const newConfig = { ...webpackConfig };
       newConfig.output.libraryTarget = "commonjs";
       newConfig.output.filename = "TeslerFormBuilder.js";
-      // newConfig.target = "node";
+      newConfig.target = "web";
       // newConfig.externals = [nodeExternals()];
       newConfig.resolve.symlinks = false;
       return newConfig;

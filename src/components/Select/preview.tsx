@@ -6,13 +6,12 @@ import { createFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
 
-export const Select: DnFC<React.ComponentProps<typeof FormilySelect>> =
-  FormilySelect;
+export const Select: DnFC<React.ComponentProps<typeof FormilySelect>> = FormilySelect;
 
 Select.Behavior = createBehavior({
   name: "Select",
   extends: ["Field"],
-  selector: (node) => node.props["x-component"] === "Select",
+  selector: node => node.props["x-component"] === "Select",
   designerProps: {
     propsSchema: createFieldSchema(AllSchemas.Select),
   },

@@ -6,12 +6,12 @@ export interface IFormItemSwitcherProps {
   onChange?: (value: string) => void;
 }
 
-export const FormItemSwitcher: React.FC<IFormItemSwitcherProps> = (props) => {
+export const FormItemSwitcher: React.FC<IFormItemSwitcherProps> = ({ value, onChange }) => {
   return (
     <Switch
-      checked={props.value === "FormItem"}
-      onChange={(value) => {
-        props.onChange(value ? "FormItem" : undefined);
+      checked={value === "FormItem"}
+      onChange={eventValue => {
+        onChange(!!eventValue ? "FormItem" : "");
       }}
     />
   );

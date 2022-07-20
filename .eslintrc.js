@@ -1,26 +1,37 @@
 module.exports = {
-  extends: [
-    "plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
-    "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    "plugin:prettier/recommended", // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors.
+  root: true,
+  extends: ["plugin:react/recommended", "plugin:prettier/recommended", "prettier", "plugin:storybook/recommended"],
+  plugins: ["react", "@typescript-eslint", "prettier"],
+  rules: {
+    curly: "error",
+    "react/display-name": "off",
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-explicit-any": ["off"],
+    "prettier/prettier": "error",
+  },
+  overrides: [
+    {
+      files: ["**/*.stories.*"],
+      rules: {
+        "import/no-anonymous-default-export": "off",
+      },
+    },
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     sourceType: "module",
     ecmaVersion: 2020,
     ecmaFeatures: {
-      jsx: true, // Allows for the parsing of JSX
+      jsx: true,
     },
   },
-  plugins: ["@typescript-eslint"],
   settings: {
     react: {
-      version: "detect", // Tells eslint-plugin-react to automatically detect the version of React to use
+      version: "detect",
     },
   },
-  // Fine tune rules
-  rules: {
-    "@typescript-eslint/no-var-requires": 0,
-    "react/display-name": "off",
+  env: {
+    browser: true,
+    es2021: true,
   },
 };

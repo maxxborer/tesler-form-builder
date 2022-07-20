@@ -23,8 +23,7 @@ export const TreeSelect = {
         listHeight: "Высота списка",
         maxTagCount: {
           title: "Максимальное количество тегов",
-          tooltip:
-            "Если количество тегов больше этого значения, они будут отфильтрованы",
+          tooltip: "Если количество тегов больше этого значения, они будут отфильтрованы",
         },
         maxTagPlaceholder: {
           title: "Макс. тег плейсхолдер",
@@ -42,11 +41,7 @@ export const TreeSelect = {
           title: "Стратегия показа отмеченных",
           tooltip:
             "При настройке treeCheckable определите, как заполнять выбранный элемент. TreeSelect.SHOW_ALL: Показать все выбранные узлы (включая родительские узлы). TreeSelect.SHOW_PARENT: отображать только родительский узел (когда выбраны все дочерние узлы под родительским узлом). Показывать только дочерние узлы по умолчанию",
-          dataSource: [
-            "Показать все",
-            "Показать родительский узел",
-            "Показать дочерние узлы",
-          ],
+          dataSource: ["Показать все", "Показать родительский узел", "Показать дочерние узлы"],
         },
         treeCheckable: "Можно ли выбирать узлы",
         treeDefaultExpandAll: "По умолчанию все узлы раскрыты",
@@ -56,8 +51,7 @@ export const TreeSelect = {
         },
         treeNodeFilterProp: {
           title: "Свойство узла для фильтрации",
-          tooltip:
-            "Атрибут treeNode, соответствующий входному фильтру элемента",
+          tooltip: "Атрибут treeNode, соответствующий входному фильтру элемента",
         },
         treeDataSimpleMode: {
           title: "Простой режим",
@@ -117,8 +111,7 @@ export const TreeSelect = {
         },
         treeNodeFilterProp: {
           title: "Tree Node Filter Properties",
-          tooltip:
-            "The treeNode attribute corresponding to the input item filter",
+          tooltip: "The treeNode attribute corresponding to the input item filter",
         },
         treeDataSimpleMode: {
           title: "Tree Data Simple Mode",

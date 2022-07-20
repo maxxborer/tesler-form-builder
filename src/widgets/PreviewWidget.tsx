@@ -80,7 +80,7 @@ export interface IPreviewWidgetProps {
   tree: TreeNode;
 }
 
-export const PreviewWidget: React.FC<IPreviewWidgetProps> = (props) => {
+export const PreviewWidget: React.FC<IPreviewWidgetProps> = props => {
   const form = useMemo(() => createForm(), []);
   const { form: formProps, schema } = transformToSchema(props.tree);
   return (

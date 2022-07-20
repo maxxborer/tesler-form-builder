@@ -1,4 +1,3 @@
-import "antd/dist/antd.less";
 import * as React from "react";
 import {
   Designer,
@@ -17,23 +16,9 @@ import {
   SettingsPanel,
   ComponentTreeWidget,
 } from "@designable/react";
-import {
-  SettingsForm,
-  setNpmCDNRegistry,
-} from "@designable/react-settings-form";
-import {
-  createDesigner,
-  GlobalRegistry,
-  Shortcut,
-  KeyCode,
-} from "@designable/core";
-import {
-  LogoWidget,
-  ActionsWidget,
-  PreviewWidget,
-  SchemaEditorWidget,
-  MarkupSchemaWidget,
-} from "../src/widgets";
+import { SettingsForm, setNpmCDNRegistry } from "@designable/react-settings-form";
+import { createDesigner, GlobalRegistry, Shortcut, KeyCode } from "@designable/core";
+import { LogoWidget, ActionsWidget, PreviewWidget, SchemaEditorWidget, MarkupSchemaWidget } from "../src/widgets";
 import { saveSchema } from "../src/service";
 import {
   Form,
@@ -64,6 +49,7 @@ import {
   FormLayout,
   FormGrid,
 } from "./components";
+import "antd/dist/antd.less";
 import "./TeslerFormBuilder.css";
 
 setNpmCDNRegistry("//unpkg.com");
@@ -132,21 +118,8 @@ const App = () => {
                 ObjectContainer,
               ]}
             />
-            <ResourceWidget
-              title="sources.Layouts"
-              sources={[
-                Card,
-                FormGrid,
-                FormTab,
-                FormLayout,
-                FormCollapse,
-                Space,
-              ]}
-            />
-            <ResourceWidget
-              title="sources.Arrays"
-              sources={[ArrayCards, ArrayTable]}
-            />
+            <ResourceWidget title="sources.Layouts" sources={[Card, FormGrid, FormTab, FormLayout, FormCollapse, Space]} />
+            <ResourceWidget title="sources.Arrays" sources={[ArrayCards, ArrayTable]} />
             <ResourceWidget title="sources.Displays" sources={[Text]} />
           </CompositePanel.Item>
           <CompositePanel.Item title="panels.OutlinedTree" icon="Outline">
@@ -160,9 +133,7 @@ const App = () => {
           <WorkspacePanel>
             <ToolbarPanel>
               <DesignerToolsWidget />
-              <ViewToolsWidget
-                use={["DESIGNABLE", "JSONTREE", "MARKUP", "PREVIEW"]}
-              />
+              <ViewToolsWidget use={["DESIGNABLE", "JSONTREE", "MARKUP", "PREVIEW"]} />
             </ToolbarPanel>
             <ViewportPanel style={{ height: "100%" }}>
               <ViewPanel type="DESIGNABLE">
@@ -201,16 +172,12 @@ const App = () => {
                 )}
               </ViewPanel>
               <ViewPanel type="JSONTREE" scrollable={false}>
-                {(tree, onChange) => (
-                  <SchemaEditorWidget tree={tree} onChange={onChange} />
-                )}
+                {(tree, onChange) => <SchemaEditorWidget tree={tree} onChange={onChange} />}
               </ViewPanel>
               <ViewPanel type="MARKUP" scrollable={false}>
-                {(tree) => <MarkupSchemaWidget tree={tree} />}
+                {tree => <MarkupSchemaWidget tree={tree} />}
               </ViewPanel>
-              <ViewPanel type="PREVIEW">
-                {(tree) => <PreviewWidget tree={tree} />}
-              </ViewPanel>
+              <ViewPanel type="PREVIEW">{tree => <PreviewWidget tree={tree} />}</ViewPanel>
             </ViewportPanel>
           </WorkspacePanel>
         </Workspace>

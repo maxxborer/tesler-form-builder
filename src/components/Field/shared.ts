@@ -1,16 +1,9 @@
 import { ISchema } from "@formily/json-schema";
-import {
-  ReactionsSetter,
-  DataSourceSetter,
-  ValidatorSetter,
-} from "@designable/formily-setters";
+import { ReactionsSetter, DataSourceSetter, ValidatorSetter } from "@designable/formily-setters";
 import { FormItemSwitcher } from "../../common/FormItemSwitcher";
 import { AllSchemas } from "../../schemas";
 
-export const createComponentSchema = (
-  component: ISchema,
-  decorator: ISchema,
-) => {
+export const createComponentSchema = (component: ISchema, decorator: ISchema) => {
   return {
     "component-group": component && {
       type: "void",
@@ -74,10 +67,7 @@ export const createComponentSchema = (
   };
 };
 
-export const createFieldSchema = (
-  component?: ISchema,
-  decorator: ISchema = AllSchemas.FormItem,
-): ISchema => {
+export const createFieldSchema = (component?: ISchema, decorator: ISchema = AllSchemas.FormItem): ISchema => {
   return {
     type: "object",
     properties: {
@@ -146,10 +136,7 @@ export const createFieldSchema = (
   };
 };
 
-export const createVoidFieldSchema = (
-  component?: ISchema,
-  decorator: ISchema = AllSchemas.FormItem,
-) => {
+export const createVoidFieldSchema = (component?: ISchema, decorator: ISchema = AllSchemas.FormItem) => {
   return {
     type: "object",
     properties: {

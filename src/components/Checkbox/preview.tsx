@@ -6,13 +6,12 @@ import { createFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
 
-export const Checkbox: DnFC<React.ComponentProps<typeof FormilyCheckbox>> =
-  FormilyCheckbox;
+export const Checkbox: DnFC<React.ComponentProps<typeof FormilyCheckbox>> = FormilyCheckbox;
 
 Checkbox.Behavior = createBehavior({
   name: "Checkbox.Group",
   extends: ["Field"],
-  selector: (node) => node.props["x-component"] === "Checkbox.Group",
+  selector: node => node.props["x-component"] === "Checkbox.Group",
   designerProps: {
     propsSchema: createFieldSchema(AllSchemas.Checkbox.Group),
   },

@@ -6,13 +6,12 @@ import { createFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
 
-export const TreeSelect: DnFC<React.ComponentProps<typeof FormilyTreeSelect>> =
-  FormilyTreeSelect;
+export const TreeSelect: DnFC<React.ComponentProps<typeof FormilyTreeSelect>> = FormilyTreeSelect;
 
 TreeSelect.Behavior = createBehavior({
   name: "TreeSelect",
   extends: ["Field"],
-  selector: (node) => node.props["x-component"] === "TreeSelect",
+  selector: node => node.props["x-component"] === "TreeSelect",
   designerProps: {
     propsSchema: createFieldSchema(AllSchemas.TreeSelect),
   },

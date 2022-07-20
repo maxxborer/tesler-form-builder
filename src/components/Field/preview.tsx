@@ -1,24 +1,11 @@
 import React from "react";
 import { FormPath } from "@formily/core";
 import { toJS } from "@formily/reactive";
-import {
-  ArrayField,
-  Field as InternalField,
-  ObjectField,
-  VoidField,
-  observer,
-  ISchema,
-  Schema,
-} from "@formily/react";
+import { ArrayField, Field as InternalField, ObjectField, VoidField, observer, ISchema, Schema } from "@formily/react";
 import { FormItem } from "@formily/antd";
 import { each, reduce } from "@formily/shared";
 import { createBehavior } from "@designable/core";
-import {
-  useDesigner,
-  useTreeNode,
-  useComponents,
-  DnFC,
-} from "@designable/react";
+import { useDesigner, useTreeNode, useComponents, DnFC } from "@designable/react";
 import { isArr, isStr } from "@designable/shared";
 import { Container } from "../../common/Container";
 import { AllLocales } from "../../locales";
@@ -65,7 +52,9 @@ const filterExpression = (val: any) => {
           return buf;
         } else {
           const results = filterExpression(value);
-          if (results === undefined || results === null) return buf;
+          if (results === undefined || results === null) {
+            return buf;
+          }
           if (isArray) {
             return buf.concat([results]);
           }
@@ -83,17 +72,14 @@ const filterExpression = (val: any) => {
   return val;
 };
 
-const toDesignableFieldProps = (
-  schema: ISchema,
-  components: any,
-  nodeIdAttrName: string,
-  id: string,
-) => {
+const toDesignableFieldProps = (schema: ISchema, components: any, nodeIdAttrName: string, id: string) => {
   const results: any = {};
   each(SchemaStateMap, (fieldKey, schemaKey) => {
     const value = schema[schemaKey];
     if (isExpression(value)) {
-      if (!NeedShownExpression[schemaKey]) return;
+      if (!NeedShownExpression[schemaKey]) {
+        return;
+      }
       if (value) {
         results[fieldKey] = value;
         return;
@@ -105,10 +91,8 @@ const toDesignableFieldProps = (
   if (!components["FormItem"]) {
     components["FormItem"] = FormItem;
   }
-  const decorator =
-    schema["x-decorator"] && FormPath.getIn(components, schema["x-decorator"]);
-  const component =
-    schema["x-component"] && FormPath.getIn(components, schema["x-component"]);
+  const decorator = schema["x-decorator"] && FormPath.getIn(components, schema["x-decorator"]);
+  const component = schema["x-component"] && FormPath.getIn(components, schema["x-component"]);
   const decoratorProps = schema["x-decorator-props"] || {};
   const componentProps = schema["x-component-props"] || {};
 
@@ -123,26 +107,19 @@ const toDesignableFieldProps = (
   } else if (component) {
     FormPath.setIn(results["component"][1], nodeIdAttrName, id);
   }
-  results.title = results.title && (
-    <span data-content-editable="title">{results.title}</span>
-  );
-  results.description = results.description && (
-    <span data-content-editable="description">{results.description}</span>
-  );
+  results.title = results.title && <span data-content-editable="title">{results.title}</span>;
+  results.description = results.description && <span data-content-editable="description">{results.description}</span>;
   return results;
 };
 
-export const Field: DnFC<ISchema> = observer((props) => {
+export const Field: DnFC<ISchema> = observer(props => {
   const designer = useDesigner();
   const components = useComponents();
   const node = useTreeNode();
-  if (!node) return null;
-  const fieldProps = toDesignableFieldProps(
-    props,
-    components,
-    designer.props.nodeIdAttrName,
-    node.id,
-  );
+  if (!node) {
+    return null;
+  }
+  const fieldProps = toDesignableFieldProps(props, components, designer.props.nodeIdAttrName, node.id);
   if (props.type === "object") {
     return (
       <Container>

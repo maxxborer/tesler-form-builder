@@ -6,7 +6,7 @@ declare module "*.svg" {
 }
 
 declare module "tesler-form-builder" {
-  function TeslerFormBuilder(): void; 
-  namespace TeslerFormBuilder { }
+  function TeslerFormBuilder(): void;
+  namespace TeslerFormBuilder {}
   export = TeslerFormBuilder;
 }

@@ -5,18 +5,15 @@ export const Cascader = {
       "x-component-props": {
         changeOnSelect: {
           title: "Изменить при выборе",
-          tooltip:
-            "Щелкните на каждом уровне меню и значение параметра изменится.",
+          tooltip: "Щелкните на каждом уровне меню и значение параметра изменится.",
         },
         displayRender: {
           title: "Визуализация",
-          tooltip:
-            'Функция рендеринга, отображаемая после выбора, по умолчанию — label => label.join("/") ',
+          tooltip: 'Функция рендеринга, отображаемая после выбора, по умолчанию — label => label.join("/") ',
         },
         fieldNames: {
           title: "Имена полей",
-          tooltip:
-            'Значение по умолчанию：{ label: "label", value: "value", children: "children" }',
+          tooltip: 'Значение по умолчанию：{ label: "label", value: "value", children: "children" }',
         },
       },
     },
@@ -31,13 +28,11 @@ export const Cascader = {
         },
         displayRender: {
           title: "Display Render",
-          tooltip:
-            'The rendering function displayed after selection, the default is label => label.join("/")	',
+          tooltip: 'The rendering function displayed after selection, the default is label => label.join("/")	',
         },
         fieldNames: {
           title: "Field Names",
-          tooltip:
-            'Defaults：{ label: "label", value: "value", children: "children" }',
+          tooltip: 'Defaults：{ label: "label", value: "value", children: "children" }',
         },
       },
     },

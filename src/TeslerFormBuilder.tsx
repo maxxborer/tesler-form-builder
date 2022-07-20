@@ -1,3 +1,5 @@
+import "antd/dist/antd.less";
+import "./TeslerFormBuilder.css";
 import * as React from "react";
 import {
   Designer,
@@ -16,7 +18,7 @@ import {
   SettingsPanel,
   ComponentTreeWidget,
 } from "@designable/react";
-import { SettingsForm, setNpmCDNRegistry } from "@designable/react-settings-form";
+import { SettingsForm } from "@designable/react-settings-form";
 import { createDesigner, GlobalRegistry, Shortcut, KeyCode } from "@designable/core";
 import { LogoWidget, ActionsWidget, PreviewWidget, SchemaEditorWidget, MarkupSchemaWidget } from "../src/widgets";
 import { saveSchema } from "../src/service";
@@ -49,10 +51,6 @@ import {
   FormLayout,
   FormGrid,
 } from "./components";
-import "antd/dist/antd.less";
-import "./TeslerFormBuilder.css";
-
-setNpmCDNRegistry("//unpkg.com");
 
 GlobalRegistry.registerDesignerLocales({
   "ru-RU": {

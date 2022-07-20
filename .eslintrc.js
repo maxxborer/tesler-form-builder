@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ["plugin:react/recommended", "plugin:prettier/recommended", "prettier", "plugin:storybook/recommended"],
+  extends: ["plugin:react/recommended", "plugin:prettier/recommended", "prettier"],
   plugins: ["react", "@typescript-eslint", "prettier"],
   rules: {
     curly: "error",

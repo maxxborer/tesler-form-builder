@@ -33,7 +33,7 @@
     "build": "craco build",
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "yarn lint --fix",
-    "release": "release-it -- minor --ci"
+    "release": "release-it -- --ci"
   },
   "dependencies": {
     "@craco/craco": "^6.4.5",

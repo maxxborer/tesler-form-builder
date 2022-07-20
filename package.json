@@ -15,7 +15,7 @@
   "module": "build/TeslerFormBuilder.js",
   "types": "build/custom.d.ts",
   "files": [
-    "build",
+    "build/*",
     "README.md"
   ],
   "repository": {
@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build && craco build --esm",
+    "build": "craco build && craco build --esm && cp ./src/custom.d.ts ./build/custom.d.ts && cp ./src/react-app-env.d.ts ./build/react-app-env.d.ts",
     "build:web": "craco build",
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "yarn lint --fix",

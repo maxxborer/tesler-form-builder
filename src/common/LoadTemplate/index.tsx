@@ -14,7 +14,7 @@ export interface ILoadTemplateProps {
   actions?: ITemplateAction[];
 }
 
-export const LoadTemplate: React.FC<ILoadTemplateProps> = (props) => {
+export const LoadTemplate: React.FC<ILoadTemplateProps> = props => {
   return (
     <NodeActionsWidget>
       {props.actions?.map((action, key) => {

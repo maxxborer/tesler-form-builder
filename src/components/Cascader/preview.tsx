@@ -6,13 +6,12 @@ import { createFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
 
-export const Cascader: DnFC<React.ComponentProps<typeof FormilyCascader>> =
-  FormilyCascader;
+export const Cascader: DnFC<React.ComponentProps<typeof FormilyCascader>> = FormilyCascader;
 
 Cascader.Behavior = createBehavior({
   name: "Cascader",
   extends: ["Field"],
-  selector: (node) => node.props["x-component"] === "Cascader",
+  selector: node => node.props["x-component"] === "Cascader",
   designerProps: {
     propsSchema: createFieldSchema(AllSchemas.Cascader),
   },

@@ -7,17 +7,12 @@ import { createVoidFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
 
-export const Card: DnFC<React.ComponentProps<typeof AntdCard>> = (props) => {
+export const Card: DnFC<React.ComponentProps<typeof AntdCard>> = props => {
   // eslint-disable-next-line react/prop-types
   const { title, children } = props;
 
   return (
-    <AntdCard
-      {...props}
-      title={
-        <span data-content-editable="x-component-props.title">{title}</span>
-      }
-    >
+    <AntdCard {...props} title={<span data-content-editable="x-component-props.title">{title}</span>}>
       {children}
     </AntdCard>
   );
@@ -26,7 +21,7 @@ export const Card: DnFC<React.ComponentProps<typeof AntdCard>> = (props) => {
 Card.Behavior = createBehavior({
   name: "Card",
   extends: ["Field"],
-  selector: (node) => node.props["x-component"] === "Card",
+  selector: node => node.props["x-component"] === "Card",
   designerProps: {
     droppable: true,
     propsSchema: createVoidFieldSchema(AllSchemas.Card),

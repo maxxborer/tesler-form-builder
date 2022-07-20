@@ -7,13 +7,12 @@ import { withContainer } from "../../common/Container";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
 
-export const Space: DnFC<React.ComponentProps<typeof FormilySpace>> =
-  withContainer(FormilySpace);
+export const Space: DnFC<React.ComponentProps<typeof FormilySpace>> = withContainer(FormilySpace);
 
 Space.Behavior = createBehavior({
   name: "Space",
   extends: ["Field"],
-  selector: (node) => node.props["x-component"] === "Space",
+  selector: node => node.props["x-component"] === "Space",
   designerProps: {
     droppable: true,
     inlineChildrenLayout: true,

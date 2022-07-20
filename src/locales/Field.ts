@@ -15,13 +15,7 @@ export const Field = {
       },
       "x-pattern": {
         title: "UI шаблон",
-        dataSource: [
-          "Редактируемый",
-          "Недоступный",
-          "Только чтение",
-          "Удобочитаемое",
-          "Наследуемое",
-        ],
+        dataSource: ["Редактируемый", "Недоступный", "Только чтение", "Удобочитаемое", "Наследуемое"],
       },
       "x-validator": "Валидатор",
       "x-decorator": "Декоратор",
@@ -87,22 +81,11 @@ export const Field = {
         },
         layout: {
           title: "Макет",
-          dataSource: [
-            "Вертикальный",
-            "Горизонтальный",
-            "Линейный",
-            "Наследуемое",
-          ],
+          dataSource: ["Вертикальный", "Горизонтальный", "Линейный", "Наследуемое"],
         },
         feedbackLayout: {
           title: "Макет обратной связи",
-          dataSource: [
-            "Свободный",
-            "Сжатый",
-            "Всплывающий",
-            "Не установлено",
-            "Наследуемое",
-          ],
+          dataSource: ["Свободный", "Сжатый", "Всплывающий", "Не установлено", "Наследуемое"],
         },
         tooltipLayout: {
           title: "Макет всплывающей подсказки",
@@ -140,13 +123,7 @@ export const Field = {
       },
       "x-pattern": {
         title: "UI Pattern",
-        dataSource: [
-          "Editable",
-          "Disabled",
-          "ReadOnly",
-          "ReadPretty",
-          "Inherit",
-        ],
+        dataSource: ["Editable", "Disabled", "ReadOnly", "ReadPretty", "Inherit"],
       },
       "x-validator": "Validator",
       "x-decorator": "Decorator",

@@ -9,56 +9,79 @@ export interface IMarkupSchemaWidgetProps {
 
 const transformToMarkupSchemaCode = (tree: TreeNode) => {
   const printAttribute = (node: TreeNode) => {
-    if (!node) return "";
+    if (!node) {
+      return "";
+    }
     const props = { ...node.props };
     if (node.depth !== 0) {
       props.name = node.props.name || node.id;
     }
     return `${Object.keys(props)
-      .map((key) => {
+      .map(key => {
         if (
           key === "x-designable-id" ||
           key === "x-designable-source-name" ||
           key === "_isJSONSchemaObject" ||
           key === "version" ||
           key === "type"
-        )
+        ) {
           return "";
+        }
         const value = props[key];
-        if (isPlainObj(value) && isEmpty(value)) return "";
-        if (typeof value === "string") return `${key}="${value}"`;
+        if (isPlainObj(value) && isEmpty(value)) {
+          return "";
+        }
+        if (typeof value === "string") {
+          return `${key}="${value}"`;
+        }
         return `${key}={${JSON.stringify(value)}}`;
       })
       .join(" ")}`;
   };
   const printChildren = (node: TreeNode) => {
-    if (!node) return "";
+    if (!node) {
+      return "";
+    }
     return node.children
-      .map((child) => {
+      .map(child => {
         return printNode(child);
       })
       .join("");
   };
   const printTag = (node: TreeNode) => {
-    if (node.props.type === "string") return "SchemaField.String";
-    if (node.props.type === "number") return "SchemaField.Number";
-    if (node.props.type === "boolean") return "SchemaField.Boolean";
-    if (node.props.type === "date") return "SchemaField.Date";
-    if (node.props.type === "datetime") return "SchemaField.DateTime";
-    if (node.props.type === "array") return "SchemaField.Array";
-    if (node.props.type === "object") return "SchemaField.Object";
-    if (node.props.type === "void") return "SchemaField.Void";
+    if (node.props.type === "string") {
+      return "SchemaField.String";
+    }
+    if (node.props.type === "number") {
+      return "SchemaField.Number";
+    }
+    if (node.props.type === "boolean") {
+      return "SchemaField.Boolean";
+    }
+    if (node.props.type === "date") {
+      return "SchemaField.Date";
+    }
+    if (node.props.type === "datetime") {
+      return "SchemaField.DateTime";
+    }
+    if (node.props.type === "array") {
+      return "SchemaField.Array";
+    }
+    if (node.props.type === "object") {
+      return "SchemaField.Object";
+    }
+    if (node.props.type === "void") {
+      return "SchemaField.Void";
+    }
     return "SchemaField.Markup";
   };
   const printNode = (node: TreeNode) => {
-    if (!node) return "";
-    return `<${printTag(node)} ${printAttribute(node)} ${
-      node.children.length
-        ? `>${printChildren(node)}</${printTag(node)}>`
-        : "/>"
-    }`;
+    if (!node) {
+      return "";
+    }
+    return `<${printTag(node)} ${printAttribute(node)} ${node.children.length ? `>${printChildren(node)}</${printTag(node)}>` : "/>"}`;
   };
-  const root = tree.find((child) => {
+  const root = tree.find(child => {
     return child.componentName === "Form" || child.componentName === "Root";
   });
   return `import React, { useMemo } from 'react'
@@ -150,15 +173,6 @@ export default ()=>{
 `;
 };
 
-export const MarkupSchemaWidget: React.FC<IMarkupSchemaWidgetProps> = (
-  props,
-) => {
-  return (
-    <MonacoInput
-      {...props}
-      options={{ readOnly: true }}
-      value={transformToMarkupSchemaCode(props.tree)}
-      language="typescript"
-    />
-  );
+export const MarkupSchemaWidget: React.FC<IMarkupSchemaWidgetProps> = props => {
+  return <MonacoInput {...props} options={{ readOnly: true }} value={transformToMarkupSchemaCode(props.tree)} language="typescript" />;
 };

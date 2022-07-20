@@ -1,50 +1,46 @@
 import { TreeNode, Engine } from "@designable/core";
 
-export type ComponentNameMatcher =
-  | string
-  | string[]
-  | ((name: string, node: TreeNode, context?: any) => boolean);
+export type ComponentNameMatcher = string | string[] | ((name: string, node: TreeNode, context?: any) => boolean);
 
-export const matchComponent = (
-  node: TreeNode,
-  name: ComponentNameMatcher,
-  context?: any,
-) => {
-  if (name === "*") return true;
+export const matchComponent = (node: TreeNode, name: ComponentNameMatcher, context?: any) => {
+  if (name === "*") {
+    return true;
+  }
   const componentName = node?.props?.["x-component"];
-  if (typeof name === "function")
+  if (typeof name === "function") {
     return name(componentName || "", node, context);
-  if (Array.isArray(name)) return name.includes(componentName);
+  }
+  if (Array.isArray(name)) {
+    return name.includes(componentName);
+  }
   return componentName === name;
 };
 
-export const matchChildComponent = (
-  node: TreeNode,
-  name: ComponentNameMatcher,
-  context?: any,
-) => {
-  if (name === "*") return true;
+export const matchChildComponent = (node: TreeNode, name: ComponentNameMatcher, context?: any) => {
+  if (name === "*") {
+    return true;
+  }
   const componentName = node?.props?.["x-component"];
-  if (!componentName) return false;
-  if (typeof name === "function")
+  if (!componentName) {
+    return false;
+  }
+  if (typeof name === "function") {
     return name(componentName || "", node, context);
-  if (Array.isArray(name)) return name.includes(componentName);
+  }
+  if (Array.isArray(name)) {
+    return name.includes(componentName);
+  }
   return componentName.indexOf(`${name}.`) > -1;
 };
 
-export const includesComponent = (
-  node: TreeNode,
-  names: ComponentNameMatcher[],
-  target?: TreeNode,
-) => {
-  return names.some((name) => matchComponent(node, name, target));
+export const includesComponent = (node: TreeNode, names: ComponentNameMatcher[], target?: TreeNode) => {
+  return names.some(name => matchComponent(node, name, target));
 };
 
-export const queryNodesByComponentPath = (
-  node: TreeNode,
-  path: ComponentNameMatcher[],
-): TreeNode[] => {
-  if (path?.length === 0) return [];
+export const queryNodesByComponentPath = (node: TreeNode, path: ComponentNameMatcher[]): TreeNode[] => {
+  if (path?.length === 0) {
+    return [];
+  }
   if (path?.length === 1) {
     if (matchComponent(node, path[0])) {
       return [node];
@@ -57,11 +53,10 @@ export const queryNodesByComponentPath = (
     : [];
 };
 
-export const findNodeByComponentPath = (
-  node: TreeNode,
-  path: ComponentNameMatcher[],
-): TreeNode => {
-  if (path?.length === 0) return;
+export const findNodeByComponentPath = (node: TreeNode, path: ComponentNameMatcher[]): TreeNode => {
+  if (path?.length === 0) {
+    return;
+  }
   if (path?.length === 1) {
     if (matchComponent(node, path[0])) {
       return node;
@@ -77,16 +72,10 @@ export const findNodeByComponentPath = (
   }
 };
 
-export const hasNodeByComponentPath = (
-  node: TreeNode,
-  path: ComponentNameMatcher[],
-) => !!findNodeByComponentPath(node, path);
+export const hasNodeByComponentPath = (node: TreeNode, path: ComponentNameMatcher[]) => !!findNodeByComponentPath(node, path);
 
 export const matchArrayItemsNode = (node: TreeNode) => {
-  return (
-    node?.parent?.props?.type === "array" &&
-    node?.parent?.children?.[0] === node
-  );
+  return node?.parent?.props?.type === "array" && node?.parent?.children?.[0] === node;
 };
 
 export const createNodeId = (designer: Engine, id: string) => {
@@ -96,9 +85,7 @@ export const createNodeId = (designer: Engine, id: string) => {
 };
 
 export const createEnsureTypeItemsNode = (type: string) => (node: TreeNode) => {
-  const objectNode = node.children.find(
-    (child) => child.props["type"] === type,
-  );
+  const objectNode = node.children.find(child => child.props["type"] === type);
   if (objectNode) {
     return objectNode;
   } else {

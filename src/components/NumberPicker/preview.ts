@@ -6,14 +6,12 @@ import { createFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
 
-export const NumberPicker: DnFC<
-  React.ComponentProps<typeof FormilyNumberPicker>
-> = FormilyNumberPicker;
+export const NumberPicker: DnFC<React.ComponentProps<typeof FormilyNumberPicker>> = FormilyNumberPicker;
 
 NumberPicker.Behavior = createBehavior({
   name: "NumberPicker",
   extends: ["Field"],
-  selector: (node) => node.props["x-component"] === "NumberPicker",
+  selector: node => node.props["x-component"] === "NumberPicker",
   designerProps: {
     propsSchema: createFieldSchema(AllSchemas.NumberPicker),
   },

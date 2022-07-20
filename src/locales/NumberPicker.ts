@@ -20,8 +20,7 @@ export const NumberPicker = {
         step: "Шаг",
         stringMode: {
           title: "Строковый формат",
-          tooltip:
-            "Поддержка высокоточных десятичных знаков после открытия. В то же время onChange вернет строковый тип",
+          tooltip: "Поддержка высокоточных десятичных знаков после открытия. В то же время onChange вернет строковый тип",
         },
       },
     },
@@ -47,8 +46,7 @@ export const NumberPicker = {
         step: "Step",
         stringMode: {
           title: "String Format",
-          tooltip:
-            "Support high-precision decimals after opening. At the same time onChange will return string type",
+          tooltip: "Support high-precision decimals after opening. At the same time onChange will return string type",
         },
       },
     },

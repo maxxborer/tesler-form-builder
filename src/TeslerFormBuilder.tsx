@@ -71,7 +71,7 @@ GlobalRegistry.registerDesignerLocales({
   },
 });
 
-const App = () => {
+const TeslerFormBuilder = () => {
   const engine = React.useMemo(
     () =>
       createDesigner({
@@ -187,4 +187,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default TeslerFormBuilder;

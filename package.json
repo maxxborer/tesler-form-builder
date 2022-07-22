@@ -26,6 +26,7 @@
     "build": "yarn clean; node scripts/build.js",
     "build:pkg": "yarn clean; cross-env NODE_ENV=production webpack --mode production --config ./webpack.package.config.js",
     "release": "yarn build:pkg && release-it -- --ci",
+    "release:skip-build": "release-it -- --ci",
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}' config scripts",
     "lint:fix": "yarn lint --fix"
   },

@@ -1,5 +1,5 @@
 const path = require("path");
-const resolve = require("resolve");
+// const resolve = require("resolve");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -7,9 +7,9 @@ const safePostCssParser = require("postcss-safe-parser");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const MonacoPlugin = require("monaco-editor-webpack-plugin");
 const postcssNormalize = require("postcss-normalize");
-const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
-const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
-const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
+// const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
+// const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
+// const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -39,10 +39,10 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
     {
       loader: "css-loader",
       options: {
-        importLoaders: 2,
+        importLoaders: 3,
         modules: {
           mode: "local",
-          localIdentName: "[name]__[local]",
+          localIdentName: "[local]",
         },
         ...cssOptions,
       },
@@ -50,19 +50,21 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
     {
       loader: require.resolve("postcss-loader"),
       options: {
-        ident: "postcss",
-        plugins: () => [
-          require("postcss-flexbugs-fixes"),
-          require("postcss-preset-env")({
-            autoprefixer: { flexbox: "no-2009" },
-            stage: 3,
-          }),
-          postcssNormalize(),
-        ],
+        // ident: "postcss",
+        postcssOptions: {
+          plugins: [
+            require("postcss-flexbugs-fixes"),
+            require("postcss-preset-env")({
+              autoprefixer: { flexbox: "no-2009" },
+              stage: 3,
+            }),
+            postcssNormalize(),
+          ],
+        },
         sourceMap: true,
       },
     },
-  ].filter(Boolean);
+  ];
   if (preProcessor) {
     loaders.push(
       {
@@ -116,10 +118,10 @@ module.exports = {
         options: {
           babelrc: false,
           configFile: false,
-          compact: true, // FALSE
+          compact: false, // FALSE
           presets: [[require.resolve("babel-preset-react-app/dependencies"), { helpers: true }]],
           cacheDirectory: true,
-          cacheCompression: true, // FALSE
+          cacheCompression: false, // FALSE
           sourceMaps: true,
           inputSourceMap: true,
         },
@@ -128,7 +130,7 @@ module.exports = {
         test: cssRegex,
         exclude: cssModuleRegex,
         use: getStyleLoaders({
-          importLoaders: 1,
+          importLoaders: 2,
           sourceMap: true,
         }),
         // Remove this when webpack adds a warning or an error for this.
@@ -139,11 +141,11 @@ module.exports = {
       {
         test: cssModuleRegex,
         use: getStyleLoaders({
-          importLoaders: 1,
+          importLoaders: 2,
           sourceMap: true,
-          modules: {
-            getLocalIdent: getCSSModuleLocalIdent,
-          },
+          // modules: {
+          //   getLocalIdent: getCSSModuleLocalIdent,
+          // },
         }),
       },
       {
@@ -151,7 +153,7 @@ module.exports = {
         exclude: sassModuleRegex,
         use: getStyleLoaders(
           {
-            importLoaders: 3,
+            importLoaders: 4,
             sourceMap: true,
           },
           "sass-loader",
@@ -165,11 +167,11 @@ module.exports = {
         test: sassModuleRegex,
         use: getStyleLoaders(
           {
-            importLoaders: 3,
+            importLoaders: 4,
             sourceMap: true,
-            modules: {
-              getLocalIdent: getCSSModuleLocalIdent,
-            },
+            // modules: {
+            //   getLocalIdent: getCSSModuleLocalIdent,
+            // },
           },
           "sass-loader",
         ),
@@ -179,11 +181,11 @@ module.exports = {
         exclude: lessModuleRegex,
         use: [
           ...getStyleLoaders({
-            importLoaders: 3,
+            importLoaders: 4,
             sourceMap: true,
           }),
           {
-            loader: "less-loader",
+            loader: require.resolve("less-loader"),
             options: {
               sourceMap: true,
               lessOptions: {
@@ -199,14 +201,14 @@ module.exports = {
         test: lessModuleRegex,
         use: [
           ...getStyleLoaders({
-            importLoaders: 3,
+            importLoaders: 4,
             sourceMap: true,
-            modules: {
-              getLocalIdent: getCSSModuleLocalIdent,
-            },
+            // modules: {
+            //   getLocalIdent: getCSSModuleLocalIdent,
+            // },
           }),
           {
-            loader: "less-loader",
+            loader: require.resolve("less-loader"),
             options: {
               sourceMap: true,
               lessOptions: {
@@ -230,31 +232,31 @@ module.exports = {
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({
-      typescript: resolve.sync("typescript", {
-        basedir: path.resolve(__dirname, "node_modules"),
-      }),
-      async: false,
-      checkSyntacticErrors: true,
-      // resolveModuleNameModule: process.versions.pnp ? `${__dirname}/pnpTs.js` : undefined,
-      // resolveTypeReferenceDirectiveModule: process.versions.pnp ? `${__dirname}/pnpTs.js` : undefined,
-      tsconfig: path.resolve(__dirname, "tsconfig.json"),
-      reportFiles: [
-        // This one is specifically to match during CI tests,
-        // as micromatch doesn"t match
-        // "../cra-template-typescript/template/src/App.tsx"
-        // otherwise.
-        "../**/src/**/*.{ts,tsx}",
-        "**/src/**/*.{ts,tsx}",
-        "!**/src/**/__tests__/**",
-        "!**/src/**/?(*.)(spec|test).*",
-        "!**/src/setupProxy.*",
-        "!**/src/setupTests.*",
-      ],
-      silent: true,
-      // The formatter is invoked directly in WebpackDevServerUtils during development
-      formatter: typescriptFormatter,
-    }),
+    // new ForkTsCheckerWebpackPlugin({
+    //   typescript: resolve.sync("typescript", {
+    //     basedir: path.resolve(__dirname, "node_modules"),
+    //   }),
+    //   async: false,
+    //   checkSyntacticErrors: true,
+    //   // resolveModuleNameModule: process.versions.pnp ? `${__dirname}/pnpTs.js` : undefined,
+    //   // resolveTypeReferenceDirectiveModule: process.versions.pnp ? `${__dirname}/pnpTs.js` : undefined,
+    //   tsconfig: path.resolve(__dirname, "tsconfig.json"),
+    //   reportFiles: [
+    //     // This one is specifically to match during CI tests,
+    //     // as micromatch doesn"t match
+    //     // "../cra-template-typescript/template/src/App.tsx"
+    //     // otherwise.
+    //     "../**/src/**/*.{ts,tsx}",
+    //     "**/src/**/*.{ts,tsx}",
+    //     "!**/src/**/__tests__/**",
+    //     "!**/src/**/?(*.)(spec|test).*",
+    //     "!**/src/setupProxy.*",
+    //     "!**/src/setupTests.*",
+    //   ],
+    //   silent: true,
+    //   // The formatter is invoked directly in WebpackDevServerUtils during development
+    //   formatter: typescriptFormatter,
+    // }),
     new MiniCssExtractPlugin({
       filename: "./TeslerFormBuilder.css",
     }),

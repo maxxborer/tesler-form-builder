@@ -20,6 +20,7 @@ build/Release
 node_modules/
 jspm_packages/
 .yarn/cache
+.yarn/unplugged
 
 # Distribution directories
 dist/

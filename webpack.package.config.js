@@ -91,7 +91,7 @@ module.exports = {
     libraryTarget: "commonjs2",
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".less", ".css"],
     modules: ["node_modules"],
   },
   optimization: {
@@ -192,8 +192,6 @@ module.exports = {
             },
           },
         ],
-        // Remove this when webpack adds a warning or an error for this.
-        sideEffects: true,
       },
       // Adds support for CSS Modules, but using less
       // using the extension .module.scss or .module.less
@@ -243,8 +241,8 @@ module.exports = {
       tsconfig: path.resolve(__dirname, "tsconfig.json"),
       reportFiles: [
         // This one is specifically to match during CI tests,
-        // as micromatch doesn't match
-        // '../cra-template-typescript/template/src/App.tsx'
+        // as micromatch doesn"t match
+        // "../cra-template-typescript/template/src/App.tsx"
         // otherwise.
         "../**/src/**/*.{ts,tsx}",
         "**/src/**/*.{ts,tsx}",
@@ -308,24 +306,14 @@ module.exports = {
     react: {
       commonjs: "react",
       commonjs2: "react",
-      amd: "React",
+      amd: "react",
       root: "React",
     },
     "react-dom": {
       commonjs: "react-dom",
       commonjs2: "react-dom",
-      amd: "ReactDOM",
+      amd: "react-dom",
       root: "ReactDOM",
     },
-  },
-  node: {
-    module: "empty",
-    dgram: "empty",
-    dns: "mock",
-    fs: "empty",
-    http2: "empty",
-    net: "empty",
-    tls: "empty",
-    child_process: "empty",
   },
 };

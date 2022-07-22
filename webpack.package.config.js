@@ -258,9 +258,9 @@ module.exports = {
       formatter: typescriptFormatter,
     }),
     new MiniCssExtractPlugin({
-      filename: "./styles.css",
+      filename: "./TeslerFormBuilder.css",
     }),
-    // new ExtractTextPlugin("styles.css"),
+    // new ExtractTextPlugin("TeslerFormBuilder.css"),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.optimize\.css$/g,
       cssProcessor: require("cssnano"),

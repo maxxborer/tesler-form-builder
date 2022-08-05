@@ -57,6 +57,8 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
 
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === "true") {
@@ -101,30 +103,29 @@ module.exports = function (webpackEnv) {
       },
       {
         loader: require.resolve("css-loader"),
-        options: cssOptions,
+        options: {
+          importLoaders: 3,
+          modules: {
+            mode: "local",
+            localIdentName: "[local]",
+          },
+          ...cssOptions,
+        },
       },
       {
-        // Options for PostCSS as we reference these options twice
-        // Adds vendor prefixing based on your specified browser support in
-        // package.json
         loader: require.resolve("postcss-loader"),
         options: {
-          // Necessary for external CSS imports to work
-          // https://github.com/facebook/create-react-app/issues/2677
-          ident: "postcss",
-          plugins: () => [
-            require("postcss-flexbugs-fixes"),
-            require("postcss-preset-env")({
-              autoprefixer: {
-                flexbox: "no-2009",
-              },
-              stage: 3,
-            }),
-            // Adds PostCSS Normalize as the reset css with default options,
-            // so that it honors browserslist config in package.json
-            // which in turn let's users customize the target behavior as per their needs.
-            postcssNormalize(),
-          ],
+          // ident: "postcss",
+          postcssOptions: {
+            plugins: [
+              require("postcss-flexbugs-fixes"),
+              require("postcss-preset-env")({
+                autoprefixer: { flexbox: "no-2009" },
+                stage: 3,
+              }),
+              postcssNormalize(),
+            ],
+          },
           sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
         },
       },
@@ -183,7 +184,8 @@ module.exports = function (webpackEnv) {
         : paths.appIndexJs,
     output: {
       // The build folder.
-      path: isEnvProduction ? paths.appBuild : undefined,
+      // path: isEnvProduction ? paths.appBuild : undefined,
+      path: path.resolve(__dirname, "..", "build"),
       // Add /* filename */ comments to generated require()s in the output.
       pathinfo: isEnvDevelopment,
       // There will be one main bundle, and one file per asynchronous chunk.
@@ -488,6 +490,48 @@ module.exports = function (webpackEnv) {
                 "sass-loader",
               ),
             },
+            {
+              test: lessRegex,
+              exclude: lessModuleRegex,
+              use: [
+                ...getStyleLoaders({
+                  importLoaders: 4,
+                  sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
+                }),
+                {
+                  loader: require.resolve("less-loader"),
+                  options: {
+                    sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
+                    lessOptions: {
+                      javascriptEnabled: true,
+                    },
+                  },
+                },
+              ],
+            },
+            // Adds support for CSS Modules, but using less
+            // using the extension .module.scss or .module.less
+            {
+              test: lessModuleRegex,
+              use: [
+                ...getStyleLoaders({
+                  importLoaders: 4,
+                  sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
+                  // modules: {
+                  //   getLocalIdent: getCSSModuleLocalIdent,
+                  // },
+                }),
+                {
+                  loader: require.resolve("less-loader"),
+                  options: {
+                    sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
+                    lessOptions: {
+                      javascriptEnabled: true,
+                    },
+                  },
+                },
+              ],
+            },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.
@@ -499,7 +543,7 @@ module.exports = function (webpackEnv) {
               // its runtime that would otherwise be processed through "file" loader.
               // Also exclude `html` and `json` extensions so they get processed
               // by webpacks internal loaders.
-              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+              exclude: [/\.(js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/, /\.(less|css|config|variables|overrides)$/],
               options: {
                 name: "static/media/[name].[hash:8].[ext]",
               },

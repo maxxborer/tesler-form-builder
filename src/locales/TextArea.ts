@@ -1,6 +1,6 @@
 export const TextArea = {
   "ru-RU": {
-    title: "Текстовая область",
+    title: "Текстовое поле",
     settings: {
       "x-component-props": {
         maxLength: "Максимальная длина",

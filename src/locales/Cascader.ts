@@ -1,6 +1,6 @@
 export const Cascader = {
   "ru-RU": {
-    title: "Каскад",
+    title: "Каскадный выбор",
     settings: {
       "x-component-props": {
         changeOnSelect: {

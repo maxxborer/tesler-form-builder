@@ -24,8 +24,8 @@ const { choosePort, createCompiler, prepareProxy, prepareUrls } = require("react
 const openBrowser = require("react-dev-utils/openBrowser");
 const semver = require("semver");
 const paths = require("../config/paths");
-const configFactory = require("../config/webpack.config");
-const createDevServerConfig = require("../config/webpackDevServer.config");
+const configFactory = require("../config/webpack.config.development");
+const createDevServerConfig = require("../config/webpackDevServer");
 const getClientEnvironment = require("../config/env");
 const react = require(require.resolve("react", { paths: [paths.appPath] }));
 

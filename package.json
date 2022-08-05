@@ -8,7 +8,9 @@
     "typescript",
     "tesler",
     "form-builder",
-    "boilerplate"
+    "boilerplate",
+    "designable",
+    "formily"
   ],
   "author": "Maxim Bureev",
   "main": "dist/index.js",
@@ -22,9 +24,9 @@
   },
   "scripts": {
     "clean": "rimraf dist/*",
-    "start": "node scripts/start.js",
-    "build": "yarn clean; node scripts/build.js",
-    "build:pkg": "yarn clean; cross-env NODE_ENV=production webpack --mode production --config ./webpack.package.config.js",
+    "start": "NODE_ENV=development node scripts/start.js",
+    "build": "NODE_ENV=production node scripts/build.js",
+    "build:pkg": "yarn clean; cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.config.package.js",
     "release": "yarn build:pkg && release-it -- --ci",
     "release:skip-build": "release-it -- --ci",
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}' config scripts",
@@ -120,6 +122,7 @@
     "sass-loader": "^10.0.5",
     "semver": "7.3.2",
     "source-map-loader": "0.2.4",
+    "style-loader": "2.0.0",
     "terser-webpack-plugin": "4.2.3",
     "ts-loader": "^8.4.0",
     "ts-pnp": "1.2.0",

@@ -1,5 +1,4 @@
 import "antd/dist/antd.less";
-import "./TeslerFormBuilder.css";
 import * as React from "react";
 import {
   Designer,
@@ -32,10 +31,10 @@ import {
   Radio,
   Checkbox,
   Slider,
-  Rate,
+  // Rate,
   NumberPicker,
-  Transfer,
-  Password,
+  // Transfer,
+  // Password,
   DatePicker,
   TimePicker,
   Upload,
@@ -50,7 +49,9 @@ import {
   FormCollapse,
   FormLayout,
   FormGrid,
+  // Tables,
 } from "./components";
+import "./TeslerFormBuilder.css";
 
 GlobalRegistry.registerDesignerLocales({
   "ru-RU": {
@@ -90,6 +91,7 @@ const TeslerFormBuilder = () => {
       }),
     [],
   );
+
   return (
     <Designer engine={engine}>
       <StudioPanel logo={<LogoWidget />} actions={<ActionsWidget />}>
@@ -99,14 +101,14 @@ const TeslerFormBuilder = () => {
               title="sources.Inputs"
               sources={[
                 Input,
-                Password,
+                // Password,
                 NumberPicker,
-                Rate,
+                // Rate,
                 Slider,
                 Select,
                 TreeSelect,
                 Cascader,
-                Transfer,
+                // Transfer,
                 Checkbox,
                 Radio,
                 DatePicker,
@@ -114,11 +116,11 @@ const TeslerFormBuilder = () => {
                 Upload,
                 Switch,
                 ObjectContainer,
+                Text,
               ]}
             />
             <ResourceWidget title="sources.Layouts" sources={[Card, FormGrid, FormTab, FormLayout, FormCollapse, Space]} />
             <ResourceWidget title="sources.Arrays" sources={[ArrayCards, ArrayTable]} />
-            <ResourceWidget title="sources.Displays" sources={[Text]} />
           </CompositePanel.Item>
           <CompositePanel.Item title="panels.OutlinedTree" icon="Outline">
             <OutlineTreeWidget />
@@ -130,8 +132,15 @@ const TeslerFormBuilder = () => {
         <Workspace id="form">
           <WorkspacePanel>
             <ToolbarPanel>
-              <DesignerToolsWidget />
-              <ViewToolsWidget use={["DESIGNABLE", "JSONTREE", "MARKUP", "PREVIEW"]} />
+              <DesignerToolsWidget use={["HISTORY", "CURSOR"]} />
+              <ViewToolsWidget
+                use={[
+                  "DESIGNABLE",
+                  "JSONTREE",
+                  // "MARKUP",
+                  "PREVIEW",
+                ]}
+              />
             </ToolbarPanel>
             <ViewportPanel style={{ height: "100%" }}>
               <ViewPanel type="DESIGNABLE">
@@ -147,10 +156,10 @@ const TeslerFormBuilder = () => {
                       Radio,
                       Checkbox,
                       Slider,
-                      Rate,
+                      // Rate,
                       NumberPicker,
-                      Transfer,
-                      Password,
+                      // Transfer,
+                      // Password,
                       DatePicker,
                       TimePicker,
                       Upload,

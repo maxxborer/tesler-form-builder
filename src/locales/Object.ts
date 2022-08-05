@@ -1,6 +1,6 @@
 export const ObjectLocale = {
   "ru-RU": {
-    title: "Объект",
+    title: "Блоковый элемент",
   },
   "en-US": {
     title: "Object",

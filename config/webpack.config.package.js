@@ -1,5 +1,4 @@
 const path = require("path");
-// const resolve = require("resolve");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -7,9 +6,6 @@ const safePostCssParser = require("postcss-safe-parser");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const MonacoPlugin = require("monaco-editor-webpack-plugin");
 const postcssNormalize = require("postcss-normalize");
-// const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
-// const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
-// const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -71,7 +67,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
         loader: require.resolve("resolve-url-loader"),
         options: {
           sourceMap: true,
-          root: path.resolve(__dirname, "src"),
+          root: path.resolve(__dirname, "..", "src"),
         },
       },
       {
@@ -84,10 +80,10 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 };
 
 module.exports = {
-  context: path.resolve(__dirname, "src"),
+  context: path.resolve(__dirname, "..", "src"),
   entry: "./index.tsx",
   output: {
-    path: __dirname + "/dist",
+    path: path.resolve(__dirname, "..", "dist"),
     filename: "./index.js",
     publicPath: "/",
     libraryTarget: "commonjs2",
@@ -143,9 +139,6 @@ module.exports = {
         use: getStyleLoaders({
           importLoaders: 2,
           sourceMap: true,
-          // modules: {
-          //   getLocalIdent: getCSSModuleLocalIdent,
-          // },
         }),
       },
       {
@@ -232,35 +225,9 @@ module.exports = {
     ],
   },
   plugins: [
-    // new ForkTsCheckerWebpackPlugin({
-    //   typescript: resolve.sync("typescript", {
-    //     basedir: path.resolve(__dirname, "node_modules"),
-    //   }),
-    //   async: false,
-    //   checkSyntacticErrors: true,
-    //   // resolveModuleNameModule: process.versions.pnp ? `${__dirname}/pnpTs.js` : undefined,
-    //   // resolveTypeReferenceDirectiveModule: process.versions.pnp ? `${__dirname}/pnpTs.js` : undefined,
-    //   tsconfig: path.resolve(__dirname, "tsconfig.json"),
-    //   reportFiles: [
-    //     // This one is specifically to match during CI tests,
-    //     // as micromatch doesn"t match
-    //     // "../cra-template-typescript/template/src/App.tsx"
-    //     // otherwise.
-    //     "../**/src/**/*.{ts,tsx}",
-    //     "**/src/**/*.{ts,tsx}",
-    //     "!**/src/**/__tests__/**",
-    //     "!**/src/**/?(*.)(spec|test).*",
-    //     "!**/src/setupProxy.*",
-    //     "!**/src/setupTests.*",
-    //   ],
-    //   silent: true,
-    //   // The formatter is invoked directly in WebpackDevServerUtils during development
-    //   formatter: typescriptFormatter,
-    // }),
     new MiniCssExtractPlugin({
       filename: "./TeslerFormBuilder.css",
     }),
-    // new ExtractTextPlugin("TeslerFormBuilder.css"),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.optimize\.css$/g,
       cssProcessor: require("cssnano"),
@@ -289,11 +256,11 @@ module.exports = {
       formatter: require.resolve("react-dev-utils/eslintFormatter"),
       eslintPath: require.resolve("eslint"),
       failOnError: true,
-      context: path.resolve(__dirname, "src"),
+      context: path.resolve(__dirname, "..", "src"),
       cache: true,
-      cacheLocation: path.resolve(__dirname, "node_modules/.cache/.eslintcache"),
-      cwd: __dirname,
-      resolvePluginsRelativeTo: __dirname,
+      cacheLocation: path.resolve(__dirname, "..", "node_modules/.cache/.eslintcache"),
+      cwd: path.resolve(__dirname, ".."),
+      resolvePluginsRelativeTo: path.resolve(__dirname, ".."),
       baseConfig: {
         extends: [require.resolve("eslint-config-react-app/base")],
         rules: {

@@ -2,7 +2,7 @@ import { createLocales } from "@designable/core";
 
 export const Upload = {
   "ru-RU": {
-    title: "Загрузка",
+    title: "Файл",
     settings: {
       "x-component-props": {
         accept: "Принимаемые типы файлов",
@@ -52,7 +52,7 @@ export const Upload = {
 
 export const UploadDragger = createLocales(Upload, {
   "ru-RU": {
-    title: "Загрузка DnD",
+    title: "Файлы с DnD",
     settings: {
       "x-component-props": {},
     },

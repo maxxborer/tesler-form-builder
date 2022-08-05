@@ -1,6 +1,6 @@
 export const NumberPicker = {
   "ru-RU": {
-    title: "Поле ввода числа",
+    title: "Поле числа",
     settings: {
       "x-component-props": {
         formatter: {

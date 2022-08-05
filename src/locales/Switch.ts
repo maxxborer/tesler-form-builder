@@ -1,6 +1,6 @@
 export const Switch = {
   "ru-RU": {
-    title: "Выключатель",
+    title: "Switch",
   },
   "en-US": {
     title: "Switch",

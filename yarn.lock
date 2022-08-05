@@ -15637,12 +15637,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-loader@npm:^3.3.1":
-  version: 3.3.1
-  resolution: "style-loader@npm:3.3.1"
+"style-loader@npm:2.0.0":
+  version: 2.0.0
+  resolution: "style-loader@npm:2.0.0"
+  dependencies:
+    loader-utils: ^2.0.0
+    schema-utils: ^3.0.0
   peerDependencies:
-    webpack: ^5.0.0
-  checksum: 470feef680f59e2fce4d6601b5c55b88c01ad8d1dd693c528ffd591ff5fd7c01a4eff3bdbe62f26f847d6bd2430c9ab594be23307cfe7a3446ab236683f0d066
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: 21425246a5a8f14d1625a657a3a56f8a323193fa341a71af818a2ed2a429efa2385a328b4381cf2f12c2d0e6380801eb9e0427ed9c3a10ff95c86e383184d632
   languageName: node
   linkType: hard
 
@@ -15851,6 +15854,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "tesler-form-builder@workspace:."
   dependencies:
+    "@ant-design/icons": ^4.7.0
     "@babel/core": 7.12.3
     "@designable/core": ^1.0.0-beta.45
     "@designable/formily-antd": ^1.0.0-beta.45
@@ -15938,7 +15942,7 @@ __metadata:
     sass-loader: ^10.0.5
     semver: 7.3.2
     source-map-loader: 0.2.4
-    style-loader: ^3.3.1
+    style-loader: 2.0.0
     terser-webpack-plugin: 4.2.3
     ts-loader: ^8.4.0
     ts-pnp: 1.2.0

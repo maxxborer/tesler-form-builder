@@ -2,7 +2,7 @@ import { createLocales } from "@designable/core";
 
 export const DatePicker = {
   "ru-RU": {
-    title: "Выбор даты",
+    title: "Дата",
     settings: {
       "x-component-props": {
         disabledDate: {

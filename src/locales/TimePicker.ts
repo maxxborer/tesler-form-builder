@@ -3,7 +3,7 @@ import { DatePicker } from "./DatePicker";
 
 export const TimePicker = createLocales(DatePicker, {
   "ru-RU": {
-    title: "Выбор времени",
+    title: "Время",
     settings: {
       "x-component-props": {
         clearText: "Очистка текста",
@@ -44,7 +44,7 @@ export const TimePicker = createLocales(DatePicker, {
 
 export const TimeRangePicker = createLocales(TimePicker, {
   "ru-RU": {
-    title: "Временной интервал",
+    title: "Диапазон времени",
   },
   "en-US": {
     title: "Time Range",

@@ -7,7 +7,7 @@ export interface IMarkupSchemaWidgetProps {
   tree: TreeNode;
 }
 
-const transformToMarkupSchemaCode = (tree: TreeNode) => {
+export const transformToMarkupSchemaCode = (tree: TreeNode) => {
   const printAttribute = (node: TreeNode) => {
     if (!node) {
       return "";

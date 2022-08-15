@@ -16,7 +16,7 @@
 }
 
 .dn-main-panel-container.root {
-  position: inherit 1 !important;
+  position: inherit !important;
 }
 
 .dn-resource.expand .dn-resource-content {
@@ -59,4 +59,13 @@
 
 .dn-settings-form-wrapper .ant-formily-item .ant-formily-item-control-content-component > .ant-select {
   max-width: 100%;
+}
+
+.dn-pc-simulator {
+  position: relative;
+  height: 100%;
+}
+
+.dn-viewport {
+  padding-bottom: 36px;
 }

@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import { Card, CardProps } from "antd";
 import { TreeNode, createResource } from "@designable/core";
-import { useTreeNode, TreeNodeWidget, DroppableWidget, useNodeIdProps, DnFC } from "@designable/react";
+import { useTreeNode, TreeNodeWidget, DroppableWidget, DnFC } from "@designable/react";
 import { ArrayBase } from "@formily/antd";
 import { observer } from "@formily/react";
 import { LoadTemplate } from "../../common/LoadTemplate";
-import { useDropTemplate } from "../../hooks";
+import { useDropTemplate, useNodeIdProps } from "../../hooks";
 import {
   hasNodeByComponentPath,
   queryNodesByComponentPath,
@@ -24,7 +24,7 @@ const isArrayCardsOperation = (name: string) =>
 
 export const ArrayCards: DnFC<CardProps> = observer(props => {
   const node = useTreeNode();
-  const nodeId = useNodeIdProps();
+  const nodeId = useNodeIdProps(node);
   const designer = useDropTemplate("ArrayCards", source => {
     const indexNode = new TreeNode({
       componentName: node.componentName,

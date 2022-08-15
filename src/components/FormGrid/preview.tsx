@@ -1,12 +1,13 @@
 import React from "react";
 import { FormGrid as FormilyGird } from "@formily/antd";
 import { TreeNode, createBehavior, createResource } from "@designable/core";
-import { DnFC, useTreeNode, useNodeIdProps, DroppableWidget } from "@designable/react";
+import { DnFC, useTreeNode, DroppableWidget } from "@designable/react";
 import { observer } from "@formily/reactive-react";
 import { LoadTemplate } from "../../common/LoadTemplate";
 import { createFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
+import { useNodeIdProps } from "../../hooks";
 import "./styles.less";
 
 type formilyGrid = typeof FormilyGird;
@@ -15,7 +16,7 @@ export const FormGrid: DnFC<React.ComponentProps<formilyGrid>> & {
   GridColumn?: React.FC<React.ComponentProps<formilyGrid["GridColumn"]>>;
 } = observer(props => {
   const node = useTreeNode();
-  const nodeId = useNodeIdProps();
+  const nodeId = useNodeIdProps(node);
   if (node.children.length === 0) {
     return <DroppableWidget {...props} />;
   }

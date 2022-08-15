@@ -1,13 +1,13 @@
 import React from "react";
 import { Table as TableBase, TableProps } from "antd";
 import { TreeNode, createBehavior, createResource } from "@designable/core";
-import { useTreeNode, TreeNodeWidget, DroppableWidget, useNodeIdProps, DnFC } from "@designable/react";
+import { useTreeNode, TreeNodeWidget, DroppableWidget, DnFC } from "@designable/react";
 import { ArrayBase } from "@formily/antd";
 import { observer } from "@formily/react";
 import { LoadTemplate } from "../../common/LoadTemplate";
 import cls from "classnames";
 import { queryNodesByComponentPath, hasNodeByComponentPath, findNodeByComponentPath, createEnsureTypeItemsNode } from "../../shared";
-import { useDropTemplate } from "../../hooks";
+import { useDropTemplate, useNodeIdProps } from "../../hooks";
 import { createArrayBehavior } from "../ArrayBase";
 import "./styles.less";
 import { createVoidFieldSchema } from "../Field";
@@ -36,7 +36,7 @@ const BodyCell: React.FC = (props: any) => {
 
 export const Tables: DnFC<TableProps<any>> = observer(props => {
   const node = useTreeNode();
-  const nodeId = useNodeIdProps();
+  const nodeId = useNodeIdProps(node);
   useDropTemplate("Tables", source => {
     const sortHandleNode = new TreeNode({
       componentName: "Field",
@@ -402,16 +402,3 @@ Tables.Resource = createResource({
     },
   ],
 });
-
-// export const Tables = composeExport(TablesInner, {
-//   Column: TablesColumn,
-//   Index: ArrayBase.Index,
-//   SortHandle: ArrayBase.SortHandle,
-//   Addition: ArrayAddition,
-//   Remove: ArrayBase.Remove,
-//   MoveDown: ArrayBase.MoveDown,
-//   MoveUp: ArrayBase.MoveUp,
-//   useArray: ArrayBase.useArray,
-//   useIndex: ArrayBase.useIndex,
-//   useRecord: ArrayBase.useRecord,
-// });

@@ -7,7 +7,12 @@ module.exports = {
     "react/display-name": "off",
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/no-explicit-any": ["off"],
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
   },
   overrides: [
     {

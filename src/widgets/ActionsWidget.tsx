@@ -1,11 +1,19 @@
 import React, { useEffect } from "react";
 import { Space, Button, Radio } from "antd";
-import { useDesigner, TextWidget } from "@designable/react";
-import { GlobalRegistry } from "@designable/core";
+import { useDesigner, TextWidget, useTree } from "@designable/react";
+import { GlobalRegistry, TreeNode } from "@designable/core";
 import { observer } from "@formily/react";
 import { loadInitialSchema, saveSchema } from "../service";
+import { IFormilySchema, transformToSchema } from "@designable/formily-transformer";
 
-export const ActionsWidget = observer(() => {
+interface TeslerFormBuilderProps {
+  onSave?: (json: IFormilySchema) => void;
+  onPublish?: (json: IFormilySchema) => void;
+}
+
+export const ActionsWidget = observer(({ onSave, onPublish }: TeslerFormBuilderProps) => {
+  const tree = useTree();
+
   const designer = useDesigner();
   useEffect(() => {
     loadInitialSchema(designer);
@@ -16,11 +24,9 @@ export const ActionsWidget = observer(() => {
       GlobalRegistry.setDesignerLanguage("ru-ru");
     }
   }, []);
+
   return (
     <Space style={{ marginRight: 10 }}>
-      {/* <Button href="https://designable-fusion.formilyjs.org">
-        Alibaba Fusion
-      </Button> */}
       <Radio.Group
         value={GlobalRegistry.getDesignerLanguage()}
         optionType="button"
@@ -35,6 +41,7 @@ export const ActionsWidget = observer(() => {
       <Button
         onClick={() => {
           saveSchema(designer);
+          onSave(transformToSchema(tree));
         }}
       >
         <TextWidget>Сохранить</TextWidget>
@@ -43,6 +50,7 @@ export const ActionsWidget = observer(() => {
         type="primary"
         onClick={() => {
           saveSchema(designer);
+          onPublish(transformToSchema(tree));
         }}
       >
         <TextWidget>Опубликовать</TextWidget>

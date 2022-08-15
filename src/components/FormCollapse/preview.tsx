@@ -3,10 +3,10 @@ import { observer } from "@formily/react";
 import { Collapse } from "antd";
 import { CollapseProps, CollapsePanelProps } from "antd/lib/collapse";
 import { TreeNode, createBehavior, createResource } from "@designable/core";
-import { useTreeNode, useNodeIdProps, DroppableWidget, TreeNodeWidget, DnFC } from "@designable/react";
+import { useTreeNode, DroppableWidget, TreeNodeWidget, DnFC } from "@designable/react";
 import { toArr } from "@formily/shared";
 import { LoadTemplate } from "../../common/LoadTemplate";
-import { useDropTemplate } from "../../hooks";
+import { useDropTemplate, useNodeIdProps } from "../../hooks";
 import { createVoidFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
@@ -27,7 +27,7 @@ export const FormCollapse: DnFC<CollapseProps> & {
 } = observer(props => {
   const [activeKey, setActiveKey] = useState<string | string[]>([]);
   const node = useTreeNode();
-  const nodeId = useNodeIdProps();
+  const nodeId = useNodeIdProps(node);
   const designer = useDropTemplate("FormCollapse", source => {
     const panelNode = new TreeNode({
       componentName: "Field",

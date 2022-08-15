@@ -3,9 +3,9 @@ import { observer } from "@formily/react";
 import { Tabs } from "antd";
 import { TabsProps, TabPaneProps } from "antd/lib/tabs";
 import { TreeNode, createBehavior, createResource } from "@designable/core";
-import { useNodeIdProps, useTreeNode, TreeNodeWidget, DroppableWidget, DnFC } from "@designable/react";
+import { useTreeNode, TreeNodeWidget, DroppableWidget, DnFC } from "@designable/react";
 import { LoadTemplate } from "../../common/LoadTemplate";
-import { useDropTemplate } from "../../hooks";
+import { useDropTemplate, useNodeIdProps } from "../../hooks";
 import { createVoidFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
@@ -35,8 +35,8 @@ export const FormTab: DnFC<TabsProps> & {
   TabPane?: React.FC<TabPaneProps>;
 } = observer(props => {
   const [activeKey, setActiveKey] = useState<string>();
-  const nodeId = useNodeIdProps();
   const node = useTreeNode();
+  const nodeId = useNodeIdProps(node);
   const designer = useDropTemplate("FormTab", source => {
     return [
       new TreeNode({

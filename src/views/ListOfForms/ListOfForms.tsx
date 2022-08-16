@@ -78,6 +78,7 @@ const SchemaField = createSchemaField({
 
 export interface IListOfFormsProps {
   json: IFormilySchema;
+  submitTitle: string;
   style?: React.CSSProperties;
   onClickSubmit?: (e: React.MouseEvent<Element, MouseEvent>) => any;
   onSubmit?: (values: any) => Promise<any> | any;
@@ -85,7 +86,15 @@ export interface IListOfFormsProps {
   onSubmitFailed?: (feedbacks: IFormFeedback[]) => void;
 }
 
-const ListOfForms: React.FC<IListOfFormsProps> = ({ json, style, onClickSubmit, onSubmit, onSubmitSuccess, onSubmitFailed }) => {
+const ListOfForms: React.FC<IListOfFormsProps> = ({
+  json,
+  submitTitle = "Отправить",
+  style,
+  onClickSubmit,
+  onSubmit,
+  onSubmitSuccess,
+  onSubmitFailed,
+}) => {
   const form = useMemo(() => createForm(), []);
   return (
     <div style={style}>
@@ -93,7 +102,7 @@ const ListOfForms: React.FC<IListOfFormsProps> = ({ json, style, onClickSubmit, 
         <SchemaField schema={json?.schema} />
         <FormButtonGroup.FormItem>
           <Submit onSubmit={onSubmit} onSubmitSuccess={onSubmitSuccess} onSubmitFailed={onSubmitFailed} onClick={onClickSubmit}>
-            Submit
+            {submitTitle}
           </Submit>
         </FormButtonGroup.FormItem>
       </Form>

@@ -18,8 +18,8 @@ import {
   ComponentTreeWidget,
 } from "@designable/react";
 import { SettingsForm } from "@designable/react-settings-form";
-import { createDesigner, GlobalRegistry, Shortcut, KeyCode, TreeNode } from "@designable/core";
-import { LogoWidget, ActionsWidget, PreviewWidget, SchemaEditorWidget, MarkupSchemaWidget } from "../src/widgets";
+import { createDesigner, GlobalRegistry } from "@designable/core";
+import { LogoWidget, ActionsWidget, PreviewWidget, SchemaEditorWidget, MarkupSchemaWidget } from "../../widgets";
 import {
   Form,
   Field,
@@ -49,10 +49,9 @@ import {
   FormLayout,
   FormGrid,
   // Tables,
-} from "./components";
-import { useTree } from "@designable/react";
-import { IFormilySchema, transformToSchema } from "@designable/formily-transformer";
-import "./TeslerFormBuilder.css";
+} from "../../components";
+import { IFormilySchema, transformToTreeNode } from "@designable/formily-transformer";
+import "./FormBuilder.css";
 
 GlobalRegistry.registerDesignerLocales({
   "ru-RU": {
@@ -73,14 +72,15 @@ GlobalRegistry.registerDesignerLocales({
   },
 });
 
-interface TeslerFormBuilderProps {
+export interface FormBuilderProps {
   style?: React.CSSProperties;
-  onChange?: (json: IFormilySchema) => void;
+  initialJson?: IFormilySchema;
+  // onChange?: (json: IFormilySchema) => void;
   onSave?: (json: IFormilySchema) => void;
   onPublish?: (json: IFormilySchema) => void;
 }
 
-const TeslerFormBuilder = ({ style, onChange, onSave, onPublish }: TeslerFormBuilderProps) => {
+const FormBuilder = ({ initialJson, style, onSave, onPublish }: FormBuilderProps) => {
   const engine = React.useMemo(
     () =>
       createDesigner({
@@ -92,7 +92,7 @@ const TeslerFormBuilder = ({ style, onChange, onSave, onPublish }: TeslerFormBui
   return (
     <div id="tesler-form-builder" style={style}>
       <Designer engine={engine}>
-        <StudioPanel logo={<LogoWidget />} actions={<ActionsWidget onSave={onSave} onPublish={onPublish} />}>
+        <StudioPanel logo={<LogoWidget />} actions={<ActionsWidget initialJson={initialJson} onSave={onSave} onPublish={onPublish} />}>
           <CompositePanel>
             <CompositePanel.Item title="panels.Component" icon="Component">
               <ResourceWidget
@@ -202,4 +202,4 @@ const TeslerFormBuilder = ({ style, onChange, onSave, onPublish }: TeslerFormBui
   );
 };
 
-export default TeslerFormBuilder;
+export default FormBuilder;

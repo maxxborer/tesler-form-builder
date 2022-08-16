@@ -4,21 +4,24 @@ import { useDesigner, TextWidget, useTree } from "@designable/react";
 import { GlobalRegistry, TreeNode } from "@designable/core";
 import { observer } from "@formily/react";
 import { loadInitialSchema, saveSchema } from "../service";
-import { IFormilySchema, transformToSchema } from "@designable/formily-transformer";
+import { IFormilySchema, transformToSchema, transformToTreeNode } from "@designable/formily-transformer";
 
 interface TeslerFormBuilderProps {
+  initialJson?: IFormilySchema;
   onSave?: (json: IFormilySchema) => void;
   onPublish?: (json: IFormilySchema) => void;
 }
 
-export const ActionsWidget = observer(({ onSave, onPublish }: TeslerFormBuilderProps) => {
+export const ActionsWidget = observer(({ initialJson, onSave = json => {}, onPublish = json => {} }: TeslerFormBuilderProps) => {
   const tree = useTree();
 
   const designer = useDesigner();
   useEffect(() => {
-    loadInitialSchema(designer);
+    loadInitialSchema(designer, initialJson);
   }, []);
+
   const supportLocales = ["ru-ru"];
+
   useEffect(() => {
     if (!supportLocales.includes(GlobalRegistry.getDesignerLanguage())) {
       GlobalRegistry.setDesignerLanguage("ru-ru");

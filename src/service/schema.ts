@@ -1,5 +1,5 @@
 import { Engine } from "@designable/core";
-import { transformToSchema, transformToTreeNode } from "@designable/formily-transformer";
+import { IFormilySchema, transformToSchema, transformToTreeNode } from "@designable/formily-transformer";
 import { message } from "antd";
 
 export const saveSchema = (designer: Engine) => {
@@ -7,8 +7,10 @@ export const saveSchema = (designer: Engine) => {
   message.success("Успешно сохранено");
 };
 
-export const loadInitialSchema = (designer: Engine) => {
+export const loadInitialSchema = (designer: Engine, json: IFormilySchema) => {
   try {
-    designer.setCurrentTree(transformToTreeNode(JSON.parse(localStorage.getItem("formily-schema"))));
+    designer.setCurrentTree(
+      transformToTreeNode(Object.keys(json).length !== 0 ? json : JSON.parse(localStorage.getItem("formily-schema"))),
+    );
   } catch {}
 };

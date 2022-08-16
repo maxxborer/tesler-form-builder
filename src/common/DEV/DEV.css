@@ -1,0 +1,21 @@
+#DEVJSON {
+  border: 1px dashed #ff0000;
+  margin: 20px;
+  padding: 10px;
+  font-family: helvetica;
+  font-size: 10px;
+  border-radius: 8px;
+  background: repeating-linear-gradient(
+    45deg,
+    #e3a1a110,
+    #e3a1a110 6px,
+    #eb2f2f10 6px,
+    #eb2f2f10 12px
+  );
+}
+
+#DEVJSON p {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 14px;
+}

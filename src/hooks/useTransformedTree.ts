@@ -3,12 +3,12 @@ import { useTree } from "@designable/react";
 import { TreeNode } from "@designable/core";
 // import { IFormilySchema } from "@designable/formily-transformer";
 
-interface useTransformedTreeType {
+interface IUseTransformedTreeType {
   tTree: TreeNode;
   tree: TreeNode;
 }
 
-const useTransformedTree = (): useTransformedTreeType => {
+const useTransformedTree = (): IUseTransformedTreeType => {
   const tree = useTree();
   // const tTree = !!tree ? transformToSchema(tree) : {};
 

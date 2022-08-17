@@ -12,7 +12,7 @@ TimePicker.Behavior = createBehavior(
   {
     name: "TimePicker",
     extends: ["Field"],
-    selector: node => node.props["x-component"] === "TimePicker",
+    selector: (node) => node.props["x-component"] === "TimePicker",
     designerProps: {
       propsSchema: createFieldSchema(AllSchemas.TimePicker),
     },
@@ -21,12 +21,12 @@ TimePicker.Behavior = createBehavior(
   {
     name: "TimePicker.RangePicker",
     extends: ["Field"],
-    selector: node => node.props["x-component"] === "TimePicker.RangePicker",
+    selector: (node) => node.props["x-component"] === "TimePicker.RangePicker",
     designerProps: {
       propsSchema: createFieldSchema(AllSchemas.TimePicker.RangePicker),
     },
     designerLocales: AllLocales.TimeRangePicker,
-  },
+  }
 );
 
 TimePicker.Resource = createResource(
@@ -57,5 +57,5 @@ TimePicker.Resource = createResource(
         },
       },
     ],
-  },
+  }
 );

@@ -55,7 +55,8 @@ export const TreeSelect = {
         },
         treeDataSimpleMode: {
           title: "Простой режим",
-          tooltip: `Используйте treeData в простом формате. Для конкретных настроек обратитесь к устанавливаемому типу (treeData должен быть структурой данных, подобной этой: [{id:1, pId:0, value:'1', title:"test1",...},... ], pId — это идентификатор родительского узла)`,
+          tooltip:
+            "Используйте treeData в простом формате. Для конкретных настроек обратитесь к устанавливаемому типу (treeData должен быть структурой данных, подобной этой: [{id:1, pId:0, value:'1', title:\"test1\",...},... ], pId — это идентификатор родительского узла)",
         },
         treeNodeLabelProp: {
           title: "Свойство узла для отображения метки",
@@ -115,7 +116,8 @@ export const TreeSelect = {
         },
         treeDataSimpleMode: {
           title: "Tree Data Simple Mode",
-          tooltip: `Use treeData in a simple format. For specific settings, refer to the settable type (the treeData should be a data structure like this: [{id:1, pId:0, value:'1', title:"test1",...} ,...], pId is the id of the parent node)`,
+          tooltip:
+            "Use treeData in a simple format. For specific settings, refer to the settable type (the treeData should be a data structure like this: [{id:1, pId:0, value:'1', title:\"test1\",...} ,...], pId is the id of the parent node)",
         },
         treeNodeLabelProp: {
           title: "Tree Node Label Properties",

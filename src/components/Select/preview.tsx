@@ -11,7 +11,7 @@ export const Select: DnFC<React.ComponentProps<typeof FormilySelect>> = FormilyS
 Select.Behavior = createBehavior({
   name: "Select",
   extends: ["Field"],
-  selector: node => node.props["x-component"] === "Select",
+  selector: (node) => node.props["x-component"] === "Select",
   designerProps: {
     propsSchema: createFieldSchema(AllSchemas.Select),
   },

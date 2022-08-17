@@ -11,7 +11,7 @@ export const Rate: DnFC<React.ComponentProps<typeof AntdRate>> = AntdRate;
 Rate.Behavior = createBehavior({
   name: "Rate",
   extends: ["Field"],
-  selector: node => node.props["x-component"] === "Rate",
+  selector: (node) => node.props["x-component"] === "Rate",
   designerProps: {
     propsSchema: createFieldSchema(AllSchemas.Rate),
   },

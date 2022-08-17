@@ -8,17 +8,22 @@ import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
 import "./styles.less";
 
-export const Form: DnFC<React.ComponentProps<typeof FormilyForm>> = observer(props => {
+export const Form: DnFC<React.ComponentProps<typeof FormilyForm>> = observer((props) => {
   const prefix = usePrefix("designable-form");
   const form = useMemo(
     () =>
       createForm({
         designable: true,
       }),
-    [],
+    []
   );
   return (
-    <FormilyForm {...props} style={{ ...props.style }} className={prefix} form={form}>
+    <FormilyForm
+      {...props}
+      style={{ ...props.style }}
+      className={prefix}
+      form={form}
+    >
       {props.children}
     </FormilyForm>
   );
@@ -26,7 +31,7 @@ export const Form: DnFC<React.ComponentProps<typeof FormilyForm>> = observer(pro
 
 Form.Behavior = createBehavior({
   name: "Form",
-  selector: node => node.componentName === "Form",
+  selector: (node) => node.componentName === "Form",
   designerProps(node) {
     return {
       draggable: !node.isRoot,

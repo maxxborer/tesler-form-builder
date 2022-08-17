@@ -9,11 +9,13 @@ export const Cascader = {
         },
         displayRender: {
           title: "Визуализация",
-          tooltip: 'Функция рендеринга, отображаемая после выбора, по умолчанию — label => label.join("/") ',
+          tooltip:
+            'Функция рендеринга, отображаемая после выбора, по умолчанию — label => label.join("/") ',
         },
         fieldNames: {
           title: "Имена полей",
-          tooltip: 'Значение по умолчанию：{ label: "label", value: "value", children: "children" }',
+          tooltip:
+            'Значение по умолчанию：{ label: "label", value: "value", children: "children" }',
         },
       },
     },
@@ -28,7 +30,8 @@ export const Cascader = {
         },
         displayRender: {
           title: "Display Render",
-          tooltip: 'The rendering function displayed after selection, the default is label => label.join("/")	',
+          tooltip:
+            'The rendering function displayed after selection, the default is label => label.join("/")	',
         },
         fieldNames: {
           title: "Field Names",

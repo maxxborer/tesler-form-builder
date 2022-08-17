@@ -1,0 +1,12 @@
+build/*
+dist/*
+node_modules/*
+.yarn/*
+public/*
+docs/*
+templates/*
+.eslintrc.js
+config/*
+scripts/*
+src/react-app-env.d.ts
+src/serviceWorker.ts

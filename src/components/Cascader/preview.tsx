@@ -11,7 +11,7 @@ export const Cascader: DnFC<React.ComponentProps<typeof FormilyCascader>> = Form
 Cascader.Behavior = createBehavior({
   name: "Cascader",
   extends: ["Field"],
-  selector: node => node.props["x-component"] === "Cascader",
+  selector: (node) => node.props["x-component"] === "Cascader",
   designerProps: {
     propsSchema: createFieldSchema(AllSchemas.Cascader),
   },

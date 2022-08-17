@@ -19,7 +19,14 @@ import {
 } from "@designable/react";
 import { SettingsForm } from "@designable/react-settings-form";
 import { createDesigner, GlobalRegistry } from "@designable/core";
-import { LogoWidget, ActionsWidget, PreviewWidget, SchemaEditorWidget, MarkupSchemaWidget } from "../../widgets";
+import { IFormilySchema } from "@designable/formily-transformer";
+import {
+  LogoWidget,
+  ActionsWidget,
+  PreviewWidget,
+  SchemaEditorWidget,
+  MarkupSchemaWidget,
+} from "../../widgets";
 import {
   Form,
   Field,
@@ -50,7 +57,6 @@ import {
   FormGrid,
   // Tables,
 } from "../../components";
-import { IFormilySchema, transformToTreeNode } from "@designable/formily-transformer";
 import "./FormBuilder.css";
 
 GlobalRegistry.registerDesignerLocales({
@@ -75,26 +81,43 @@ GlobalRegistry.registerDesignerLocales({
 export interface FormBuilderProps {
   style?: React.CSSProperties;
   initialJson?: IFormilySchema;
+  actions?: React.FC;
   // onChange?: (json: IFormilySchema) => void;
   onSave?: (json: IFormilySchema) => void;
   onPublish?: (json: IFormilySchema) => void;
 }
 
-const FormBuilder = ({ initialJson, style, onSave, onPublish }: FormBuilderProps) => {
+function FormBuilder({ initialJson, actions, style, onSave, onPublish }: FormBuilderProps) {
   const engine = React.useMemo(
     () =>
       createDesigner({
         rootComponentName: "Form",
       }),
-    [],
+    []
   );
 
   return (
-    <div id="tesler-form-builder" style={style}>
+    <div
+      id="tesler-form-builder"
+      style={style}
+    >
       <Designer engine={engine}>
-        <StudioPanel logo={<LogoWidget />} actions={<ActionsWidget initialJson={initialJson} onSave={onSave} onPublish={onPublish} />}>
+        <StudioPanel
+          logo={<LogoWidget />}
+          actions={
+            <ActionsWidget
+              initialJson={initialJson}
+              actions={actions}
+              onSave={onSave}
+              onPublish={onPublish}
+            />
+          }
+        >
           <CompositePanel>
-            <CompositePanel.Item title="panels.Component" icon="Component">
+            <CompositePanel.Item
+              title="panels.Component"
+              icon="Component"
+            >
               <ResourceWidget
                 title="sources.Inputs"
                 sources={[
@@ -117,13 +140,25 @@ const FormBuilder = ({ initialJson, style, onSave, onPublish }: FormBuilderProps
                   Text,
                 ]}
               />
-              <ResourceWidget title="sources.Layouts" sources={[Card, FormGrid, FormTab, FormLayout, FormCollapse, Space]} />
-              <ResourceWidget title="sources.Arrays" sources={[ArrayCards, ArrayTable]} />
+              <ResourceWidget
+                title="sources.Layouts"
+                sources={[Card, FormGrid, FormTab, FormLayout, FormCollapse, Space]}
+              />
+              <ResourceWidget
+                title="sources.Arrays"
+                sources={[ArrayCards, ArrayTable]}
+              />
             </CompositePanel.Item>
-            <CompositePanel.Item title="panels.OutlinedTree" icon="Outline">
+            <CompositePanel.Item
+              title="panels.OutlinedTree"
+              icon="Outline"
+            >
               <OutlineTreeWidget />
             </CompositePanel.Item>
-            <CompositePanel.Item title="panels.History" icon="History">
+            <CompositePanel.Item
+              title="panels.History"
+              icon="History"
+            >
               <HistoryWidget />
             </CompositePanel.Item>
           </CompositePanel>
@@ -176,20 +211,26 @@ const FormBuilder = ({ initialJson, style, onSave, onPublish }: FormBuilderProps
                     />
                   )}
                 </ViewPanel>
-                <ViewPanel type="JSONTREE" scrollable={false}>
+                <ViewPanel
+                  type="JSONTREE"
+                  scrollable={false}
+                >
                   {(tree, onChange) => (
                     <SchemaEditorWidget
                       tree={tree}
-                      onChange={props => {
+                      onChange={(props) => {
                         onChange(props);
                       }}
                     />
                   )}
                 </ViewPanel>
-                <ViewPanel type="MARKUP" scrollable={false}>
-                  {tree => <MarkupSchemaWidget tree={tree} />}
+                <ViewPanel
+                  type="MARKUP"
+                  scrollable={false}
+                >
+                  {(tree) => <MarkupSchemaWidget tree={tree} />}
                 </ViewPanel>
-                <ViewPanel type="PREVIEW">{tree => <PreviewWidget tree={tree} />}</ViewPanel>
+                <ViewPanel type="PREVIEW">{(tree) => <PreviewWidget tree={tree} />}</ViewPanel>
               </ViewportPanel>
             </WorkspacePanel>
           </Workspace>
@@ -200,6 +241,6 @@ const FormBuilder = ({ initialJson, style, onSave, onPublish }: FormBuilderProps
       </Designer>
     </div>
   );
-};
+}
 
 export default FormBuilder;

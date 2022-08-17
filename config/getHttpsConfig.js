@@ -1,5 +1,3 @@
-"use strict";
-
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
@@ -28,7 +26,11 @@ function validateKeyAndCerts({ cert, key, keyFile, crtFile }) {
 // Read file and throw an error if it doesn't exist
 function readEnvFile(file, type) {
   if (!fs.existsSync(file)) {
-    throw new Error(`You specified ${chalk.cyan(type)} in your env, but the file "${chalk.yellow(file)}" can't be found.`);
+    throw new Error(
+      `You specified ${chalk.cyan(type)} in your env, but the file "${chalk.yellow(
+        file
+      )}" can't be found.`
+    );
   }
   return fs.readFileSync(file);
 }

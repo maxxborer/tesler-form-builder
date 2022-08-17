@@ -1,7 +1,15 @@
 import React from "react";
 import { FormPath } from "@formily/core";
 import { toJS } from "@formily/reactive";
-import { ArrayField, Field as InternalField, ObjectField, VoidField, observer, ISchema, Schema } from "@formily/react";
+import {
+  ArrayField,
+  Field as InternalField,
+  ObjectField,
+  VoidField,
+  observer,
+  ISchema,
+  Schema,
+} from "@formily/react";
 import { FormItem } from "@formily/antd";
 import { each, reduce } from "@formily/shared";
 import { createBehavior } from "@designable/core";
@@ -50,19 +58,18 @@ const filterExpression = (val: any) => {
       (buf: any, value, key) => {
         if (isExpression(value)) {
           return buf;
-        } else {
-          const results = filterExpression(value);
-          if (results === undefined || results === null) {
-            return buf;
-          }
-          if (isArray) {
-            return buf.concat([results]);
-          }
-          buf[key] = results;
+        }
+        const innerResults = filterExpression(value);
+        if (innerResults === undefined || innerResults === null) {
           return buf;
         }
+        if (isArray) {
+          return buf.concat([innerResults]);
+        }
+        buf[key] = innerResults;
+        return buf;
       },
-      isArray ? [] : {},
+      isArray ? [] : {}
     );
     return results;
   }
@@ -72,7 +79,12 @@ const filterExpression = (val: any) => {
   return val;
 };
 
-const toDesignableFieldProps = (schema: ISchema, components: any, nodeIdAttrName: string, id: string) => {
+const toDesignableFieldProps = (
+  schema: ISchema,
+  components: any,
+  nodeIdAttrName: string,
+  id: string
+) => {
   const results: any = {};
   each(SchemaStateMap, (fieldKey, schemaKey) => {
     const value = schema[schemaKey];
@@ -82,14 +94,13 @@ const toDesignableFieldProps = (schema: ISchema, components: any, nodeIdAttrName
       }
       if (value) {
         results[fieldKey] = value;
-        return;
       }
     } else if (value) {
       results[fieldKey] = filterExpression(value);
     }
   });
-  if (!components["FormItem"]) {
-    components["FormItem"] = FormItem;
+  if (!components.FormItem) {
+    components.FormItem = FormItem;
   }
   const decorator = schema["x-decorator"] && FormPath.getIn(components, schema["x-decorator"]);
   const component = schema["x-component"] && FormPath.getIn(components, schema["x-component"]);
@@ -103,41 +114,66 @@ const toDesignableFieldProps = (schema: ISchema, components: any, nodeIdAttrName
     results.component = [component, toJS(componentProps)];
   }
   if (decorator) {
-    FormPath.setIn(results["decorator"][1], nodeIdAttrName, id);
+    FormPath.setIn(results.decorator[1], nodeIdAttrName, id);
   } else if (component) {
-    FormPath.setIn(results["component"][1], nodeIdAttrName, id);
+    FormPath.setIn(results.component[1], nodeIdAttrName, id);
   }
   results.title = results.title && <span data-content-editable="title">{results.title}</span>;
-  results.description = results.description && <span data-content-editable="description">{results.description}</span>;
+  results.description = results.description && (
+    <span data-content-editable="description">{results.description}</span>
+  );
   return results;
 };
 
-export const Field: DnFC<ISchema> = observer(props => {
+export const Field: DnFC<ISchema> = observer((props) => {
   const designer = useDesigner();
   const components = useComponents();
   const node = useTreeNode();
   if (!node) {
     return null;
   }
-  const fieldProps = toDesignableFieldProps(props, components, designer.props.nodeIdAttrName, node.id);
+  const fieldProps = toDesignableFieldProps(
+    props,
+    components,
+    designer.props.nodeIdAttrName,
+    node.id
+  );
   if (props.type === "object") {
     return (
       <Container>
-        <ObjectField {...fieldProps} name={node.id}>
+        <ObjectField
+          {...fieldProps}
+          name={node.id}
+        >
           {props.children}
         </ObjectField>
       </Container>
     );
-  } else if (props.type === "array") {
-    return <ArrayField {...fieldProps} name={node.id} />;
-  } else if (node.props.type === "void") {
+  }
+  if (props.type === "array") {
     return (
-      <VoidField {...fieldProps} name={node.id}>
+      <ArrayField
+        {...fieldProps}
+        name={node.id}
+      />
+    );
+  }
+  if (node.props.type === "void") {
+    return (
+      <VoidField
+        {...fieldProps}
+        name={node.id}
+      >
         {props.children}
       </VoidField>
     );
   }
-  return <InternalField {...fieldProps} name={node.id} />;
+  return (
+    <InternalField
+      {...fieldProps}
+      name={node.id}
+    />
+  );
 });
 
 Field.Behavior = createBehavior({

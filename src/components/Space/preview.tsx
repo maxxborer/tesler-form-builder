@@ -12,7 +12,7 @@ export const Space: DnFC<React.ComponentProps<typeof FormilySpace>> = withContai
 Space.Behavior = createBehavior({
   name: "Space",
   extends: ["Field"],
-  selector: node => node.props["x-component"] === "Space",
+  selector: (node) => node.props["x-component"] === "Space",
   designerProps: {
     droppable: true,
     inlineChildrenLayout: true,

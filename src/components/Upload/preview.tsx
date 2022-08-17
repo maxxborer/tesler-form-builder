@@ -12,7 +12,7 @@ Upload.Behavior = createBehavior(
   {
     name: "Upload",
     extends: ["Field"],
-    selector: node => node.props["x-component"] === "Upload",
+    selector: (node) => node.props["x-component"] === "Upload",
     designerProps: {
       propsSchema: createFieldSchema(AllSchemas.Upload),
     },
@@ -21,12 +21,12 @@ Upload.Behavior = createBehavior(
   {
     name: "Upload.Dragger",
     extends: ["Field"],
-    selector: node => node.props["x-component"] === "Upload.Dragger",
+    selector: (node) => node.props["x-component"] === "Upload.Dragger",
     designerProps: {
       propsSchema: createFieldSchema(AllSchemas.Upload.Dragger),
     },
     designerLocales: AllLocales.UploadDragger,
-  },
+  }
 );
 
 Upload.Resource = createResource(
@@ -63,5 +63,5 @@ Upload.Resource = createResource(
         },
       },
     ],
-  },
+  }
 );

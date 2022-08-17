@@ -9,7 +9,7 @@ export const ObjectContainer: DnFC<React.ComponentProps<typeof Container>> = Con
 ObjectContainer.Behavior = createBehavior({
   name: "Object",
   extends: ["Field"],
-  selector: node => node.props.type === "object",
+  selector: (node) => node.props.type === "object",
   designerProps: {
     droppable: true,
     propsSchema: createFieldSchema(),

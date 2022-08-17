@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "dist",
@@ -23,9 +19,5 @@
     "declaration": true,
     "strict": false
   },
-  "include": [
-    "src",
-    "src/custom.d.ts",
-    "src/shared.ts"
-  ]
+  "include": ["src/**/*", ".eslintrc.js", "src/custom.d.ts", "src/shared.ts"]
 }

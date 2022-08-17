@@ -17,7 +17,7 @@ export const transformToMarkupSchemaCode = (tree: TreeNode) => {
       props.name = node.props.name || node.id;
     }
     return `${Object.keys(props)
-      .map(key => {
+      .map((key) => {
         if (
           key === "x-designable-id" ||
           key === "x-designable-source-name" ||
@@ -43,7 +43,7 @@ export const transformToMarkupSchemaCode = (tree: TreeNode) => {
       return "";
     }
     return node.children
-      .map(child => {
+      .map((child) => {
         return printNode(child);
       })
       .join("");
@@ -79,9 +79,11 @@ export const transformToMarkupSchemaCode = (tree: TreeNode) => {
     if (!node) {
       return "";
     }
-    return `<${printTag(node)} ${printAttribute(node)} ${node.children.length ? `>${printChildren(node)}</${printTag(node)}>` : "/>"}`;
+    return `<${printTag(node)} ${printAttribute(node)} ${
+      node.children.length ? `>${printChildren(node)}</${printTag(node)}>` : "/>"
+    }`;
   };
-  const root = tree.find(child => {
+  const root = tree.find((child) => {
     return child.componentName === "Form" || child.componentName === "Root";
   });
   return `import React, { useMemo } from 'react'
@@ -173,6 +175,13 @@ export default ()=>{
 `;
 };
 
-export const MarkupSchemaWidget: React.FC<IMarkupSchemaWidgetProps> = props => {
-  return <MonacoInput {...props} options={{ readOnly: true }} value={transformToMarkupSchemaCode(props.tree)} language="typescript" />;
+export const MarkupSchemaWidget: React.FC<IMarkupSchemaWidgetProps> = (props) => {
+  return (
+    <MonacoInput
+      {...props}
+      options={{ readOnly: true }}
+      value={transformToMarkupSchemaCode(props.tree)}
+      language="typescript"
+    />
+  );
 };

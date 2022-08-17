@@ -21,7 +21,6 @@ import { SettingsForm } from "@designable/react-settings-form";
 import { createDesigner, GlobalRegistry } from "@designable/core";
 import { IFormilySchema } from "@designable/formily-transformer";
 import {
-  LogoWidget,
   ActionsWidget,
   PreviewWidget,
   SchemaEditorWidget,
@@ -81,7 +80,7 @@ GlobalRegistry.registerDesignerLocales({
 export interface FormBuilderProps {
   style?: React.CSSProperties;
   initialJson?: IFormilySchema;
-  actions?: React.FC;
+  actions?: React.ReactNode;
   // onChange?: (json: IFormilySchema) => void;
   onSave?: (json: IFormilySchema) => void;
   onPublish?: (json: IFormilySchema) => void;
@@ -96,6 +95,58 @@ function FormBuilder({ initialJson, actions, style, onSave, onPublish }: FormBui
     []
   );
 
+  const inputs = [
+    Input,
+    // Password,
+    NumberPicker,
+    // Rate,
+    Slider,
+    Select,
+    TreeSelect,
+    Cascader,
+    // Transfer,
+    Checkbox,
+    Radio,
+    DatePicker,
+    TimePicker,
+    Upload,
+    Switch,
+    ObjectContainer,
+    Text,
+  ];
+  const layouts = [Card, FormGrid, FormTab, FormLayout, FormCollapse, Space];
+  const arrays = [ArrayCards, ArrayTable];
+
+  const components = {
+    Form,
+    Field,
+    Input,
+    Select,
+    TreeSelect,
+    Cascader,
+    Radio,
+    Checkbox,
+    Slider,
+    // Rate,
+    NumberPicker,
+    // Transfer,
+    // Password,
+    DatePicker,
+    TimePicker,
+    Upload,
+    Switch,
+    Text,
+    Card,
+    ArrayCards,
+    ArrayTable,
+    Space,
+    FormTab,
+    FormCollapse,
+    FormGrid,
+    FormLayout,
+    ObjectContainer,
+  };
+
   return (
     <div
       id="tesler-form-builder"
@@ -103,11 +154,10 @@ function FormBuilder({ initialJson, actions, style, onSave, onPublish }: FormBui
     >
       <Designer engine={engine}>
         <StudioPanel
-          logo={<LogoWidget />}
+          logo={actions}
           actions={
             <ActionsWidget
               initialJson={initialJson}
-              actions={actions}
               onSave={onSave}
               onPublish={onPublish}
             />
@@ -120,33 +170,15 @@ function FormBuilder({ initialJson, actions, style, onSave, onPublish }: FormBui
             >
               <ResourceWidget
                 title="sources.Inputs"
-                sources={[
-                  Input,
-                  // Password,
-                  NumberPicker,
-                  // Rate,
-                  Slider,
-                  Select,
-                  TreeSelect,
-                  Cascader,
-                  // Transfer,
-                  Checkbox,
-                  Radio,
-                  DatePicker,
-                  TimePicker,
-                  Upload,
-                  Switch,
-                  ObjectContainer,
-                  Text,
-                ]}
+                sources={inputs}
               />
               <ResourceWidget
                 title="sources.Layouts"
-                sources={[Card, FormGrid, FormTab, FormLayout, FormCollapse, Space]}
+                sources={layouts}
               />
               <ResourceWidget
                 title="sources.Arrays"
-                sources={[ArrayCards, ArrayTable]}
+                sources={arrays}
               />
             </CompositePanel.Item>
             <CompositePanel.Item
@@ -177,39 +209,7 @@ function FormBuilder({ initialJson, actions, style, onSave, onPublish }: FormBui
               </ToolbarPanel>
               <ViewportPanel style={{ height: "100%" }}>
                 <ViewPanel type="DESIGNABLE">
-                  {() => (
-                    <ComponentTreeWidget
-                      components={{
-                        Form,
-                        Field,
-                        Input,
-                        Select,
-                        TreeSelect,
-                        Cascader,
-                        Radio,
-                        Checkbox,
-                        Slider,
-                        // Rate,
-                        NumberPicker,
-                        // Transfer,
-                        // Password,
-                        DatePicker,
-                        TimePicker,
-                        Upload,
-                        Switch,
-                        Text,
-                        Card,
-                        ArrayCards,
-                        ArrayTable,
-                        Space,
-                        FormTab,
-                        FormCollapse,
-                        FormGrid,
-                        FormLayout,
-                        ObjectContainer,
-                      }}
-                    />
-                  )}
+                  {() => <ComponentTreeWidget components={components} />}
                 </ViewPanel>
                 <ViewPanel
                   type="JSONTREE"

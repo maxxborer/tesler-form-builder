@@ -4,9 +4,14 @@ import { TreeNode, createBehavior, createResource } from "@designable/core";
 import { useTreeNode, TreeNodeWidget, DroppableWidget, DnFC } from "@designable/react";
 import { ArrayBase } from "@formily/antd";
 import { observer } from "@formily/react";
-import { LoadTemplate } from "../../common/LoadTemplate";
 import cls from "classnames";
-import { queryNodesByComponentPath, hasNodeByComponentPath, findNodeByComponentPath, createEnsureTypeItemsNode } from "../../shared";
+import { LoadTemplate } from "../../common/LoadTemplate";
+import {
+  queryNodesByComponentPath,
+  hasNodeByComponentPath,
+  findNodeByComponentPath,
+  createEnsureTypeItemsNode,
+} from "../../shared";
 import { useDropTemplate, useNodeIdProps } from "../../hooks";
 import { createArrayBehavior } from "../ArrayBase";
 import "./styles.less";
@@ -14,13 +19,15 @@ import { createVoidFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
 import { ReactComponent as TableIcon } from "./Table.svg";
-import { composeExport } from "../../utils/composeExport";
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode("object");
 
 const HeaderCell: React.FC = (props: any) => {
   return (
-    <th {...props} data-designer-node-id={props.className.match(/data-id\:([^\s]+)/)?.[1]}>
+    <th
+      {...props}
+      data-designer-node-id={props.className.match(/data-id\:([^\s]+)/)?.[1]}
+    >
       {props.children}
     </th>
   );
@@ -28,23 +35,26 @@ const HeaderCell: React.FC = (props: any) => {
 
 const BodyCell: React.FC = (props: any) => {
   return (
-    <td {...props} data-designer-node-id={props.className.match(/data-id\:([^\s]+)/)?.[1]}>
+    <td
+      {...props}
+      data-designer-node-id={props.className.match(/data-id\:([^\s]+)/)?.[1]}
+    >
       {props.children}
     </td>
   );
 };
 
-export const Tables: DnFC<TableProps<any>> = observer(props => {
+export const Tables: DnFC<TableProps<any>> = observer((props) => {
   const node = useTreeNode();
   const nodeId = useNodeIdProps(node);
-  useDropTemplate("Tables", source => {
+  useDropTemplate("Tables", (source) => {
     const sortHandleNode = new TreeNode({
       componentName: "Field",
       props: {
         type: "void",
         "x-component": "Tables.Column",
         "x-component-props": {
-          title: `Title`,
+          title: "Title",
         },
       },
       children: [
@@ -63,7 +73,7 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
         type: "void",
         "x-component": "Tables.Column",
         "x-component-props": {
-          title: `Title`,
+          title: "Title",
         },
       },
       children: [
@@ -82,12 +92,12 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
         type: "void",
         "x-component": "Tables.Column",
         "x-component-props": {
-          title: `Title`,
+          title: "Title",
         },
       },
-      children: source.map(node => {
-        node.props.title = undefined;
-        return node;
+      children: source.map((innerNode) => {
+        innerNode.props.title = undefined;
+        return innerNode;
       }),
     });
 
@@ -97,7 +107,7 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
         type: "void",
         "x-component": "Tables.Column",
         "x-component-props": {
-          title: `Title`,
+          title: "Title",
         },
       },
       children: [
@@ -172,21 +182,32 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
             },
           }}
         >
-          {columns.map(node => {
-            const children = node.children.map(child => {
-              return <TreeNodeWidget node={child} key={child.id} />;
+          {columns.map((innerNode) => {
+            const children = innerNode.children.map((child) => {
+              return (
+                <TreeNodeWidget
+                  node={child}
+                  key={child.id}
+                />
+              );
             });
-            const props = node.props["x-component-props"];
+            const innerProps = innerNode.props["x-component-props"];
             return (
               <TableBase.Column
-                {...props}
-                title={<div data-content-editable="x-component-props.title">{props.title}</div>}
-                dataIndex={node.id}
-                className={`data-id:${node.id}`}
-                key={node.id}
+                {...innerProps}
+                title={
+                  <div data-content-editable="x-component-props.title">{innerProps.title}</div>
+                }
+                dataIndex={innerNode.id}
+                className={`data-id:${innerNode.id}`}
+                key={innerNode.id}
                 render={(value, record, key) => {
                   return (
-                    <ArrayBase.Item key={key} index={key} record={null}>
+                    <ArrayBase.Item
+                      key={key}
+                      index={key}
+                      record={null}
+                    >
                       {children.length > 0 ? children : "Droppable"}
                     </ArrayBase.Item>
                   );
@@ -196,22 +217,30 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
           })}
           {columns.length === 0 && <TableBase.Column render={() => <DroppableWidget />} />}
         </TableBase>
-        {additions.map(child => {
-          return <TreeNodeWidget node={child} key={child.id} />;
+        {additions.map((child) => {
+          return (
+            <TreeNodeWidget
+              node={child}
+              key={child.id}
+            />
+          );
         })}
       </ArrayBase>
     );
   };
 
-  useDropTemplate("Tables.Column", source => {
-    return source.map(node => {
-      node.props.title = undefined;
-      return node;
+  useDropTemplate("Tables.Column", (source) => {
+    return source.map((innerNode) => {
+      innerNode.props.title = undefined;
+      return innerNode;
     });
   });
 
   return (
-    <div {...nodeId} className="dn-array-table">
+    <div
+      {...nodeId}
+      className="dn-array-table"
+    >
       {renderTable()}
       <LoadTemplate
         actions={[
@@ -219,7 +248,9 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
             title: node.getMessage("addSortHandle"),
             icon: "AddSort",
             onClick: () => {
-              if (hasNodeByComponentPath(node, ["Tables", "*", "Tables.Column", "Tables.SortHandle"])) {
+              if (
+                hasNodeByComponentPath(node, ["Tables", "*", "Tables.Column", "Tables.SortHandle"])
+              ) {
                 return;
               }
               const tableColumn = new TreeNode({
@@ -228,7 +259,7 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
                   type: "void",
                   "x-component": "Tables.Column",
                   "x-component-props": {
-                    title: `Title`,
+                    title: "Title",
                   },
                 },
                 children: [
@@ -257,7 +288,7 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
                   type: "void",
                   "x-component": "Tables.Column",
                   "x-component-props": {
-                    title: `Title`,
+                    title: "Title",
                   },
                 },
                 children: [
@@ -270,7 +301,12 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
                   },
                 ],
               });
-              const sortNode = findNodeByComponentPath(node, ["Tables", "*", "Tables.Column", "Tables.SortHandle"]);
+              const sortNode = findNodeByComponentPath(node, [
+                "Tables",
+                "*",
+                "Tables.Column",
+                "Tables.SortHandle",
+              ]);
               if (sortNode) {
                 sortNode.parent.insertAfter(tableColumn);
               } else {
@@ -286,8 +322,12 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
                 "Tables",
                 "*",
                 "Tables.Column",
-                name => {
-                  return name === "Tables.Remove" || name === "Tables.MoveDown" || name === "Tables.MoveUp";
+                (name) => {
+                  return (
+                    name === "Tables.Remove" ||
+                    name === "Tables.MoveDown" ||
+                    name === "Tables.MoveUp"
+                  );
                 },
               ]);
               const tableColumn = new TreeNode({
@@ -296,7 +336,7 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
                   type: "void",
                   "x-component": "Tables.Column",
                   "x-component-props": {
-                    title: `Title`,
+                    title: "Title",
                   },
                 },
               });
@@ -315,8 +355,12 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
                 "Tables",
                 "*",
                 "Tables.Column",
-                name => {
-                  return name === "Tables.Remove" || name === "Tables.MoveDown" || name === "Tables.MoveUp";
+                (name) => {
+                  return (
+                    name === "Tables.Remove" ||
+                    name === "Tables.MoveDown" ||
+                    name === "Tables.MoveUp"
+                  );
                 },
               ]);
               const oldAdditionNode = findNodeByComponentPath(node, ["Tables", "Tables.Addition"]);
@@ -327,7 +371,7 @@ export const Tables: DnFC<TableProps<any>> = observer(props => {
                     type: "void",
                     "x-component": "Tables.Column",
                     "x-component-props": {
-                      title: `Title`,
+                      title: "Title",
                     },
                   },
                   children: [
@@ -380,10 +424,11 @@ ArrayBase.mixin(Tables);
 Tables.Behavior = createBehavior(createArrayBehavior("Tables"), {
   name: "Tables.Column",
   extends: ["Field"],
-  selector: node => node.props["x-component"] === "Tables.Column",
+  selector: (node) => node.props["x-component"] === "Tables.Column",
   designerProps: {
     droppable: true,
-    allowDrop: node => node.props["type"] === "object" && node.parent?.props?.["x-component"] === "Tables",
+    allowDrop: (node) =>
+      node.props.type === "object" && node.parent?.props?.["x-component"] === "Tables",
     propsSchema: createVoidFieldSchema(AllSchemas.Tables.Column),
   },
   designerLocales: AllLocales.Tables,

@@ -67,7 +67,10 @@ export const createComponentSchema = (component: ISchema, decorator: ISchema) =>
   };
 };
 
-export const createFieldSchema = (component?: ISchema, decorator: ISchema = AllSchemas.FormItem): ISchema => {
+export const createFieldSchema = (
+  component?: ISchema,
+  decorator: ISchema = AllSchemas.FormItem
+): ISchema => {
   return {
     type: "object",
     properties: {
@@ -136,7 +139,10 @@ export const createFieldSchema = (component?: ISchema, decorator: ISchema = AllS
   };
 };
 
-export const createVoidFieldSchema = (component?: ISchema, decorator: ISchema = AllSchemas.FormItem) => {
+export const createVoidFieldSchema = (
+  component?: ISchema,
+  decorator: ISchema = AllSchemas.FormItem
+) => {
   return {
     type: "object",
     properties: {

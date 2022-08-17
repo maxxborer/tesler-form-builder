@@ -10,7 +10,8 @@ export const Input = {
         suffix: "Суффикс",
         autoSize: {
           title: "Авто высота",
-          tooltip: "Может быть установлено значение true | false или объект: {minRows: 2, maxRows: 6}",
+          tooltip:
+            "Может быть установлено значение true | false или объект: {minRows: 2, maxRows: 6}",
         },
         showCount: "Показать кол. символов",
         checkStrength: "Проверить количество",

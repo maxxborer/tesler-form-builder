@@ -98,10 +98,18 @@ const ListOfForms: React.FC<IListOfFormsProps> = ({
   const form = useMemo(() => createForm(), []);
   return (
     <div style={style}>
-      <Form {...json?.form} form={form}>
+      <Form
+        {...json?.form}
+        form={form}
+      >
         <SchemaField schema={json?.schema} />
         <FormButtonGroup.FormItem>
-          <Submit onSubmit={onSubmit} onSubmitSuccess={onSubmitSuccess} onSubmitFailed={onSubmitFailed} onClick={onClickSubmit}>
+          <Submit
+            onSubmit={onSubmit}
+            onSubmitSuccess={onSubmitSuccess}
+            onSubmitFailed={onSubmitFailed}
+            onClick={onClickSubmit}
+          >
             {submitTitle}
           </Submit>
         </FormButtonGroup.FormItem>

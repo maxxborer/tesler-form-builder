@@ -11,7 +11,7 @@ export const Checkbox: DnFC<React.ComponentProps<typeof FormilyCheckbox>> = Form
 Checkbox.Behavior = createBehavior({
   name: "Checkbox.Group",
   extends: ["Field"],
-  selector: node => node.props["x-component"] === "Checkbox.Group",
+  selector: (node) => node.props["x-component"] === "Checkbox.Group",
   designerProps: {
     propsSchema: createFieldSchema(AllSchemas.Checkbox.Group),
   },

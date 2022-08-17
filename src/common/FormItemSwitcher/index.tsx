@@ -10,8 +10,8 @@ export const FormItemSwitcher: React.FC<IFormItemSwitcherProps> = ({ value, onCh
   return (
     <Switch
       checked={value === "FormItem"}
-      onChange={eventValue => {
-        onChange(!!eventValue ? "FormItem" : "");
+      onChange={(eventValue) => {
+        onChange(eventValue ? "FormItem" : "");
       }}
     />
   );

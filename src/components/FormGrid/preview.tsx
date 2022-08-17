@@ -10,11 +10,11 @@ import { AllLocales } from "../../locales";
 import { useNodeIdProps } from "../../hooks";
 import "./styles.less";
 
-type formilyGrid = typeof FormilyGird;
+type TFormilyGrid = typeof FormilyGird;
 
-export const FormGrid: DnFC<React.ComponentProps<formilyGrid>> & {
-  GridColumn?: React.FC<React.ComponentProps<formilyGrid["GridColumn"]>>;
-} = observer(props => {
+export const FormGrid: DnFC<React.ComponentProps<TFormilyGrid>> & {
+  GridColumn?: React.FC<React.ComponentProps<TFormilyGrid["GridColumn"]>>;
+} = observer((props) => {
   const node = useTreeNode();
   const nodeId = useNodeIdProps(node);
   if (node.children.length === 0) {
@@ -22,7 +22,10 @@ export const FormGrid: DnFC<React.ComponentProps<formilyGrid>> & {
   }
 
   return (
-    <div {...nodeId} className="dn-grid">
+    <div
+      {...nodeId}
+      className="dn-grid"
+    >
       <FormilyGird {...props}>{props.children}</FormilyGird>
       <LoadTemplate
         actions={[
@@ -48,7 +51,10 @@ export const FormGrid: DnFC<React.ComponentProps<formilyGrid>> & {
 
 FormGrid.GridColumn = observer(({ gridSpan, ...props }) => {
   return (
-    <DroppableWidget {...props} data-grid-span={gridSpan}>
+    <DroppableWidget
+      {...props}
+      data-grid-span={gridSpan}
+    >
       {props.children}
     </DroppableWidget>
   );
@@ -58,10 +64,10 @@ FormGrid.Behavior = createBehavior(
   {
     name: "FormGrid",
     extends: ["Field"],
-    selector: node => node.props["x-component"] === "FormGrid",
+    selector: (node) => node.props["x-component"] === "FormGrid",
     designerProps: {
       droppable: true,
-      allowDrop: node => node.props["x-component"] !== "FormGrid",
+      allowDrop: (node) => node.props["x-component"] !== "FormGrid",
       propsSchema: createFieldSchema(AllSchemas.FormGrid),
     },
     designerLocales: AllLocales.FormGrid,
@@ -69,7 +75,7 @@ FormGrid.Behavior = createBehavior(
   {
     name: "FormGrid.GridColumn",
     extends: ["Field"],
-    selector: node => node.props["x-component"] === "FormGrid.GridColumn",
+    selector: (node) => node.props["x-component"] === "FormGrid.GridColumn",
     designerProps: {
       droppable: true,
       resizable: {
@@ -97,11 +103,11 @@ FormGrid.Behavior = createBehavior(
       resizeStep: 1,
       resizeMin: 1,
       resizeMax: 12,
-      allowDrop: node => node.props["x-component"] === "FormGrid",
+      allowDrop: (node) => node.props["x-component"] === "FormGrid",
       propsSchema: createFieldSchema(AllSchemas.FormGrid.GridColumn),
     },
     designerLocales: AllLocales.FormGridColumn,
-  },
+  }
 );
 
 FormGrid.Resource = createResource({

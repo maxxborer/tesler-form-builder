@@ -11,7 +11,7 @@ const ValidatorFormats = [
   { label: "Zip", value: "zip" },
 ];
 
-export default {
+const ru = {
   "ru-RU": {
     settings: {
       "x-validator": {
@@ -118,6 +118,8 @@ export default {
     },
   },
 };
+
+export default ru;
 
 // title: 'Transfer',
 // settings: {

@@ -11,7 +11,7 @@ export const Password: DnFC<React.ComponentProps<typeof FormilyPassword>> = Form
 Password.Behavior = createBehavior({
   name: "Password",
   extends: ["Field"],
-  selector: node => node.props["x-component"] === "Password",
+  selector: (node) => node.props["x-component"] === "Password",
   designerProps: {
     propsSchema: createFieldSchema(AllSchemas.Password),
   },

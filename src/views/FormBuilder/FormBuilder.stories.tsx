@@ -13,7 +13,7 @@ export default FormBuilderStory;
 
 const Template: ComponentStory<typeof FormBuilder> = args => {
   const [json, setJson] = useState<IFormilySchema>({});
-  const changeJson = useCallback(json => setJson(json), [json]);
+  const changeJson = useCallback((jsonValue: IFormilySchema) => setJson(jsonValue), []);
 
   return (
     <>

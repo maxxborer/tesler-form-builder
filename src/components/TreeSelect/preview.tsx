@@ -11,7 +11,7 @@ export const TreeSelect: DnFC<React.ComponentProps<typeof FormilyTreeSelect>> = 
 TreeSelect.Behavior = createBehavior({
   name: "TreeSelect",
   extends: ["Field"],
-  selector: node => node.props["x-component"] === "TreeSelect",
+  selector: (node) => node.props["x-component"] === "TreeSelect",
   designerProps: {
     propsSchema: createFieldSchema(AllSchemas.TreeSelect),
   },

@@ -57,7 +57,10 @@
   font-size: 10px;
 }
 
-.dn-settings-form-wrapper .ant-formily-item .ant-formily-item-control-content-component > .ant-select {
+.dn-settings-form-wrapper
+  .ant-formily-item
+  .ant-formily-item-control-content-component
+  > .ant-select {
   max-width: 100%;
 }
 

@@ -73,7 +73,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       {
         loader: require.resolve(preProcessor),
         options: { sourceMap: true },
-      },
+      }
     );
   }
   return loaders;
@@ -149,7 +149,7 @@ module.exports = {
             importLoaders: 4,
             sourceMap: true,
           },
-          "sass-loader",
+          "sass-loader"
         ),
         // Remove this when webpack adds a warning or an error for this.
         sideEffects: true,
@@ -166,7 +166,7 @@ module.exports = {
             //   getLocalIdent: getCSSModuleLocalIdent,
             // },
           },
-          "sass-loader",
+          "sass-loader"
         ),
       },
       {
@@ -213,7 +213,12 @@ module.exports = {
       },
       {
         loader: require.resolve("file-loader"),
-        exclude: [/\.(js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/, /\.(less|css|config|variables|overrides)$/],
+        exclude: [
+          /\.(js|jsx|ts|tsx|mjs)$/,
+          /\.html$/,
+          /\.json$/,
+          /\.(less|css|config|variables|overrides)$/,
+        ],
         options: {
           name: "static/[name].[ext]",
           publicPath: "/",

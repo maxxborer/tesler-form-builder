@@ -8,7 +8,7 @@ import { loadInitialSchema, saveSchema } from "../service";
 
 interface TeslerFormBuilderProps {
   initialJson?: IFormilySchema;
-  actions?: React.FC;
+  // actions?: React.ReactNode;
   onSave?: (json: IFormilySchema) => void;
   onPublish?: (json: IFormilySchema) => void;
 }
@@ -16,9 +16,9 @@ interface TeslerFormBuilderProps {
 export const ActionsWidget = observer(
   ({
     initialJson,
-    actions,
-    onSave = (json) => {},
-    onPublish = (json) => {},
+    // actions,
+    onSave,
+    onPublish,
   }: TeslerFormBuilderProps) => {
     const tree = useTree();
 
@@ -37,7 +37,7 @@ export const ActionsWidget = observer(
 
     return (
       <Space style={{ marginRight: 10 }}>
-        {actions}
+        {/* {actions} */}
         <Radio.Group
           value={GlobalRegistry.getDesignerLanguage()}
           optionType="button"

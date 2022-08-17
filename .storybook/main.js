@@ -4,6 +4,8 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
+    "@storybook/addon-console",
+    "@storybook/addon-actions",
     {
       name: "storybook-preset-less",
       options: {

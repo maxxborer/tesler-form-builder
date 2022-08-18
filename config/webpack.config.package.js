@@ -110,7 +110,6 @@ module.exports = {
         test: /\.tsx?$/,
         loader: "ts-loader",
         exclude: /node_modules/,
-        options: { compilerOptions: { noEmit: false, } },
       },
       {
         test: /\.jsx?$/,
@@ -126,9 +125,6 @@ module.exports = {
           compact: false, // FALSE
           presets: [
             [require.resolve("babel-preset-react-app/dependencies"), { helpers: true }],
-            "@babel/preset-env",
-            "@babel/preset-react",
-            "@babel/preset-typescript",
           ],
           plugins: ["babel-plugin-react-scoped-css"],
           cacheDirectory: true,

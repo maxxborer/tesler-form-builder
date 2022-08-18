@@ -1,1 +1,1 @@
-export { ListOfForms } from "./ListOfForms";
+export { default } from "./ListOfForms";

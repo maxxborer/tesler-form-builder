@@ -25,14 +25,14 @@
     "url": "git+https://github.com/***REMOVED***/tesler-form-builder.git"
   },
   "scripts": {
-    "clean": "rimraf dist/*",
+    "clean": "rimraf dist",
     "start": "NODE_ENV=development node scripts/start.js",
-    "build": "NODE_ENV=production node scripts/build.js",
-    "build:pkg": "yarn clean; cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.config.package.js",
+    "build": "NODE_ENV=production yarn lint && node scripts/build.js",
+    "build:pkg": "yarn clean; yarn lint && cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.config.package.js",
     "production": "yarn clean; yarn; yarn build",
     "release": "yarn build:pkg && release-it -- --ci",
     "release:skip-build": "release-it -- --ci",
-    "ts": "tsc ",
+    "ts": "tsc",
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "yarn lint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,scss,css,json}'",

@@ -240,7 +240,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "./TeslerFormBuilder.css",
+      filename: "./index.css",
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.optimize\.css$/g,

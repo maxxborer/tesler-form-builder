@@ -18,7 +18,7 @@ import "./styles.less";
 import { createVoidFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
-import { ReactComponent as TableIcon } from "./Table.svg";
+import TableIcon from "./Table.svg";
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode("object");
 

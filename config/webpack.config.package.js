@@ -6,6 +6,7 @@ const safePostCssParser = require("postcss-safe-parser");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const MonacoPlugin = require("monaco-editor-webpack-plugin");
 const postcssNormalize = require("postcss-normalize");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -38,7 +39,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
         importLoaders: 3,
         modules: {
           mode: "local",
-          localIdentName: "[local]",
+          localIdentName: '[local]--[hash:base64:5]',
         },
         ...cssOptions,
       },
@@ -54,12 +55,14 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
               autoprefixer: { flexbox: "no-2009" },
               stage: 3,
             }),
+            require("autoprefixer"),
             postcssNormalize(),
           ],
         },
         sourceMap: true,
       },
     },
+    { loader: require.resolve('scoped-css-loader') },
   ];
   if (preProcessor) {
     loaders.push(
@@ -92,9 +95,25 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".less", ".css"],
     modules: ["node_modules"],
   },
+  mode: 'production',
+  devtool: false,
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin()],
+    minimizer: [
+      new TerserPlugin(),
+      new CssMinimizerPlugin(),
+    ],
+    splitChunks: {
+      minSize: 0,
+      cacheGroups: {
+        styles: {
+          name: "styles",
+          chunks: "all",
+          enforce: true,
+        },
+      },
+    },
+    concatenateModules: false,
   },
   module: {
     rules: [
@@ -116,6 +135,7 @@ module.exports = {
           configFile: false,
           compact: false, // FALSE
           presets: [[require.resolve("babel-preset-react-app/dependencies"), { helpers: true }]],
+          plugins: ["babel-plugin-react-scoped-css"],
           cacheDirectory: true,
           cacheCompression: false, // FALSE
           sourceMaps: true,
@@ -162,9 +182,6 @@ module.exports = {
           {
             importLoaders: 4,
             sourceMap: true,
-            // modules: {
-            //   getLocalIdent: getCSSModuleLocalIdent,
-            // },
           },
           "sass-loader"
         ),
@@ -196,9 +213,6 @@ module.exports = {
           ...getStyleLoaders({
             importLoaders: 4,
             sourceMap: true,
-            // modules: {
-            //   getLocalIdent: getCSSModuleLocalIdent,
-            // },
           }),
           {
             loader: require.resolve("less-loader"),

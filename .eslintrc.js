@@ -7,6 +7,8 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:storybook/recommended",
+    "plugin:import/errors",
+    "plugin:import/typescript",
   ],
   plugins: ["react", "@typescript-eslint", "prettier"],
   parser: "@typescript-eslint/parser",
@@ -56,6 +58,7 @@ module.exports = {
     es2021: true,
   },
   rules: {
+    "import/namespace": ["error", { allowComputed: true }],
     "object-curly-spacing": ["warn", "always"],
     "no-unused-vars": [
       "warn",
@@ -112,7 +115,6 @@ module.exports = {
     "react/jsx-max-props-per-line": [2, { maximum: 1, when: "multiline" }],
     "react/jsx-indent-props": [2, 2],
     "react/jsx-closing-bracket-location": [2, "tag-aligned"],
-    "react/jsx-max-props-per-line": "error",
     "react/destructuring-assignment": "off",
     quotes: ["error", "double", { avoidEscape: true }],
     "no-use-before-define": "off",

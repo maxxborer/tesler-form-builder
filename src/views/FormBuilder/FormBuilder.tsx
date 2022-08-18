@@ -1,4 +1,4 @@
-import "antd/dist/antd.less";
+import "./index.scoped.less";
 import * as React from "react";
 import {
   Designer,
@@ -19,7 +19,6 @@ import {
 } from "@designable/react";
 import { SettingsForm } from "@designable/react-settings-form";
 import { createDesigner, GlobalRegistry } from "@designable/core";
-import { IFormilySchema } from "@designable/formily-transformer";
 import {
   ActionsWidget,
   PreviewWidget,
@@ -57,6 +56,7 @@ import {
   // Tables,
 } from "../../components";
 import "./FormBuilder.css";
+import { IFormilySchema } from "@designable/formily-transformer";
 
 GlobalRegistry.registerDesignerLocales({
   "ru-RU": {

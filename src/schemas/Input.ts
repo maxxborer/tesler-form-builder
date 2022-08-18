@@ -1,4 +1,4 @@
-import { ISchema } from "@formily/react";
+import { ISchema } from "@formily/json-schema";
 
 export const Input: ISchema & { TextArea?: ISchema } = {
   type: "object",

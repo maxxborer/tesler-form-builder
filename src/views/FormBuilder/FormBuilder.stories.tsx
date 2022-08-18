@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { ComponentMeta } from "@storybook/react";
-import { IFormilySchema } from "@designable/formily-transformer";
 import Input from "antd/lib/input";
 import FormBuilder from "./index";
 import DEV from "../../common/DEV";
+import { IFormilySchema } from "@designable/formily-transformer";
 
 const FormBuilderStory = {
   title: "FormBuilder",
@@ -12,9 +12,13 @@ const FormBuilderStory = {
 
 export default FormBuilderStory;
 
+interface IFormilySchemaContext extends IFormilySchema {
+  context?: IActionsValues;
+}
+
 export const Primary: React.FC = (args) => {
-  const [json, setJson] = useState<IFormilySchema>({});
-  const changeJson = useCallback((jsonValue: IFormilySchema) => setJson(jsonValue), []);
+  const [json, setJson] = useState<IFormilySchemaContext>({});
+  const changeJson = useCallback((jsonValue: IFormilySchemaContext) => setJson(jsonValue), []);
 
   return (
     <>
@@ -30,7 +34,7 @@ export const Primary: React.FC = (args) => {
 };
 
 export const Initial: React.FC = (args) => {
-  const [json, setJson] = useState<IFormilySchema>({
+  const [json, setJson] = useState<IFormilySchemaContext>({
     form: {
       labelCol: 6,
       wrapperCol: 12,
@@ -38,7 +42,7 @@ export const Initial: React.FC = (args) => {
     schema: {
       type: "object",
       properties: {
-        inputId: {
+        asd: {
           type: "string",
           title: "Input",
           "x-decorator": "FormItem",
@@ -46,10 +50,9 @@ export const Initial: React.FC = (args) => {
           "x-validator": [],
           "x-component-props": {},
           "x-decorator-props": {},
-          "x-designable-id": "inputId",
           "x-index": 0,
         },
-        textAreaId: {
+        dsa: {
           type: "string",
           title: "TextArea",
           "x-decorator": "FormItem",
@@ -57,14 +60,12 @@ export const Initial: React.FC = (args) => {
           "x-validator": [],
           "x-component-props": {},
           "x-decorator-props": {},
-          "x-designable-id": "textAreaId",
           "x-index": 1,
         },
       },
-      "x-designable-id": "formID",
     },
   });
-  const changeJson = useCallback((jsonValue: IFormilySchema) => setJson(jsonValue), []);
+  const changeJson = useCallback((jsonValue: IFormilySchemaContext) => setJson(jsonValue), []);
 
   return (
     <>
@@ -114,15 +115,11 @@ const ActionsComponent: React.FC<IActionsComponent> = ({ values, onChange }) => 
   );
 };
 
-interface IFormilySchemaWithActions extends IFormilySchema {
-  context?: IActionsValues;
-}
-
 export const Actions: React.FC = (args) => {
-  const [reqJson, setReqJson] = useState<IFormilySchemaWithActions>({});
+  const [reqJson, setReqJson] = useState<IFormilySchemaContext>({});
 
-  const [json, setJson] = useState<IFormilySchema>({});
-  const onSave = useCallback((jsonValue: IFormilySchema) => {
+  const [json, setJson] = useState<IFormilySchemaContext>({});
+  const onSave = useCallback((jsonValue: IFormilySchemaContext) => {
     setJson(jsonValue);
   }, []);
 
@@ -139,7 +136,7 @@ export const Actions: React.FC = (args) => {
   );
 
   const onPublish = useCallback(
-    (jsonValue: IFormilySchema) => {
+    (jsonValue: IFormilySchemaContext) => {
       onSave(jsonValue);
       setReqJson({
         ...jsonValue,
@@ -176,7 +173,7 @@ export const Actions: React.FC = (args) => {
 };
 
 export const ActionsInitial: React.FC = (args) => {
-  const [reqJson, setReqJson] = useState<IFormilySchemaWithActions>({
+  const [reqJson, setReqJson] = useState<IFormilySchemaContext>({
     context: {
       product: "ASD",
       version: "1.0",
@@ -188,7 +185,7 @@ export const ActionsInitial: React.FC = (args) => {
     schema: {
       type: "object",
       properties: {
-        inputId: {
+        "input-id": {
           type: "string",
           title: "Input",
           "x-decorator": "FormItem",
@@ -196,10 +193,9 @@ export const ActionsInitial: React.FC = (args) => {
           "x-validator": [],
           "x-component-props": {},
           "x-decorator-props": {},
-          "x-designable-id": "inputId",
           "x-index": 0,
         },
-        textAreaId: {
+        "textArea-id": {
           type: "string",
           title: "TextArea",
           "x-decorator": "FormItem",
@@ -207,11 +203,9 @@ export const ActionsInitial: React.FC = (args) => {
           "x-validator": [],
           "x-component-props": {},
           "x-decorator-props": {},
-          "x-designable-id": "textAreaId",
           "x-index": 1,
         },
       },
-      "x-designable-id": "formID",
     },
   });
 
@@ -223,8 +217,8 @@ export const ActionsInitial: React.FC = (args) => {
     ...rawJson
   } = reqJson;
 
-  const [json, setJson] = useState<IFormilySchema>(rawJson);
-  const onSave = useCallback((jsonValue: IFormilySchema) => {
+  const [json, setJson] = useState<IFormilySchemaContext>(rawJson);
+  const onSave = useCallback((jsonValue: IFormilySchemaContext) => {
     setJson(jsonValue);
   }, []);
 
@@ -238,7 +232,7 @@ export const ActionsInitial: React.FC = (args) => {
   );
 
   const onPublish = useCallback(
-    (jsonValue: IFormilySchema) => {
+    (jsonValue: IFormilySchemaContext) => {
       onSave(jsonValue);
       setReqJson({
         ...jsonValue,

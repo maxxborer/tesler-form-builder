@@ -86,7 +86,7 @@ export interface IListOfFormsProps {
   onSubmitFailed?: (feedbacks: IFormFeedback[]) => void;
 }
 
-const ListOfForms: React.FC<IListOfFormsProps> = ({
+export const ListOfForms: React.FC<IListOfFormsProps> = ({
   json,
   submitTitle = "Отправить",
   style,
@@ -117,5 +117,3 @@ const ListOfForms: React.FC<IListOfFormsProps> = ({
     </div>
   );
 };
-
-export default ListOfForms;

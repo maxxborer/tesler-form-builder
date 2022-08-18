@@ -15,18 +15,18 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 const lessRegex = /\.less$/;
 const lessModuleRegex = /\.module\.less$/;
 
-const hasJsxRuntime = (() => {
-  if (process.env.DISABLE_NEW_JSX_TRANSFORM === "true") {
-    return false;
-  }
+// const hasJsxRuntime = (() => {
+//   if (process.env.DISABLE_NEW_JSX_TRANSFORM === "true") {
+//     return false;
+//   }
 
-  try {
-    require.resolve("react/jsx-runtime");
-    return true;
-  } catch (e) {
-    return false;
-  }
-})();
+//   try {
+//     require.resolve("react/jsx-runtime");
+//     return true;
+//   } catch (e) {
+//     return false;
+//   }
+// })();
 
 const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [
@@ -55,7 +55,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
               autoprefixer: { flexbox: "no-2009" },
               stage: 3,
             }),
-            require("autoprefixer"),
+            // require("autoprefixer"),
             postcssNormalize(),
           ],
         },

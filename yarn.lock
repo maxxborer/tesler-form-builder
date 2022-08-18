@@ -6107,7 +6107,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"async@npm:^2.6.4":
+"async@npm:^2.5.0, async@npm:^2.6.4":
   version: 2.6.4
   resolution: "async@npm:2.6.4"
   dependencies:
@@ -6139,7 +6139,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^9.4.2, autoprefixer@npm:^9.8.6, autoprefixer@npm:^9.8.8":
+"autoprefixer@npm:^9.6.1, autoprefixer@npm:^9.8.6, autoprefixer@npm:^9.8.8":
   version: 9.8.8
   resolution: "autoprefixer@npm:9.8.8"
   dependencies:
@@ -6865,7 +6865,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.0.0, browserslist@npm:^4.12.0, browserslist@npm:^4.14.5, browserslist@npm:^4.16.6, browserslist@npm:^4.20.2, browserslist@npm:^4.20.3, browserslist@npm:^4.21.3, browserslist@npm:^4.3.5, browserslist@npm:^4.6.2":
+"browserslist@npm:^4.0.0, browserslist@npm:^4.12.0, browserslist@npm:^4.14.5, browserslist@npm:^4.16.6, browserslist@npm:^4.20.2, browserslist@npm:^4.20.3, browserslist@npm:^4.21.3, browserslist@npm:^4.6.2, browserslist@npm:^4.6.4":
   version: 4.21.3
   resolution: "browserslist@npm:4.21.3"
   dependencies:
@@ -7222,7 +7222,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30000918, caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001125, caniuse-lite@npm:^1.0.30001370":
+"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30000981, caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001125, caniuse-lite@npm:^1.0.30001370":
   version: 1.0.30001378
   resolution: "caniuse-lite@npm:1.0.30001378"
   checksum: 19f1774da1f62d393ddde55dc091eb3e4f5c5b0ce43f9a9d20e75307a0f329cf8591c836a35a9f6f9fd7c27db7a75e0682245a194acec2e2ba1bc25ef1c3300c
@@ -8404,7 +8404,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssdb@npm:^4.3.0":
+"cssdb@npm:^4.4.0":
   version: 4.4.0
   resolution: "cssdb@npm:4.4.0"
   checksum: 521dd2135da1ab93612a4161eb1024cfc7b155a35d95f9867d328cc88ad57fdd959aa88ea8f4e6cea3a82bca91b76570dc1abb18bfd902c6889973956a03e497
@@ -14725,7 +14725,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.1":
+"nanoid@npm:^3.3.1, nanoid@npm:^3.3.4":
   version: 3.3.4
   resolution: "nanoid@npm:3.3.4"
   bin:
@@ -16006,7 +16006,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-attribute-case-insensitive@npm:^4.0.0":
+"postcss-attribute-case-insensitive@npm:^4.0.1":
   version: 4.0.2
   resolution: "postcss-attribute-case-insensitive@npm:4.0.2"
   dependencies:
@@ -16071,7 +16071,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-color-hex-alpha@npm:^5.0.2":
+"postcss-color-hex-alpha@npm:^5.0.3":
   version: 5.0.3
   resolution: "postcss-color-hex-alpha@npm:5.0.3"
   dependencies:
@@ -16151,7 +16151,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-custom-media@npm:^7.0.7":
+"postcss-custom-media@npm:^7.0.8":
   version: 7.0.8
   resolution: "postcss-custom-media@npm:7.0.8"
   dependencies:
@@ -16160,7 +16160,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-custom-properties@npm:^8.0.9":
+"postcss-custom-properties@npm:^8.0.11":
   version: 8.0.11
   resolution: "postcss-custom-properties@npm:8.0.11"
   dependencies:
@@ -16371,7 +16371,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-loader@npm:^4.2.0":
+"postcss-loader@npm:^4.2.0, postcss-loader@npm:^4.3.0":
   version: 4.3.0
   resolution: "postcss-loader@npm:4.3.0"
   dependencies:
@@ -16865,26 +16865,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-preset-env@npm:6.5.0":
-  version: 6.5.0
-  resolution: "postcss-preset-env@npm:6.5.0"
+"postcss-preset-env@npm:6.7.0":
+  version: 6.7.0
+  resolution: "postcss-preset-env@npm:6.7.0"
   dependencies:
-    autoprefixer: ^9.4.2
-    browserslist: ^4.3.5
-    caniuse-lite: ^1.0.30000918
+    autoprefixer: ^9.6.1
+    browserslist: ^4.6.4
+    caniuse-lite: ^1.0.30000981
     css-blank-pseudo: ^0.1.4
     css-has-pseudo: ^0.10.0
     css-prefers-color-scheme: ^3.1.1
-    cssdb: ^4.3.0
-    postcss: ^7.0.6
-    postcss-attribute-case-insensitive: ^4.0.0
+    cssdb: ^4.4.0
+    postcss: ^7.0.17
+    postcss-attribute-case-insensitive: ^4.0.1
     postcss-color-functional-notation: ^2.0.1
     postcss-color-gray: ^5.0.0
-    postcss-color-hex-alpha: ^5.0.2
+    postcss-color-hex-alpha: ^5.0.3
     postcss-color-mod-function: ^3.0.3
     postcss-color-rebeccapurple: ^4.0.1
-    postcss-custom-media: ^7.0.7
-    postcss-custom-properties: ^8.0.9
+    postcss-custom-media: ^7.0.8
+    postcss-custom-properties: ^8.0.11
     postcss-custom-selectors: ^5.1.2
     postcss-dir-pseudo-class: ^5.0.0
     postcss-double-position-gradients: ^1.0.0
@@ -16906,7 +16906,7 @@ __metadata:
     postcss-replace-overflow-wrap: ^3.0.0
     postcss-selector-matches: ^4.0.0
     postcss-selector-not: ^4.0.0
-  checksum: 45520f550dec4430a780fe106f138d36a148352479e099e442ffe4b1227d3d45a727fbe0d2be96e225201cdd1138a71ff248d12009874b998e59d1c7d2d5e571
+  checksum: 209cbb63443a1631aa97ccfc3b95b1ff519ddaeb672f84d6af501bd9e9ad6727680b5b1bffb8209322e47d93029a69df6064f75cd0b7633b6df943cbef33f22e
   languageName: node
   linkType: hard
 
@@ -16976,12 +16976,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-safe-parser@npm:4.0.2":
-  version: 4.0.2
-  resolution: "postcss-safe-parser@npm:4.0.2"
+"postcss-safe-parser@npm:5.0.2":
+  version: 5.0.2
+  resolution: "postcss-safe-parser@npm:5.0.2"
   dependencies:
-    postcss: ^7.0.26
-  checksum: b812832c06f9fc17b74b714f9c07de80fa770a1535a103b06b679f33b8e09caf60dff1e1eca489613f4ce2bb6439cd949b7d026c843aa9b45bb50f0168b75023
+    postcss: ^8.1.0
+  checksum: b786eca091f856f2d31856d903c24c1b591ecbc0b607af0824e1cf12b9b254b5e1f24bc842cc2b95bc561f097d8b358fb4c9e04c73c1ba9c118d21bde9a83253
   languageName: node
   linkType: hard
 
@@ -17125,6 +17125,17 @@ __metadata:
     picocolors: ^0.2.1
     source-map: ^0.6.1
   checksum: 4ac793f506c23259189064bdc921260d869a115a82b5e713973c5af8e94fbb5721a5cc3e1e26840500d7e1f1fa42a209747c5b1a151918a9bc11f0d7ed9048e3
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.1.0":
+  version: 8.4.16
+  resolution: "postcss@npm:8.4.16"
+  dependencies:
+    nanoid: ^3.3.4
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: 10eee25efd77868036403858577da0cefaf2e0905feeaba5770d5438ccdddba3d01cba8063e96b8aac4c6daa0ed413dd5ae0554a433a3c4db38df1d134cffc1f
   languageName: node
   linkType: hard
 
@@ -19317,7 +19328,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:^10.1.1":
+"sass-loader@npm:^10.0.5":
   version: 10.3.1
   resolution: "sass-loader@npm:10.3.1"
   dependencies:
@@ -19894,6 +19905,23 @@ __metadata:
   version: 2.0.1
   resolution: "source-list-map@npm:2.0.1"
   checksum: 806efc6f75e7cd31e4815e7a3aaf75a45c704871ea4075cb2eb49882c6fca28998f44fc5ac91adb6de03b2882ee6fb02f951fdc85e6a22b338c32bfe19557938
+  languageName: node
+  linkType: hard
+
+"source-map-js@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "source-map-js@npm:1.0.2"
+  checksum: c049a7fc4deb9a7e9b481ae3d424cc793cb4845daa690bc5a05d428bf41bf231ced49b4cf0c9e77f9d42fdb3d20d6187619fc586605f5eabe995a316da8d377c
+  languageName: node
+  linkType: hard
+
+"source-map-loader@npm:0.2.4":
+  version: 0.2.4
+  resolution: "source-map-loader@npm:0.2.4"
+  dependencies:
+    async: ^2.5.0
+    loader-utils: ^1.1.0
+  checksum: ec67c402ba4559641af01bdf351816ae2fcfee2e0b5948477f86bc59dbc06d791eaca64e34428469b2c8a88e6ea7ec14c540daee706925a75a0b7ba2152e984c
   languageName: node
   linkType: hard
 
@@ -20888,10 +20916,10 @@ __metadata:
     optimize-css-assets-webpack-plugin: 5.0.4
     pnp-webpack-plugin: 1.6.4
     postcss-flexbugs-fixes: 4.2.1
-    postcss-loader: ^4.2.0
+    postcss-loader: ^4.3.0
     postcss-normalize: 8.0.1
-    postcss-preset-env: 6.5.0
-    postcss-safe-parser: 4.0.2
+    postcss-preset-env: 6.7.0
+    postcss-safe-parser: 5.0.2
     prettier: ^2.7.1
     prettier-eslint: ^15.0.1
     prettier-eslint-cli: ^7.0.0
@@ -20904,9 +20932,10 @@ __metadata:
     resolve: 1.18.1
     resolve-url-loader: ^3.1.2
     rimraf: ^3.0.2
-    sass-loader: ^10.1.1
+    sass-loader: ^10.0.5
     scoped-css-loader: ^1.0.0
     semver: 7.3.2
+    source-map-loader: 0.2.4
     storybook-preset-less: ^1.1.2
     style-loader: 2.0.0
     terser-webpack-plugin: 4.2.3

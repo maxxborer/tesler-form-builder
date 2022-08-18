@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
-const ESLintPlugin = require("eslint-webpack-plugin");
+// const ESLintPlugin = require("eslint-webpack-plugin");
 const MonacoPlugin = require("monaco-editor-webpack-plugin");
 const postcssNormalize = require("postcss-normalize");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
@@ -261,25 +261,25 @@ module.exports = {
     new MonacoPlugin({
       languages: ["json"],
     }),
-    new ESLintPlugin({
-      extensions: ["js", "mjs", "jsx", "ts", "tsx"],
-      formatter: require.resolve("react-dev-utils/eslintFormatter"),
-      eslintPath: require.resolve("eslint"),
-      failOnError: true,
-      context: path.resolve(__dirname, "..", "src"),
-      cache: true,
-      cacheLocation: path.resolve(__dirname, "..", "node_modules/.cache/.eslintcache"),
-      cwd: path.resolve(__dirname, ".."),
-      resolvePluginsRelativeTo: path.resolve(__dirname, ".."),
-      baseConfig: {
-        extends: [require.resolve("eslint-config-react-app/base")],
-        rules: {
-          ...(!hasJsxRuntime && {
-            "react/react-in-jsx-scope": "error",
-          }),
-        },
-      },
-    }),
+    // new ESLintPlugin({
+    //   extensions: ["js", "mjs", "jsx", "ts", "tsx"],
+    //   formatter: require.resolve("react-dev-utils/eslintFormatter"),
+    //   eslintPath: require.resolve("eslint"),
+    //   failOnError: true,
+    //   context: path.resolve(__dirname, "..", "src"),
+    //   cache: true,
+    //   cacheLocation: path.resolve(__dirname, "..", "node_modules/.cache/.eslintcache"),
+    //   cwd: path.resolve(__dirname, ".."),
+    //   resolvePluginsRelativeTo: path.resolve(__dirname, ".."),
+    //   baseConfig: {
+    //     extends: [require.resolve("eslint-config-react-app/base")],
+    //     rules: {
+    //       ...(!hasJsxRuntime && {
+    //         "react/react-in-jsx-scope": "error",
+    //       }),
+    //     },
+    //   },
+    // }),
   ],
   externals: {
     react: {

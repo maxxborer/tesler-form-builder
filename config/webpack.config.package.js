@@ -62,7 +62,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
         sourceMap: true,
       },
     },
-    { loader: require.resolve('scoped-css-loader') },
+    // { loader: require.resolve('scoped-css-loader') },
   ];
   if (preProcessor) {
     loaders.push(
@@ -126,7 +126,7 @@ module.exports = {
           presets: [
             [require.resolve("babel-preset-react-app/dependencies"), { helpers: true }],
           ],
-          plugins: ["babel-plugin-react-scoped-css"],
+          // plugins: ["babel-plugin-react-scoped-css"],
           cacheDirectory: true,
           cacheCompression: false, // FALSE
           sourceMaps: true,

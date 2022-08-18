@@ -86,7 +86,13 @@ export interface FormBuilderProps {
   onPublish?: (json: IFormilySchema) => void;
 }
 
-function FormBuilder({ initialJson, actions, style, onSave, onPublish }: FormBuilderProps) {
+const FormBuilder: React.FC<FormBuilderProps> = ({
+  initialJson,
+  actions,
+  style,
+  onSave,
+  onPublish,
+}) => {
   const engine = React.useMemo(
     () =>
       createDesigner({
@@ -241,6 +247,6 @@ function FormBuilder({ initialJson, actions, style, onSave, onPublish }: FormBui
       </Designer>
     </div>
   );
-}
+};
 
 export default FormBuilder;

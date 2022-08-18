@@ -6,7 +6,6 @@ const safePostCssParser = require("postcss-safe-parser");
 // const ESLintPlugin = require("eslint-webpack-plugin");
 const MonacoPlugin = require("monaco-editor-webpack-plugin");
 const postcssNormalize = require("postcss-normalize");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -101,7 +100,6 @@ module.exports = {
     minimize: true,
     minimizer: [
       new TerserPlugin(),
-      new CssMinimizerPlugin(),
     ],
   },
   module: {

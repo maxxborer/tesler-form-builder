@@ -1,4 +1,4 @@
-import "./index.scoped.less";
+import "antd/dist/antd.less";
 import * as React from "react";
 import {
   Designer,

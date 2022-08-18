@@ -1641,7 +1641,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-typescript@npm:^7.12.7, @babel/preset-typescript@npm:^7.16.0":
+"@babel/preset-typescript@npm:^7.12.7, @babel/preset-typescript@npm:^7.16.0, @babel/preset-typescript@npm:^7.18.6":
   version: 7.18.6
   resolution: "@babel/preset-typescript@npm:7.18.6"
   dependencies:
@@ -20809,6 +20809,7 @@ __metadata:
     "@babel/core": 7.12.3
     "@babel/preset-env": ^7.1.0
     "@babel/preset-react": ^7.0.0
+    "@babel/preset-typescript": ^7.18.6
     "@designable/core": ^1.0.0-beta.45
     "@designable/formily-setters": ^1.0.0-beta.45
     "@designable/formily-transformer": ^1.0.0-beta.45

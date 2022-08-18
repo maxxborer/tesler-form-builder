@@ -103,17 +103,6 @@ module.exports = {
       new TerserPlugin(),
       new CssMinimizerPlugin(),
     ],
-    splitChunks: {
-      minSize: 0,
-      cacheGroups: {
-        styles: {
-          name: "styles",
-          chunks: "all",
-          enforce: true,
-        },
-      },
-    },
-    concatenateModules: false,
   },
   module: {
     rules: [

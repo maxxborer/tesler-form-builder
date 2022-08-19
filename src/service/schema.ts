@@ -17,7 +17,7 @@ export const loadInitialSchema = (designer: Engine, json?: IFormilySchema) => {
 
   let jsonForTree = {};
 
-  if (Object.keys(json).length !== 0) {
+  if (!!json && Object.keys(json).length !== 0) {
     jsonForTree = json;
   } else if (!!jsonLocal) {
     jsonForTree = JSON.parse(jsonLocal || "{}");

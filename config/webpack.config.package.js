@@ -8,6 +8,7 @@ const safePostCssParser = require("postcss-safe-parser");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const MonacoPlugin = require("monaco-editor-webpack-plugin");
 const postcssNormalize = require("postcss-normalize");
+const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -148,6 +149,9 @@ module.exports = {
         use: getStyleLoaders({
           importLoaders: 2,
           sourceMap: true,
+          modules: {
+            getLocalIdent: getCSSModuleLocalIdent,
+          },
         }),
       },
       {
@@ -157,6 +161,9 @@ module.exports = {
           {
             importLoaders: 4,
             sourceMap: true,
+            modules: {
+              getLocalIdent: getCSSModuleLocalIdent,
+            },  
           },
           "sass-loader"
         ),
@@ -182,6 +189,9 @@ module.exports = {
           ...getStyleLoaders({
             importLoaders: 4,
             sourceMap: true,
+            modules: {
+              getLocalIdent: getCSSModuleLocalIdent,
+            },  
           }),
           {
             loader: require.resolve("less-loader"),

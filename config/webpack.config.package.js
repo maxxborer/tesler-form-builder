@@ -39,10 +39,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       loader: "css-loader",
       options: {
         importLoaders: 3,
-        modules: {
-          mode: "local",
-          localIdentName: '[local]--[hash:base64:5]',
-        },
+        modules: true,
         ...cssOptions,
       },
     },

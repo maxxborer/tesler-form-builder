@@ -12,9 +12,11 @@ export const saveSchema = (designer: Engine) => {
   message.success("Успешно сохранено");
 };
 
-export const loadInitialSchema = (designer: Engine, json: IFormilySchema) => {
+export const loadInitialSchema = (designer: Engine, json?: IFormilySchema) => {
   const tree: ITreeNode = transformToTreeNode(
-    Object.keys(json).length !== 0 ? json : JSON.parse(localStorage.getItem("formily-schema"))
+    Object.keys(json).length !== 0
+      ? json
+      : JSON.parse(localStorage.getItem("formily-schema") || "{}") || {}
   );
   try {
     designer.setCurrentTree(tree);

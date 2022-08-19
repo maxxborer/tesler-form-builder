@@ -26,21 +26,19 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "start": "NODE_ENV=development node scripts/start.js",
-    "build": "yarn clean; yarn lint && yarn build:pkg && yarn build:cjs",
+    "build": "yarn clean; yarn lint && yarn build:cjs && yarn build:pkg",
     "build:pkg": "cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.config.package.js",
     "build:mjs": "tsc -p tsconfig-mjs.json",
     "build:cjs": "tsc -p tsconfig.json",
     "build:ts": "yarn build:esm && yarn build:cjs",
-    "production": "yarn clean; yarn; yarn build",
     "release": "yarn build && release-it -- --ci",
     "release:skip-build": "release-it -- --ci",
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "yarn lint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,scss,css,json}'",
-    "lint:format": "yarn lint:fix && yarn format",
+    "lint:format": "prettier --write './**/*.{js,jsx,ts,tsx,scss,css,json}'",
+    "lint:all": "yarn lint:fix && yarn lint:format",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook:build": "build-storybook"
   },
   "dependencies": {
     "@designable/core": "^1.0.0-beta.45",

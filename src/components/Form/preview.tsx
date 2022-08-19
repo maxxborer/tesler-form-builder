@@ -6,7 +6,7 @@ import { Form as FormilyForm } from "@formily/antd";
 import { usePrefix, DnFC } from "@designable/react";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";
-import "./styles.less";
+import "./styles.scoped.less";
 
 export const Form: DnFC<React.ComponentProps<typeof FormilyForm>> = observer((props) => {
   const prefix = usePrefix("designable-form");

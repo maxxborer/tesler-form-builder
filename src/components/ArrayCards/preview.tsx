@@ -15,7 +15,7 @@ import {
   createNodeId,
 } from "../../shared";
 import { createArrayBehavior } from "../ArrayBase";
-import "./styles.less";
+import "./styles.scoped.less";
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode("object");
 

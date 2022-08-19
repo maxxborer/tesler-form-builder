@@ -14,7 +14,7 @@ import {
 } from "../../shared";
 import { useDropTemplate, useNodeIdProps } from "../../hooks";
 import { createArrayBehavior } from "../ArrayBase";
-import "./styles.less";
+import "./styles.scoped.less";
 import { createVoidFieldSchema } from "../Field";
 import { AllSchemas } from "../../schemas";
 import { AllLocales } from "../../locales";

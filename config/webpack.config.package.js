@@ -127,7 +127,7 @@ module.exports = {
           plugins: [[
             "babel-plugin-react-scoped-css",
             {
-              "include": ".local.(sa|sc|le|c)ss$"
+              "include": ".scoped.(sa|sc|le|c)ss$"
             }
           ]],
           cacheDirectory: true,

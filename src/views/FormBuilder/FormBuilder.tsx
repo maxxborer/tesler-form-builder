@@ -56,6 +56,7 @@ import {
   // Tables,
 } from "../../components";
 import { IFormilySchema } from "@designable/formily-transformer";
+import "./FormBuilder.css";
 
 GlobalRegistry.registerDesignerLocales({
   "ru-RU": {

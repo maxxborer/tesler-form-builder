@@ -1,4 +1,4 @@
-import "antd/dist/antd.less";
+import "./index.scoped.less";
 import * as React from "react";
 import {
   Designer,
@@ -55,7 +55,6 @@ import {
   FormGrid,
   // Tables,
 } from "../../components";
-import "./FormBuilder.css";
 import { IFormilySchema } from "@designable/formily-transformer";
 
 GlobalRegistry.registerDesignerLocales({

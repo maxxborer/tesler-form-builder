@@ -1,3 +1,5 @@
+"use strict";
+
 const { execSync } = require("child_process");
 
 execSync(`cat >dist/cjs/package.json <<!EOF

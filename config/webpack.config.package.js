@@ -1,9 +1,11 @@
+"use strict";
+
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
-// const ESLintPlugin = require("eslint-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
 const MonacoPlugin = require("monaco-editor-webpack-plugin");
 const postcssNormalize = require("postcss-normalize");
 
@@ -14,18 +16,18 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 const lessRegex = /\.less$/;
 const lessModuleRegex = /\.module\.less$/;
 
-// const hasJsxRuntime = (() => {
-//   if (process.env.DISABLE_NEW_JSX_TRANSFORM === "true") {
-//     return false;
-//   }
+const hasJsxRuntime = (() => {
+  if (process.env.DISABLE_NEW_JSX_TRANSFORM === "true") {
+    return false;
+  }
 
-//   try {
-//     require.resolve("react/jsx-runtime");
-//     return true;
-//   } catch (e) {
-//     return false;
-//   }
-// })();
+  try {
+    require.resolve("react/jsx-runtime");
+    return true;
+  } catch (e) {
+    return false;
+  }
+})();
 
 const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [
@@ -94,8 +96,6 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".less", ".css"],
     modules: ["node_modules"],
   },
-  mode: 'production',
-  devtool: false,
   optimization: {
     minimize: true,
     minimizer: [
@@ -259,25 +259,25 @@ module.exports = {
     new MonacoPlugin({
       languages: ["json"],
     }),
-    // new ESLintPlugin({
-    //   extensions: ["js", "mjs", "jsx", "ts", "tsx"],
-    //   formatter: require.resolve("react-dev-utils/eslintFormatter"),
-    //   eslintPath: require.resolve("eslint"),
-    //   failOnError: true,
-    //   context: path.resolve(__dirname, "..", "src"),
-    //   cache: true,
-    //   cacheLocation: path.resolve(__dirname, "..", "node_modules/.cache/.eslintcache"),
-    //   cwd: path.resolve(__dirname, ".."),
-    //   resolvePluginsRelativeTo: path.resolve(__dirname, ".."),
-    //   baseConfig: {
-    //     extends: [require.resolve("eslint-config-react-app/base")],
-    //     rules: {
-    //       ...(!hasJsxRuntime && {
-    //         "react/react-in-jsx-scope": "error",
-    //       }),
-    //     },
-    //   },
-    // }),
+    new ESLintPlugin({
+      extensions: ["js", "mjs", "jsx", "ts", "tsx"],
+      formatter: require.resolve("react-dev-utils/eslintFormatter"),
+      eslintPath: require.resolve("eslint"),
+      failOnError: true,
+      context: path.resolve(__dirname, "..", "src"),
+      cache: true,
+      cacheLocation: path.resolve(__dirname, "..", "node_modules/.cache/.eslintcache"),
+      cwd: path.resolve(__dirname, ".."),
+      resolvePluginsRelativeTo: path.resolve(__dirname, ".."),
+      baseConfig: {
+        extends: [require.resolve("eslint-config-react-app/base")],
+        rules: {
+          ...(!hasJsxRuntime && {
+            "react/react-in-jsx-scope": "error",
+          }),
+        },
+      },
+    }),
   ],
   externals: {
     react: {

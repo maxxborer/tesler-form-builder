@@ -46,7 +46,6 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
     {
       loader: require.resolve("postcss-loader"),
       options: {
-        // ident: "postcss",
         postcssOptions: {
           plugins: [
             require("postcss-flexbugs-fixes"),
@@ -54,14 +53,14 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
               autoprefixer: { flexbox: "no-2009" },
               stage: 3,
             }),
-            // require("autoprefixer"),
+            require("autoprefixer"),
             postcssNormalize(),
           ],
         },
         sourceMap: true,
       },
     },
-    // { loader: require.resolve('scoped-css-loader') },
+    { loader: require.resolve('scoped-css-loader') },
   ];
   if (preProcessor) {
     loaders.push(
@@ -122,7 +121,12 @@ module.exports = {
           presets: [
             [require.resolve("babel-preset-react-app/dependencies"), { helpers: true }],
           ],
-          // plugins: ["babel-plugin-react-scoped-css"],
+          plugins: [[
+            "babel-plugin-react-scoped-css",
+            {
+              "include": ".local.(sa|sc|le|c)ss$"
+            }
+          ]],
           cacheDirectory: true,
           cacheCompression: false, // FALSE
           sourceMaps: true,
@@ -136,11 +140,8 @@ module.exports = {
           importLoaders: 2,
           sourceMap: true,
         }),
-        // Remove this when webpack adds a warning or an error for this.
         sideEffects: true,
       },
-      // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
-      // using the extension .module.css
       {
         test: cssModuleRegex,
         use: getStyleLoaders({
@@ -164,11 +165,8 @@ module.exports = {
           },
           "sass-loader"
         ),
-        // Remove this when webpack adds a warning or an error for this.
         sideEffects: true,
       },
-      // Adds support for CSS Modules, but using SASS
-      // using the extension .module.scss or .module.sass
       {
         test: sassModuleRegex,
         use: getStyleLoaders(
@@ -201,8 +199,6 @@ module.exports = {
           },
         ],
       },
-      // Adds support for CSS Modules, but using less
-      // using the extension .module.scss or .module.less
       {
         test: lessModuleRegex,
         use: [

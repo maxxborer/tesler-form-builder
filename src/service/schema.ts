@@ -13,11 +13,18 @@ export const saveSchema = (designer: Engine) => {
 };
 
 export const loadInitialSchema = (designer: Engine, json?: IFormilySchema) => {
-  const tree: ITreeNode = transformToTreeNode(
-    Object.keys(json).length !== 0
-      ? json
-      : JSON.parse(localStorage.getItem("formily-schema") || "{}") || {}
-  );
+  const jsonLocal = localStorage.getItem("formily-schema");
+
+  let jsonForTree = {};
+
+  if (Object.keys(json).length !== 0) {
+    jsonForTree = json;
+  } else if (!!jsonLocal) {
+    jsonForTree = JSON.parse(jsonLocal || "{}");
+  }
+
+  const tree: ITreeNode = transformToTreeNode(jsonForTree);
+
   try {
     designer.setCurrentTree(tree);
   } catch {}

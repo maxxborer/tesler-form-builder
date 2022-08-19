@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Card, CardProps } from "antd";
 import { TreeNode, createResource } from "@designable/core";
 import { useTreeNode, TreeNodeWidget, DroppableWidget, DnFC } from "@designable/react";

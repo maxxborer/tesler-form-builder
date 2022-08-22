@@ -1,7 +1,7 @@
 {
   "name": "tesler-form-builder",
   "description": "Tesler form-builder based on formily (designable)",
-  "version": "0.4.30",
+  "version": "0.4.31",
   "keywords": [
     "react",
     "webpack",
@@ -14,7 +14,7 @@
     "storybook",
     "eslint"
   ],
-  "author": "Maxim ***REMOVED***",
+  "author": "Maxx Borer",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/***REMOVED***/tesler-form-builder.git"
+    "url": "git+https://github.com/maxxborer/tesler-form-builder.git"
   },
   "scripts": {
     "clean": "rimraf dist",

@@ -77,8 +77,8 @@ const SchemaField = createSchemaField({
 });
 
 export interface IListOfFormsProps {
-  json: IFormilySchema;
-  submitTitle: string;
+  json?: IFormilySchema;
+  submitTitle?: string;
   style?: React.CSSProperties;
   onClickSubmit?: (e: React.MouseEvent<Element, MouseEvent>) => any;
   onSubmit?: (values: any) => Promise<any> | any;

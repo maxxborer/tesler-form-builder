@@ -31,7 +31,7 @@ export const Cascader = {
         displayRender: {
           title: "Display Render",
           tooltip:
-            'The rendering function displayed after selection, the default is label => label.join("/")	',
+            'The rendering function displayed after selection, the default is label => label.join("/")  ',
         },
         fieldNames: {
           title: "Field Names",
